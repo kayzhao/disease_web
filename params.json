@@ -1,0 +1,6 @@
+{
+  "name": "Disease web",
+  "tagline": "the disease web server developed by csu bioinformatics group",
+  "body": "# The Disease Web Server\r\n\r\n\r\n--------------------------------------\r\n## INTRODUCTION\r\n\r\n\r\n--------------------------------------\r\n## METHOD\r\n\r\n\r\n--------------------------------------\r\n## Datasets\r\n\r\n### Disease\r\n   - DO\r\n   - MESH\r\n   - OMIM\r\n   \r\n### Drug\r\n   - Drugbank\r\n   - KEGG\r\n\r\n--------------------------------------\r\n## WORKFLOW\r\n\r\n\r\n--------------------------------------\r\n## Keywords\r\n- Spring\r\n- Hibernate\r\n- Mysql\r\n- Disease Web Server\r\n\r\n--------------------------------------\r\n## Contacts\r\n- Kaijie Zhao:kay.zkj.233@gmail.com\r\n- Jianxin Wang: jxwang@mail.csu.edu.cn\r\n- Min Li: limin@mail.csu.edu.cn\r\n\r\n--------------------------------------\r\n## Note\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
