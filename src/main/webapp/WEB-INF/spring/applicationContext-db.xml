@@ -5,12 +5,8 @@
 	xmlns:mongo="http://www.springframework.org/schema/data/mongo" xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
 
-	<!-- spring上下文工具 -->
-	<bean id="myApplicationContext" class="com.csu.vlab.atlas.framework.utils.MyApplicationContext"></bean>
-
 	<!-- 变量配置 -->
-	<bean id="atlasPropertyConfigurer"
-		class="com.csu.vlab.atlas.common.constants.AtlasPropertyConfigurer">
+	<bean id="atlasPropertyConfigurer" class="com.csu.bio.util.PropertyConfigurer">
 		<property name="locations">
 			<list>
 				<value>classpath:sysconfig.properties</value>
@@ -20,27 +16,24 @@
 		</property>
 	</bean>
 
-    <bean id="signBluetoothUtils" class="com.csu.vlab.atlas.controller.conf.SignBluetoothUtils"/>
-		
 	<!-- 扫描器配置 -->
-	<context:component-scan
-		base-package="com.csu.vlab.atlas.**.service.impl,com.csu.vlab.atlas.**.dao.impl"></context:component-scan>
+	<context:component-scan base-package="com.csu.bio.*"></context:component-scan>
 
-		<!-- MongoClient配置 -->
-	<mongo:mongo  id="replicaSetMongo"  replica-set="${mongodb.replica-set}">
-        <mongo:options connections-per-host="${mongodb.connections-per-host}"
-            threads-allowed-to-block-for-connection-multiplier="${mongodb.threads-allowed-to-block-for-connection-multiplier}"
-            auto-connect-retry="${mongodb.auto-connect-retry}"/>
-    </mongo:mongo>
-    
-    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-        <constructor-arg name="mongo" ref="replicaSetMongo"></constructor-arg>
-        <constructor-arg name="databaseName" value="${mongodb.dataname}"></constructor-arg>
-    </bean>
-    
+	<!-- MongoClient配置 -->
+	<mongo:mongo id="replicaSetMongo" replica-set="${mongodb.replica-set}">
+		<mongo:options connections-per-host="${mongodb.connections-per-host}"
+			threads-allowed-to-block-for-connection-multiplier="${mongodb.threads-allowed-to-block-for-connection-multiplier}"
+			auto-connect-retry="${mongodb.auto-connect-retry}" />
+	</mongo:mongo>
+
+	<!-- MongoTemplate配置 -->
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongo" ref="replicaSetMongo"></constructor-arg>
+		<constructor-arg name="databaseName" value="${mongodb.dataname}"></constructor-arg>
+	</bean>
 
 	<!-- 线程池操作类 -->
-	<bean id="threadPoolUtil" class="com.csu.vlab.atlas.framework.utils.ThreadPoolUtil"
+	<bean id="threadPoolUtil" class="com.csu.bio.util.ThreadPoolUtil"
 		init-method="init" destroy-method="destory"></bean>
 
 </beans>

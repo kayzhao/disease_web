@@ -50,7 +50,7 @@ This project is a web front-end of the disease data - a web service to providing
 
 --------------------------------------
 ## Contacts
-- Kaijie Zhao:kay.zkj.233@gmail.com
+- Kaijie Zhao:kay.zkj@csu.edu.cn
 - Jianxin Wang: jxwang@mail.csu.edu.cn
 - Min Li: limin@mail.csu.edu.cn
 

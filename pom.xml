@@ -122,8 +122,24 @@
 			<artifactId>velocity-tools</artifactId>
 			<version>2.0</version>
 		</dependency>
+		<!-- jayway -->
+		<dependency>
+			<groupId>com.jayway.restassured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jayway.restassured</groupId>
+			<artifactId>xml-path</artifactId>
+			<version>2.4.0</version>
+		</dependency>
 
-
+		<!-- fileupload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
@@ -235,7 +251,13 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.2.1.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+		
 		<!-- JavaMail -->
 		<dependency>
 			<groupId>javax.mail</groupId>
