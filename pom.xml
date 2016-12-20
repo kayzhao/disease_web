@@ -53,6 +53,7 @@
 			<artifactId>spring-orm</artifactId>
 			<version>4.0.5.RELEASE</version>
 		</dependency>
+
 		<!-- 数据库配置 -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -64,11 +65,41 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
+
+		<!-- Spring data mongodb -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>1.7.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
+			<version>1.10.0.RELEASE</version>
+		</dependency>
+
+		<!-- ELASTICSEARCH -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-elasticsearch</artifactId>
+			<version>1.2.0.RELEASE</version>
+		</dependency>
+
+		<!-- MongoDB Java Driver -->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>3.3.0</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.connector.version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
@@ -197,9 +228,6 @@
 			<version>1.9</version>
 		</dependency>
 
-		<!-- -->
-
-
 		<!-- junit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -228,11 +256,21 @@
 			<artifactId>lucene-smartcn</artifactId>
 			<version>${lucene.version}</version>
 		</dependency>
-		<!-- <dependency> <groupId>org.apache.lucene</groupId> <artifactId>lucene-core</artifactId> 
-			<version>${lucene.version}</version> </dependency> <dependency> <groupId>org.apache.lucene</groupId> 
-			<artifactId>lucene-queryparser</artifactId> <version>${lucene.version}</version> 
-			</dependency> <dependency> <groupId>org.apache.lucene</groupId> <artifactId>lucene-analyzers-smartcn</artifactId> 
-			<version>5.3.1</version> </dependency> -->
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-core</artifactId>
+			<version>${lucene.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-queryparser</artifactId>
+			<version>${lucene.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-analyzers-smartcn</artifactId>
+			<version>5.3.1</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>disease_web-${disease_web_version}</finalName>

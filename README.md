@@ -16,6 +16,9 @@ This project is a web front-end of the disease data - a web service to providing
 ### disease-*(gene,lncRNA,microRNA,drug) prediction
  - [LDAP](http://bioinformatics.csu.edu.cn/ldap/)
 
+### data integration 
+ - [disease.process](https://github.com/kayzhao/Disease.Process)
+
 --------------------------------------
 ## Datasets
 
