@@ -55,17 +55,6 @@
 		</dependency>
 
 		<!-- 数据库配置 -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-
 		<!-- Spring data mongodb -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -94,11 +83,11 @@
 		</dependency>
 
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.connector.version}</version>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>commons-dbcp</groupId>
@@ -110,13 +99,13 @@
 			<artifactId>javassist</artifactId>
 			<version>3.12.1.GA</version>
 		</dependency>
-		<!-- end 数据库 -->
+
+		<!-- velocity -->		
 		<dependency>
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity</artifactId>
 			<version>1.7</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity-tools</artifactId>
@@ -268,7 +257,7 @@
 		<!--hibernate search Lucene -->
 		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-search-engine</artifactId> 
 			<version>${hibernate.search.version}</version> </dependency> -->
-		<dependency>
+	<!--<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-search-orm</artifactId>
 			<version>${hibernate.search.version}</version>
@@ -292,10 +281,10 @@
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-analyzers-smartcn</artifactId>
 			<version>5.3.1</version>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 	<build>
-		<finalName>disease_web-${disease_web_version}</finalName>
+		<finalName>disease</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 		<resources>
@@ -318,6 +307,7 @@
 					<source>1.7</source>
 					<target>1.7</target>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
 		</plugins>

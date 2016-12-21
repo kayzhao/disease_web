@@ -46,8 +46,4 @@ public class Variables {
 
 		return mailContent;
 	}
-	
-	/**
-	 * umls properties
-	 */
 }

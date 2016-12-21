@@ -90,15 +90,16 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd "
 
 	<mvc:annotation-driven />
 
-	<!-- the hibernate setting -->
-	<!-- <import resource="hibernate.xml" /> -->
-
 	<!-- the mongodb setting -->
 	<import resource="applicationContext-db.xml" />
 
 
 	<!-- the api setting -->
 	<import resource="applicationContext-api.xml" />
+
+
+	<!-- Imports logging configuration -->
+	<import resource="trace-context.xml" />
 
 	<!-- 拦截器 -->
 	<mvc:interceptors>
