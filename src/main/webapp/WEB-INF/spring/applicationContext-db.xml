@@ -3,10 +3,14 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mongo="http://www.springframework.org/schema/data/mongo"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/data/mongo
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd 
+        http://www.springframework.org/schema/data/mongo 
         http://www.springframework.org/schema/data/mongo/spring-mongo.xsd
     ">
 
@@ -26,12 +30,10 @@
 		</property>
 	</bean>
 
+	<!-- 配置mongodb连接池 ,创建mongoClient实例 -->
 	<!-- 1.7版本+不支持mongo,支持mongo-client,options为client-options -->
 	<!-- Usage of 'UserCredentials' with 'MongoClient' is no longer supported -->
-	
-	<!-- 配置mongodb连接池 ,创建mongoClient实例 -->
-	<!--credentials="mongodb://${mongo.user}:${mongo.pwd}@${mongo.host}:${mongo.port}/${mongo 
-		.defaultDbName}"为什么不起作用 如果需要验证,mongo-client需要加这句: credentials="${mongo.user}:${mongo.pwd}@${mongo.defaultDbName}" -->
+	<!--如果需要验证,mongo-client需要加这句: credentials="${mongo.user}:${mongo.pwd}@${mongo.defaultDbName}" -->
 	<mongo:mongo-client id="mongoClient" host="${mongo.host}"
 		port="${mongo.port}">
 		<mongo:client-options connections-per-host="${mongo.connectionsPerHost}"
@@ -47,20 +49,11 @@
 			heartbeat-frequency="${mongo.heartbeatFrequency}" />
 	</mongo:mongo-client>
 
-	<!-- dbname="${mongo.defaultDbName}" host="${mongo.host}" port="${mongo.port}" 
-		username="${mongo.user}" password="${mongo.pwd}" mongo-ref="mongoClient" -->
-	
+	<!-- Spring提供的mongodb操作模板 -->
 	<mongo:db-factory id="mongoDbFactory" dbname="${mongo.defaultDbName}"
 		mongo-ref="mongoClient" />
-
-	<!-- 1.Spring提供的mongodb操作模板 -->
 	<mongo:template id="mongoTemplate" db-factory-ref="mongoDbFactory"
 		write-concern="NORMAL" />
-	
-	<!-- 2.Spring提供的mongodb操作模板 -->
-	<!--<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate"> 
-		<constructor-arg ref="mongoDbFactory" /> </bean> -->
-
 
 	<!-- MongoDB GridFS Template 支持，操作mongodb存放的文件 -->
 	<mongo:mapping-converter id="converter"
