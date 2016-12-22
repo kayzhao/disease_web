@@ -11,7 +11,7 @@ import com.jayway.jsonpath.spi.mapper.JacksonMappingProvider;
 import static com.jayway.restassured.RestAssured.given;
 
 /*This example allows you to search terms in the UMLS
- Examples are at https://github.com/jayway/rest-assured/tree/master/examples/rest-assured-itest-java/src/test/java/com/jayway/restassured/itest/java
+ Examples are at https://github.com/jayway/rest-assured/tree/master/examples/rest-assured-itest-umls/src/test/umls/com/jayway/restassured/itest/umls
  For convenience, google's quick json parser is also included in the pom.xml file:
  https://code.google.com/p/quick-json/
  You can run this class as a Junit4 test case - be sure and put each of the arguments as VM arguments

@@ -8,20 +8,13 @@
 	http://www.springframework.org/schema/context 
 	http://www.springframework.org/schema/context/spring-context-4.0.xsd ">
 
-	<!-- umls properties -->
-	<bean id="umlsProps" class="com.csu.bio.util.PropertyConfigurer">
+	<!-- all properties -->
+	<bean id="apiProperties" class="com.csu.bio.util.PropertyConfigurer">
 		<property name="locations">
 			<list>
 				<value>classpath:umls.properties</value>
-			</list>
-		</property>
-	</bean>
-
-	<!-- mygene properties -->
-	<bean id="mygeneProps" class="com.csu.bio.util.PropertyConfigurer">
-		<property name="locations">
-			<list>
 				<value>classpath:mygene.properties</value>
+				<value>classpath:mongo.properties</value>
 			</list>
 		</property>
 	</bean>

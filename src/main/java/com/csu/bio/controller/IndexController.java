@@ -1,6 +1,5 @@
 package com.csu.bio.controller;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,9 +12,9 @@ import org.springframework.web.context.ContextLoader;
 @Controller
 public class IndexController {
 
-	public static final String BASE_PATH = ContextLoader
-			.getCurrentWebApplicationContext().getServletContext()
-			.getRealPath("/");
+//	public static final String BASE_PATH = ContextLoader
+//			.getCurrentWebApplicationContext().getServletContext()
+//			.getRealPath("/");
 
 	@RequestMapping("/index")
 	public String indexInit(ModelMap model) {

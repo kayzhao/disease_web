@@ -11,10 +11,7 @@
 		<disease_web_version>1.0.0</disease_web_version>
 		<spring_version>4.3.3.RELEASE</spring_version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<hibernate.version>4.0.0.Final</hibernate.version>
-		<mysql.connector.version>5.1.31</mysql.connector.version>
-		<hibernate.search.version>4.2.0.Final</hibernate.search.version>
-		<lucene.version>3.6.2</lucene.version>
+		<jackson.library>2.7.5</jackson.library>
 	</properties>
 
 	<dependencies>
@@ -40,11 +37,6 @@
 			<version>${spring_version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-redis</artifactId>
-			<version>1.5.0.RELEASE</version>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jms</artifactId>
 			<version>${spring_version}</version>
@@ -54,24 +46,35 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${spring_version}</version>
 		</dependency>
+		
+		<!-- spring data core -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-commons</artifactId>
-			<version>1.10.0.RELEASE</version>
+			<version>1.12.2.RELEASE</version>
 		</dependency>
-		
+
+		<!-- redis -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>1.7.5.RELEASE</version>
+		</dependency>
+
 		<!-- Spring data mongodb -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
 			<version>1.7.0.RELEASE</version>
 		</dependency>
+
 		<!-- MongoDB Java Driver -->
 		<dependency>
 			<groupId>org.mongodb</groupId>
 			<artifactId>mongo-java-driver</artifactId>
 			<version>3.3.0</version>
 		</dependency>
+
 		<!-- ELASTICSEARCH -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -89,7 +92,7 @@
 			<version>3.12.1.GA</version>
 		</dependency>
 
-		<!-- velocity -->		
+		<!-- velocity -->
 		<dependency>
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity</artifactId>
@@ -100,6 +103,7 @@
 			<artifactId>velocity-tools</artifactId>
 			<version>2.0</version>
 		</dependency>
+
 		<!-- jayway -->
 		<dependency>
 			<groupId>com.jayway.restassured</groupId>
@@ -128,7 +132,11 @@
 			<artifactId>fluent-hc</artifactId>
 			<version>4.3.5</version>
 		</dependency>
-
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+		</dependency>
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
@@ -178,48 +186,12 @@
 			<version>1.2.16</version>
 		</dependency>
 
+
 		<!-- json -->
 		<dependency>
-			<groupId>net.sf.json-lib</groupId>
-			<artifactId>json-lib</artifactId>
-			<version>2.4</version>
-			<classifier>jdk15</classifier>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.ezmorph</groupId>
-			<artifactId>ezmorph</artifactId>
-			<version>1.0.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-core-asl</artifactId>
-			<version>1.8.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.8.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.googlecode.json-simple</groupId>
-			<artifactId>json-simple</artifactId>
-			<version>1.1.1</version>
-		</dependency>
-		<!-- kindeditor -->
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>1.4</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>1.2.1</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-codec</groupId>
-			<artifactId>commons-codec</artifactId>
-			<version>1.9</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.library}</version>
 		</dependency>
 
 		<!-- junit -->
@@ -235,45 +207,16 @@
 			<version>4.2.1.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<!-- JavaMail -->
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
 		</dependency>
-
-		<!--hibernate search Lucene -->
-		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-search-engine</artifactId> 
-			<version>${hibernate.search.version}</version> </dependency> -->
-	<!--<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-search-orm</artifactId>
-			<version>${hibernate.search.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.lucene</groupId>
-			<artifactId>lucene-smartcn</artifactId>
-			<version>${lucene.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.lucene</groupId>
-			<artifactId>lucene-core</artifactId>
-			<version>${lucene.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.lucene</groupId>
-			<artifactId>lucene-queryparser</artifactId>
-			<version>${lucene.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.lucene</groupId>
-			<artifactId>lucene-analyzers-smartcn</artifactId>
-			<version>5.3.1</version>
-		</dependency> -->
 	</dependencies>
 	<build>
-		<finalName>disease</finalName>
+		<finalName>disease_web</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 		<resources>

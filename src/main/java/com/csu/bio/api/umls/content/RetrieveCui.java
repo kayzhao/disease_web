@@ -1,5 +1,5 @@
 /*This example allows you to retrieve information about a known UMLS CUI.
-Examples are at https://github.com/jayway/rest-assured/tree/master/examples/rest-assured-itest-java/src/test/java/com/jayway/restassured/itest/java
+Examples are at https://github.com/jayway/rest-assured/tree/master/examples/rest-assured-itest-umls/src/test/umls/com/jayway/restassured/itest/umls
 You can run this class as a Junit4 test case - be sure and put each of the arguments as VM arguments 
 in your runtime configuration, such as -Dapikey=12345-abcdef -Did=C0018787
  */

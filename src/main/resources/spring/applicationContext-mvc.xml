@@ -12,12 +12,13 @@
 	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd "
 	xmlns:tx="http://www.springframework.org/schema/tx">
 
+	<!-- annotation and component scan -->
+	<mvc:annotation-driven />
 	<context:component-scan base-package="com.csu.bio" />
-
-	<bean
-		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 
 	<!-- CommonsMultipart -->
 	<bean id="multipartResolver"
@@ -53,23 +54,28 @@
 	<!-- 根据客户端的不同的请求决定不同的view进行响应, 如 /blog/1.json /blog/1.xml -->
 	<bean
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-		<!-- 设置为true以忽略对Accept Header的支持 -->
-		<property name="ignoreAcceptHeader" value="true" />
+		<property name="contentNegotiationManager">
+			<bean
+				class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+				<!-- 设置为true以忽略对Accept Header的支持 -->
+				<property name="ignoreAcceptHeader" value="true" />
 
-		<!-- 用于开启 /userinfo/123?format=json 的支持 -->
-		<property name="favorParameter" value="false" />
+				<!-- 用于开启 /userinfo/123?format=json 的支持 -->
+				<property name="favorParameter" value="false" />
 
-		<!-- 用于开启 /userinfo/123.json的支持 -->
-		<property name="favorPathExtension" value="true"></property>
+				<!-- 用于开启 /userinfo/123.json的支持 -->
+				<property name="favorPathExtension" value="true"></property>
 
-		<!-- 在没有扩展名时即: "/user/1" 时的默认展现形式 -->
-		<property name="defaultContentType" value="text/html" />
+				<!-- 在没有扩展名时即: "/user/1" 时的默认展现形式 -->
+				<property name="defaultContentType" value="text/html" />
 
-		<!-- 扩展名至mimeType的映射,即 /user.json => application/json -->
-		<property name="mediaTypes">
-			<map>
-				<entry key="json" value="text/plain" />
-			</map>
+				<!-- 扩展名至mimeType 支付取消!Pay canceled! 的映射,即 /user.json => application/json -->
+				<property name="mediaTypes">
+					<map>
+						<entry key="json" value="text/plain" />
+					</map>
+				</property>
+			</bean>
 		</property>
 		<property name="viewResolvers">
 			<list>
@@ -78,8 +84,8 @@
 					class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 					<property name="viewClass"
 						value="org.springframework.web.servlet.view.JstlView" />
-					<property name="prefix" value="/WEB-INF/views/" />
-					<property name="suffix" value=".html"></property>
+					<property name="prefix" value="/WEB-INF/jsps/" />
+					<property name="suffix" value=".jsp"></property>
 				</bean>
 			</list>
 		</property>
@@ -87,28 +93,25 @@
 			<list>
 				<!-- for application/json -->
 				<bean
-					class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+					class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
 					<property name="contentType" value="text/plain"></property>
 				</bean>
 			</list>
 		</property>
 	</bean>
 
-	<mvc:annotation-driven />
+	<bean id="umlsProps" class="com.csu.bio.util.UMLSProps">
+		<property name="host" value="${umls.user.apikey}" />
+		<property name="port" value="${umls.user.username}" />
+	</bean>
 
-	<!-- the mongodb setting -->
-	<import resource="applicationContext-db.xml" />
-
-
-	<!-- the api setting -->
-	<import resource="applicationContext-api.xml" />
-
-
-	<!-- Imports logging configuration -->
-	<import resource="trace-context.xml" />
-
-	<!-- 拦截器 -->
+	<!-- Interceptors -->
 	<mvc:interceptors>
+		<!-- Global Interceptor -->
 		<bean class="com.csu.bio.interceptor.GlobalInterceptor" />
+		<!-- Language configuration -->
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="lang"></property>
+		</bean>
 	</mvc:interceptors>
 </beans>

@@ -4,31 +4,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mongo="http://www.springframework.org/schema/data/mongo"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/aop 
-        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
-        http://www.springframework.org/schema/tx 
-        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd 
         http://www.springframework.org/schema/data/mongo 
         http://www.springframework.org/schema/data/mongo/spring-mongo.xsd
     ">
-
-
-	<context:annotation-config />
-
-	<context:component-scan base-package="com.csu.bio.*" />
-
-	<bean
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
-		<property name="ignoreResourceNotFound" value="true" />
-		<property name="locations">
-			<list>
-				<value>classpath:mongodb.properties</value>
-			</list>
-		</property>
-	</bean>
 
 	<!-- 配置mongodb连接池 ,创建mongoClient实例 -->
 	<!-- 1.7版本+不支持mongo,支持mongo-client,options为client-options -->
@@ -52,8 +30,9 @@
 	<!-- Spring提供的mongodb操作模板 -->
 	<mongo:db-factory id="mongoDbFactory" dbname="${mongo.defaultDbName}"
 		mongo-ref="mongoClient" />
-	<mongo:template id="mongoTemplate" db-factory-ref="mongoDbFactory"
-		write-concern="NORMAL" />
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+	</bean>
 
 	<!-- MongoDB GridFS Template 支持，操作mongodb存放的文件 -->
 	<mongo:mapping-converter id="converter"
@@ -62,10 +41,5 @@
 		db-factory-ref="mongoDbFactory" converter-ref="converter" />
 
 	<!-- mongodb bean的仓库目录，会自动扫描扩展了MongoRepository接口的接口进行注入 -->
-	<mongo:repositories base-package="com.csu.bio" />
-
-	<!--激活注解 -->
-	<bean
-		class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
-
+	<mongo:repositories base-package="com.csu.bio.repository.*" />
 </beans>
