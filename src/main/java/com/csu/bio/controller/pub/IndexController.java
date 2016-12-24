@@ -12,10 +12,6 @@ import org.springframework.web.context.ContextLoader;
 @Controller
 public class IndexController {
 
-//	public static final String BASE_PATH = ContextLoader
-//			.getCurrentWebApplicationContext().getServletContext()
-//			.getRealPath("/");
-
 	@RequestMapping("/index")
 	public String indexInit(ModelMap model) {
 		return "index";

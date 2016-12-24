@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 
+/**
+ * @author kayzhao
+ */
 @Controller
 public class XkaptchaController {
 
