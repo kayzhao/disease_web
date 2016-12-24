@@ -1,4 +1,4 @@
-package com.csu.bio.controller;
+package com.csu.bio.controller.pub;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

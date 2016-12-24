@@ -19,4 +19,8 @@
 		</property>
 	</bean>
 
+	<bean id="umlsProps" class="com.csu.bio.util.UMLSProps">
+		<property name="host" value="${umls.user.apikey}" />
+		<property name="port" value="${umls.user.username}" />
+	</bean>
 </beans>

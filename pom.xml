@@ -46,7 +46,7 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${spring_version}</version>
 		</dependency>
-		
+
 		<!-- spring data core -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -65,7 +65,7 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
-			<version>1.7.0.RELEASE</version>
+			<version>1.8.4.RELEASE</version>
 		</dependency>
 
 		<!-- MongoDB Java Driver -->
@@ -81,6 +81,8 @@
 			<artifactId>spring-data-elasticsearch</artifactId>
 			<version>1.2.0.RELEASE</version>
 		</dependency>
+
+
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
@@ -102,6 +104,13 @@
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity-tools</artifactId>
 			<version>2.0</version>
+		</dependency>
+
+		<!-- kaptcha -->
+		<dependency>
+			<groupId>com.github.axet</groupId>
+			<artifactId>kaptcha</artifactId>
+			<version>0.0.9</version>
 		</dependency>
 
 		<!-- jayway -->
@@ -192,6 +201,28 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.library}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.8.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.8.0</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+			<classifier>jdk15</classifier>
 		</dependency>
 
 		<!-- junit -->
