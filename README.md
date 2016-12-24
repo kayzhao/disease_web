@@ -123,4 +123,3 @@ This project is a web front-end of the disease data - a web service to providing
 				</list>
 			</property>
 		</bean>
-	
