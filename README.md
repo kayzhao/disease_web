@@ -93,7 +93,7 @@ This project is a web front-end of the disease data - a web service to providing
 
 - the mini mongo-client config
 
-		<!--如果需要验证,mongo-client需要加这句: credentials="${mongo.user}:${mongo.pwd}@${mongo.defaultDbName}" -->
+		<!--if auth check, mongo-client attributes add: credentials="${mongo.user}:${mongo.pwd}@${mongo.defaultDbName}" -->
 		<!-- mini client -->
 		<mongo:mongo-client id="mongoClient" host="${mongo.host}"
 			port="${mongo.port}">
@@ -123,4 +123,3 @@ This project is a web front-end of the disease data - a web service to providing
 				</list>
 			</property>
 		</bean>
-	
