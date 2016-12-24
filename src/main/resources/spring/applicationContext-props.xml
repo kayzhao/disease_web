@@ -8,8 +8,12 @@
 	http://www.springframework.org/schema/context 
 	http://www.springframework.org/schema/context/spring-context-4.0.xsd ">
 
+
+	<!-- spring上下文工具 -->
+	<bean id="myApplicationContext" class="com.csu.bio.util.web.MyApplicationContext"></bean>
+
 	<!-- all properties -->
-	<bean id="apiProperties" class="com.csu.bio.util.PropertyConfigurer">
+	<bean id="apiProperties" class="com.csu.bio.common.constants.PropertyConfigurer">
 		<property name="locations">
 			<list>
 				<value>classpath:umls.properties</value>
@@ -19,6 +23,7 @@
 		</property>
 	</bean>
 
+	<!-- load properties test -->
 	<bean id="umlsProps" class="com.csu.bio.util.UMLSProps">
 		<property name="host" value="${umls.user.apikey}" />
 		<property name="port" value="${umls.user.username}" />

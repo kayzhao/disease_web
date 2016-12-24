@@ -105,7 +105,7 @@
 	<!-- Interceptors -->
 	<mvc:interceptors>
 		<!-- Global Interceptor -->
-		<bean class="com.csu.bio.interceptor.GlobalInterceptor" />
+		<bean class="com.csu.bio.frame.interceptor.GlobalInterceptor" />
 		<!-- Language configuration -->
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
 			<property name="paramName" value="lang"></property>

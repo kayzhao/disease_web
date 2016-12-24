@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import base.SpringTest;
 
-import com.csu.bio.util.PropertyConfigurer;
+import com.csu.bio.common.constants.PropertyConfigurer;
 import com.csu.bio.util.UMLSProps;
 
 /**

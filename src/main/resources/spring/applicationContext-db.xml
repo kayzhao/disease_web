@@ -10,7 +10,6 @@
 
 	<!-- 配置mongodb连接池 ,创建mongoClient实例 -->
 	<!-- 1.7版本+不支持mongo,支持mongo-client,options为client-options -->
-	<!-- Usage of 'UserCredentials' with 'MongoClient' is no longer supported -->
 	<!--如果需要验证,mongo-client需要加这句: credentials="${mongo.user}:${mongo.pwd}@${mongo.defaultDbName}" -->
 	<!-- mini client -->
 	<mongo:mongo-client id="mongoClient" host="${mongo.host}"
@@ -30,15 +29,15 @@
 
 	<!-- MongoDB GridFS Template 支持，操作mongodb存放的文件 -->
 	<mongo:mapping-converter id="converter"
-		db-factory-ref="mongoDbFactory" base-package="com.csu.bio.dao" />
+		db-factory-ref="mongoDbFactory" base-package="com.csu.bio.frame.dao" />
 	<mongo:gridFsTemplate id="gridFsTemplcate"
 		db-factory-ref="mongoDbFactory" converter-ref="converter" />
 
 	<!-- mongodb bean的仓库目录，会自动扫描扩展了MongoRepository接口的接口进行注入 -->
-	<mongo:repositories base-package="com.csu.bio.repository.*" />
+	<mongo:repositories base-package="com.csu.bio.frame.repository" />
 
 	<!-- 线程池操作类 -->
-	<bean id="threadPoolUtil" class="com.csu.bio.util.ThreadPoolUtil"
+	<bean id="threadPoolUtil" class="com.csu.bio.util.web.ThreadPoolUtil"
 		init-method="init" destroy-method="destory"></bean>
 
 </beans>
