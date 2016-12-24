@@ -11,7 +11,7 @@
 	<!-- For parsing classes with @Aspect annotation -->
 	<aop:aspectj-autoproxy />
 
-	<bean id="customizableTraceInterceptor" class="com.csu.bio.interceptor.TraceInterceptor"
+	<bean id="customizableTraceInterceptor" class="com.csu.bio.frame.interceptor.TraceInterceptor"
 		p:enterMessage="Entering $[targetClassShortName].$[methodName]($[arguments])"
 		p:exitMessage="Leaving $[targetClassShortName].$[methodName](): $[returnValue]" />
 
