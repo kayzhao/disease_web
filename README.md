@@ -189,7 +189,7 @@ This project is a web front-end of the disease data - a web service to providing
 		
 - eclipse workspace
 	
-		 1.Window -> Preference -> Content types
+		 1. Window -> Preference -> Content types
 		 	UTF-8
 		 2. Java source code
 			Window -> Preference -> Workspace -> Text file encoding
