@@ -14,16 +14,15 @@ http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 					<props>
 						<prop key="kaptcha.border">no</prop>
 						<prop key="kaptcha.border.color">105,179,90</prop>
-						<prop key="kaptcha.textproducer.font.color">blue</prop>
-						<prop key="kaptcha.image.width">70</prop>
-						<prop key="kaptcha.textproducer.font.size">24</prop>
-						<prop key="kaptcha.image.height">32</prop>
+						<prop key="kaptcha.textproducer.font.color">gray</prop>
+						<prop key="kaptcha.image.width">125</prop>
+						<prop key="kaptcha.image.height">45</prop>
+						<prop key="kaptcha.textproducer.font.size">45</prop>
+						<prop key="kaptcha.session.key">code</prop>
 						<prop key="kaptcha.textproducer.char.space">1</prop>
 						<prop key="kaptcha.textproducer.char.length">4</prop>
 						<prop key="kaptcha.textproducer.font.names">Georgia, Verdana, Arial, Tahoma, Time News Roman,
 							Courier New, Arial Black, Quantzite
-						</prop>
-						<prop key="kaptcha.word.impl">com.frft.xkaptcha.wordrender.NebulaWordRender
 						</prop>
 						<prop key="kaptcha.textproducer.char.string">2345678abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ
 						</prop>
