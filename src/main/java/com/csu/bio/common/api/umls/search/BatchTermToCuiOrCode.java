@@ -1,4 +1,4 @@
-/*This example loads a file of disease names (findings.txt from the 'resources' folder)
+/*This example loads a file of RoleController names (findings.txt from the 'resources' folder)
  * and retrieves the relevant UMLS CUI(s) or source-asserted codes
  */
 package com.csu.bio.common.api.umls.search;
