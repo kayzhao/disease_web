@@ -123,3 +123,74 @@ This project is a web front-end of the disease data - a web service to providing
 				</list>
 			</property>
 		</bean>
+		
+
+### 4. Encoding of UTF-8
+- html page 
+
+		<head>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		</head>
+- web.xml
+
+		<filter>
+			<filter-name>encodingFilter</filter-name>
+			<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+			<init-param>
+				<param-name>encoding</param-name>
+				<param-value>UTF-8</param-value>
+			</init-param>
+			<init-param>
+				<param-name>forceEncoding</param-name>
+				<param-value>true</param-value>
+			</init-param>
+		</filter>
+		<filter-mapping>
+			<filter-name>encodingFilter</filter-name>
+			<url-pattern>/*</url-pattern>
+		</filter-mapping>
+	
+- spring-mvc.xml
+
+		<bean id="velocityConfigurer"
+			class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+			<property name="resourceLoaderPath" value="/WEB-INF/views" />
+			<property name="velocityProperties">
+				<props>
+					<prop key="input.encoding">UTF-8</prop>
+					<prop key="output.encoding">UTF-8</prop>
+					<prop key="contentType">text/html;charset=UTF-8</prop>
+				</props>
+			</property>
+		</bean>
+
+
+- mysql encoding
+
+		mysql> show variables like 'character%';
+		+--------------------------+----------------------------+
+		| Variable_name            | Value                      |
+		+--------------------------+----------------------------+
+		| character_set_client     | utf8                       |
+		| character_set_connection | utf8                       |
+		| character_set_database   | utf8                       |
+		| character_set_filesystem | binary                     |
+		| character_set_results    | utf8                       |
+		| character_set_server     | utf8                       |
+		| character_set_system     | utf8                       |
+		| character_sets_dir       | /usr/share/mysql/charsets/ |
+		+--------------------------+----------------------------+
+		8 rows in set
+
+- tomcat server.xml
+
+		<Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000"　redirectPort="8443" URIEncoding="UTF-8" />
+		<Connector port="8009" protocol="AJP/1.3" redirectPort="8443"  URIEncoding="UTF-8"/>	
+		
+- eclipse workspace
+	
+		 1.Window -> Preference -> Content types
+		 	UTF-8
+		 2. Java source code
+			Window -> Preference -> Workspace -> Text file encoding
+			Windows default is GBK，Linux default is UTF-8
