@@ -31,5 +31,4 @@ public class SearchVo {
 	public void setType(String type) {
 		this.type = type;
 	}
-
 }
