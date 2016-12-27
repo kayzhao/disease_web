@@ -2,15 +2,13 @@ package com.csu.bio.controller.data;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.csu.bio.controller.pub.XkaptchaController;
-import com.csu.bio.object.model.DiseaseOntogoly;
-import com.csu.bio.object.model.Role;
+import com.csu.bio.object.model.*;
 import com.csu.bio.service.data.DataService;
 
 /**
@@ -29,6 +27,6 @@ public class DataController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public Object getData(@PathVariable("id") String id) {
-		return rs.getDataByID(id, DiseaseOntogoly.class);
+		return rs.getDataByID(id, KEGG.class);
 	}
 }

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "do")
-public class DiseaseOntogoly {
+@Document(collection = "efo")
+public class EFO {
 
 	@Id
 	private String id;
@@ -19,7 +19,7 @@ public class DiseaseOntogoly {
 
 	private List<String> is_a;
 
-	private List<String> alt_id;
+	private List<String> part_of;
 
 	private String def;
 
@@ -27,9 +27,7 @@ public class DiseaseOntogoly {
 
 	private String comment;
 
-	private String created_by;
-
-	private String created_date;
+	private String namespace;
 
 	public String getId() {
 		return id;
@@ -71,12 +69,12 @@ public class DiseaseOntogoly {
 		this.is_a = is_a;
 	}
 
-	public List<String> getAlt_id() {
-		return alt_id;
+	public List<String> getPart_of() {
+		return part_of;
 	}
 
-	public void setAlt_id(List<String> alt_id) {
-		this.alt_id = alt_id;
+	public void setPart_of(List<String> part_of) {
+		this.part_of = part_of;
 	}
 
 	public String getDef() {
@@ -103,19 +101,11 @@ public class DiseaseOntogoly {
 		this.comment = comment;
 	}
 
-	public String getCreated_by() {
-		return created_by;
+	public String getNamespace() {
+		return namespace;
 	}
 
-	public void setCreated_by(String created_by) {
-		this.created_by = created_by;
-	}
-
-	public String getCreated_date() {
-		return created_date;
-	}
-
-	public void setCreated_date(String created_date) {
-		this.created_date = created_date;
+	public void setNamespace(String namespace) {
+		this.namespace = namespace;
 	}
 }
