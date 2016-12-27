@@ -36,7 +36,7 @@ public class XkaptchaController {
 		this.captchaProducer = captchaProducer;
 	}
 
-	@RequestMapping(value = "/captcha.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/captcha", method = RequestMethod.GET)
 	public void initCaptcha(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		response.setDateHeader("Expires", 0);
 		response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
