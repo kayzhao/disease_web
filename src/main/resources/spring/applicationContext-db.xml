@@ -13,7 +13,7 @@
 	<!--如果需要验证,mongo-client需要加这句: credentials="${mongo.user}:${mongo.pwd}@${mongo.defaultDbName}" -->
 	<!-- mini client -->
 	<mongo:mongo-client id="mongoClient" host="${mongo.host}"
-		port="${mongo.port}">
+		port="${mongo.port}" credentials="${mongo.user}:${mongo.pwd}@${mongo.defaultDbName}">
 		<mongo:client-options write-concern="SAFE" />
 	</mongo:mongo-client>
 

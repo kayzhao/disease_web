@@ -12,8 +12,7 @@
 	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd "
 	xmlns:tx="http://www.springframework.org/schema/tx">
 
-	<!-- annotation and component scan -->
-	<mvc:annotation-driven />
+	<!-- component scan -->
 	<context:component-scan base-package="com.csu.bio" />
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
@@ -111,4 +110,23 @@
 			<property name="paramName" value="lang"></property>
 		</bean>
 	</mvc:interceptors>
+
+	<!-- annotation -->
+	<mvc:annotation-driven>
+		<!-- remove the json null field -->
+		<mvc:message-converters>
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<!-- property name="prefixJson" value="true" /> <property name="supportedMediaTypes" 
+					value="application/json" / -->
+				<property name="objectMapper">
+					<bean class="com.fasterxml.jackson.databind.ObjectMapper">
+						<property name="serializationInclusion">
+							<value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value>
+						</property>
+					</bean>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 </beans>
