@@ -39,15 +39,20 @@ public class DataController {
 	CommonNoSqlMongoFSDao cFsDao;
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Object getData(@PathVariable("id") String id) {
-		return rs.getDataByID(id, CTD.class);
+	public Object getDataByID(@PathVariable("id") String id) {
+		return rs.getDataByID(id, Disease.class);
+	}
+
+	@RequestMapping(value = "/synonym/{keyword}", method = RequestMethod.GET)
+	public Object getDataByName(@PathVariable("keyword") String keyword) {
+		return rs.getDataByID(keyword, Disease.class);
 	}
 
 	@RequestMapping(value = "gfs/{filename}", method = RequestMethod.GET)
 	public Object getDataByFsName(@PathVariable("filename") String filename) throws IOException {
 		String fileName = "MESH:C531617_genes_1481955794.173352.pyobj";
 		GridFSDBFile fs = cFsDao.getFileByFileName(fileName);
-		System.out.println(GridfsUtil.toByteArray(fs).toString());
+		System.out.println(new String(GridfsUtil.File2Bytes(fs)));
 		System.out.println("success");
 		return fs.getContentType();
 	}
