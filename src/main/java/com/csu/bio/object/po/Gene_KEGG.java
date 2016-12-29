@@ -3,6 +3,7 @@ package com.csu.bio.object.po;
 import java.util.HashMap;
 import java.util.List;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 /**
  *
@@ -13,8 +14,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Gene_KEGG {
 
+	@Field("gene_ref")
 	private HashMap<String, List<String>> gene_ref;
 
+	@Field("gene_name")
 	private String gene_name;
 
 	public HashMap<String, List<String>> getGene_ref() {

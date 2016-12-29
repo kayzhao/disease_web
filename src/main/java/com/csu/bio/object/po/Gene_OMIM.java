@@ -14,57 +14,47 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document
 public class Gene_OMIM {
 
-	@Field("#pmids")
-	private int pmids;
+	@Field("entry_type")
+	private String entry_type;
 
-	private List<String> source;
+	@Field("ensembl")
+	private List<String> ensembl;
 
-	@Field("#snps")
-	private int snps;
+	@Field("entrezgene")
+	private int entrezgene;
 
-	private double score;
+	@Field("hgnc")
+	private String hgnc;
 
-	private String gene_name;
-
-	private int gene_id;
-
-	public int getPmids() {
-		return pmids;
+	public String getEntry_type() {
+		return entry_type;
 	}
 
-	public void setPmids(int pmids) {
-		this.pmids = pmids;
+	public void setEntry_type(String entry_type) {
+		this.entry_type = entry_type;
 	}
 
-	public List<String> getSource() {
-		return source;
+	public List<String> getEnsembl() {
+		return ensembl;
 	}
 
-	public void setSource(List<String> source) {
-		this.source = source;
+	public void setEnsembl(List<String> ensembl) {
+		this.ensembl = ensembl;
 	}
 
-	public double getScore() {
-		return score;
+	public int getEntrezgene() {
+		return entrezgene;
 	}
 
-	public void setScore(double score) {
-		this.score = score;
+	public void setEntrezgene(int entrezgene) {
+		this.entrezgene = entrezgene;
 	}
 
-	public String getGene_name() {
-		return gene_name;
+	public String getHgnc() {
+		return hgnc;
 	}
 
-	public void setGene_name(String gene_name) {
-		this.gene_name = gene_name;
-	}
-
-	public int getGene_id() {
-		return gene_id;
-	}
-
-	public void setGene_id(int gene_id) {
-		this.gene_id = gene_id;
+	public void setHgnc(String hgnc) {
+		this.hgnc = hgnc;
 	}
 }

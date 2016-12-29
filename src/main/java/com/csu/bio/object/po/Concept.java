@@ -1,7 +1,5 @@
 package com.csu.bio.object.po;
 
-import java.util.List;
-
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -20,13 +18,16 @@ public class Concept {
 	@Field("aui")
 	private String unique_identifier_for_atom;
 
+	@Field("term_status")
 	private String term_status;
 
+	@Field("atom_status")
 	private String atom_status;
 
 	@Field("sui")
 	private String unique_identifier_for_string;
 
+	@Field("string_type")
 	private String string_type;
 
 	@Field("suppress")
@@ -41,8 +42,10 @@ public class Concept {
 	@Field("source_cui")
 	private String source_asserted_concept_identifier;
 
+	@Field("source_term_type")
 	private String source_term_type;
 
+	@Field("source_restriction_level")
 	private int source_restriction_level;
 
 	public String getUnique_identifier_for_term() {

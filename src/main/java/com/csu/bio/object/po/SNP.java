@@ -14,24 +14,34 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document
 public class SNP {
 
+	@Field("alt")
 	private String alt;
 
+	@Field("pos")
 	private String pos;
 
+	@Field("source")
 	private String source;
 
+	@Field("gene_symbol")
 	private String gene_symbol;
 
+	@Field("ref")
 	private String ref;
 
+	@Field("gene_id")
 	private int gene_id;
 
+	@Field("rsid")
 	private String rsid;
 
+	@Field("score")
 	private double score;
 
+	@Field("gene_name")
 	private String gene_name;
 
+	@Field("chr")
 	private String chr;
 
 	public String getAlt() {

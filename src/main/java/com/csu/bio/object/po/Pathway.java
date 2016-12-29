@@ -16,8 +16,10 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document
 public class Pathway {
 
+	@Field("inference_gene_symbol")
 	private String inference_gene_symbol;;
 
+	@Field("pathway")
 	private String pathway;
 
 	public String getInference_gene_symbol() {

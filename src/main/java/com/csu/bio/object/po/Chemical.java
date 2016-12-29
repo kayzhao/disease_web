@@ -16,19 +16,29 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document
 public class Chemical {
 
-	private String inference_gene_symbol;;
-
+	@Field("pubmed")
 	private List<String> pubmed;
 
-	private String chemical;
+	@Field("gene")
+	private String gene;
 
+	@Field("inference_score")
 	private double inference_score;
 
-	private String casrn;
-
+	@Field("direct_evidence")
 	private List<String> direct_evidence;
 
+	@Field("omim")
 	private List<String> omim;
+
+	@Field("inference_gene_symbol")
+	private String inference_gene_symbol;
+
+	@Field("chemical")
+	private String chemical;
+
+	@Field("casrn")
+	private String casrn;
 
 	public String getCasrn() {
 		return casrn;

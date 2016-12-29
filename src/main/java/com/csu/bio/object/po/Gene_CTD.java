@@ -3,6 +3,7 @@ package com.csu.bio.object.po;
 import java.util.List;
 
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 /**
  *
@@ -15,16 +16,22 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Gene_CTD {
 
+	@Field("inference_chemical_name")
 	private String inference_chemical_name;
 
+	@Field("pubmed")
 	private List<String> pubmed;
 
+	@Field("gene")
 	private String gene;
 
+	@Field("inference_score")
 	private double inference_score;
 
+	@Field("direct_evidence")
 	private List<String> direct_evidence;
 
+	@Field("omim")
 	private List<String> omim;
 
 	public List<String> getDirect_evidence() {

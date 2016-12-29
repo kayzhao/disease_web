@@ -16,8 +16,10 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document
 public class GO {
 
+	@Field("inference_gene_symbols")
 	private List<String> inference_gene_symbols;;
 
+	@Field("go")
 	private String go;
 
 	public List<String> getInference_gene_symbols() {
