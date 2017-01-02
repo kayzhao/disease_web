@@ -1,4 +1,4 @@
-package com.csu.bio.object.model;
+package com.csu.bio.object.original;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import com.csu.bio.object.po.Chemical;
+import com.csu.bio.object.model.Chemical;
 import com.csu.bio.object.po.GO;
 import com.csu.bio.object.po.Gene_KEGG;
 import com.csu.bio.object.po.Pathway;

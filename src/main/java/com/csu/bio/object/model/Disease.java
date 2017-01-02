@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import com.csu.bio.object.po.Concept;
 
-@Document(collection = "umls")
+@Document(collection = "disease")
 public class Disease {
 
 	@Id

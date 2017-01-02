@@ -1,7 +1,8 @@
-package com.csu.bio.object.po;
+package com.csu.bio.object.model;
 
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -15,12 +16,17 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document
 public class Chemical {
+	@Id
+	private String id;
+
+	@Field("disease")
+	private String disease_id;
 
 	@Field("pubmed")
 	private List<String> pubmed;
 
-	@Field("gene")
-	private String gene;
+	@Field("source")
+	private String data_source;
 
 	@Field("inference_score")
 	private double inference_score;
@@ -39,6 +45,9 @@ public class Chemical {
 
 	@Field("casrn")
 	private String casrn;
+
+	@Field("source")
+	private String source;
 
 	public String getCasrn() {
 		return casrn;
@@ -94,5 +103,37 @@ public class Chemical {
 
 	public void setInference_score(double inference_score) {
 		this.inference_score = inference_score;
+	}
+
+	public String getData_source() {
+		return data_source;
+	}
+
+	public void setData_source(String data_source) {
+		this.data_source = data_source;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getDisease_id() {
+		return disease_id;
+	}
+
+	public void setDisease_id(String disease_id) {
+		this.disease_id = disease_id;
+	}
+
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
 	}
 }
