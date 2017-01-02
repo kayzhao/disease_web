@@ -28,7 +28,7 @@ import com.mongodb.gridfs.GridFSDBFile;
  */
 
 @RestController
-@RequestMapping(value = "data")
+@RequestMapping(value = "/")
 public class DataController {
 	private final Logger logger = Logger.getLogger(XkaptchaController.class);
 
@@ -38,9 +38,19 @@ public class DataController {
 	@Autowired
 	CommonNoSqlMongoFSDao cFsDao;
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Object getDataByID(@PathVariable("id") String id) {
+	@RequestMapping(value = "disease/{id}", method = RequestMethod.GET)
+	public Object getDiseaseByID(@PathVariable("id") String id) {
 		return rs.getDataByID(id, Disease.class);
+	}
+
+	@RequestMapping(value = "drug/{id}", method = RequestMethod.GET)
+	public Object getDrugByID(@PathVariable("id") String id) {
+		return rs.getDataByID(id, Drug.class);
+	}
+
+	@RequestMapping(value = "chemical/{id}", method = RequestMethod.GET)
+	public Object getChemicalByID(@PathVariable("id") String id) {
+		return rs.getDataByID(id, Chemical.class);
 	}
 
 	@RequestMapping(value = "/synonym/{keyword}", method = RequestMethod.GET)

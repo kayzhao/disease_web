@@ -1,4 +1,4 @@
-package com.csu.bio.object.model;
+package com.csu.bio.object.original;
 
 import java.util.List;
 import org.springframework.data.annotation.Id;
