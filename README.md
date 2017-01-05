@@ -14,7 +14,7 @@ This project is a web front-end of the disease data - a web service to providing
 ### 3. disease similarity matrix computer
 
 ### 4. disease-*(gene,lncRNA,microRNA,drug) prediction
- - [LDAP](http://bioinformatics.csu.edu.cn/ldap/)
+ - [LDAP](http://bioinformatics.csu.edu.cn/ldap/) lncRNA-disease association predictor
 
 ### 5. data integration 
  - [disease.process](https://github.com/kayzhao/Disease.Process)

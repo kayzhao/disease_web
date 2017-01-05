@@ -7,11 +7,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 /**
- *
- * @author kayzhao
- * @version 2016年12月27日
+ * for the Chemical Associations
  * 
- *          for the CTD database
+ * @author kayzhao
+ * 
  */
 
 @Document
@@ -23,10 +22,7 @@ public class Chemical {
 	private String disease_id;
 
 	@Field("pubmed")
-	private List<String> pubmed;
-
-	@Field("source")
-	private String data_source;
+	private List<String> pubmed_references;
 
 	@Field("inference_score")
 	private double inference_score;
@@ -35,13 +31,13 @@ public class Chemical {
 	private List<String> direct_evidence;
 
 	@Field("omim")
-	private List<String> omim;
+	private List<String> omim_ids;
 
 	@Field("inference_gene_symbol")
 	private String inference_gene_symbol;
 
-	@Field("chemical")
-	private String chemical;
+	@Field("chemical_id")
+	private String chemical_id;
 
 	@Field("casrn")
 	private String casrn;
@@ -65,54 +61,6 @@ public class Chemical {
 		this.direct_evidence = direct_evidence;
 	}
 
-	public List<String> getOmim() {
-		return omim;
-	}
-
-	public void setOmim(List<String> omim) {
-		this.omim = omim;
-	}
-
-	public String getInference_gene_symbol() {
-		return inference_gene_symbol;
-	}
-
-	public void setInference_gene_symbol(String inference_gene_symbol) {
-		this.inference_gene_symbol = inference_gene_symbol;
-	}
-
-	public List<String> getPubmed() {
-		return pubmed;
-	}
-
-	public void setPubmed(List<String> pubmed) {
-		this.pubmed = pubmed;
-	}
-
-	public String getChemical() {
-		return chemical;
-	}
-
-	public void setChemical(String chemical) {
-		this.chemical = chemical;
-	}
-
-	public double getInference_score() {
-		return inference_score;
-	}
-
-	public void setInference_score(double inference_score) {
-		this.inference_score = inference_score;
-	}
-
-	public String getData_source() {
-		return data_source;
-	}
-
-	public void setData_source(String data_source) {
-		this.data_source = data_source;
-	}
-
 	public String getId() {
 		return id;
 	}
@@ -127,6 +75,46 @@ public class Chemical {
 
 	public void setDisease_id(String disease_id) {
 		this.disease_id = disease_id;
+	}
+
+	public List<String> getPubmed_references() {
+		return pubmed_references;
+	}
+
+	public void setPubmed_references(List<String> pubmed_references) {
+		this.pubmed_references = pubmed_references;
+	}
+
+	public double getInference_score() {
+		return inference_score;
+	}
+
+	public void setInference_score(double inference_score) {
+		this.inference_score = inference_score;
+	}
+
+	public List<String> getOmim_ids() {
+		return omim_ids;
+	}
+
+	public void setOmim_ids(List<String> omim_ids) {
+		this.omim_ids = omim_ids;
+	}
+
+	public String getInference_gene_symbol() {
+		return inference_gene_symbol;
+	}
+
+	public void setInference_gene_symbol(String inference_gene_symbol) {
+		this.inference_gene_symbol = inference_gene_symbol;
+	}
+
+	public String getChemical_id() {
+		return chemical_id;
+	}
+
+	public void setChemical_id(String chemical_id) {
+		this.chemical_id = chemical_id;
 	}
 
 	public String getSource() {
