@@ -32,6 +32,7 @@ public class Disease {
 	/**
 	 * umls fields
 	 */
+	@Field("relationships")
 	private List<HashMap<String, String>> disease_relationships;
 
 	@Field("ruis")
