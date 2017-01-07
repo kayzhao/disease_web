@@ -24,6 +24,9 @@ public class GO {
 
 	@Field("disease_id")
 	private String disease_id;
+	
+	@Field("map_id")
+	private String disease_map_id;
 
 	@Field("disease_name")
 	private String disease_name;
@@ -155,5 +158,13 @@ public class GO {
 
 	public void setInference_gene_symbol(String inference_gene_symbol) {
 		this.inference_gene_symbol = inference_gene_symbol;
+	}
+
+	public String getDisease_map_id() {
+		return disease_map_id;
+	}
+
+	public void setDisease_map_id(String disease_map_id) {
+		this.disease_map_id = disease_map_id;
 	}
 }

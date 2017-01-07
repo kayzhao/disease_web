@@ -21,6 +21,9 @@ public class Chemical {
 	@Field("disease")
 	private String disease_id;
 
+	@Field("map_id")
+	private String disease_map_id;
+
 	@Field("pubmed")
 	private List<String> pubmed_references;
 
@@ -123,5 +126,13 @@ public class Chemical {
 
 	public void setSource(String source) {
 		this.source = source;
+	}
+
+	public String getDisease_map_id() {
+		return disease_map_id;
+	}
+
+	public void setDisease_map_id(String disease_map_id) {
+		this.disease_map_id = disease_map_id;
 	}
 }

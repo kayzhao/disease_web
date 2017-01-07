@@ -20,6 +20,9 @@ public class SNP {
 	@Field("disease_id")
 	private String disease_id;
 
+	@Field("map_id")
+	private String disease_map_id;
+
 	@Field("disease_name")
 	private String disease_name;
 
@@ -191,5 +194,13 @@ public class SNP {
 
 	public void setYear(int year) {
 		this.year = year;
+	}
+
+	public String getDisease_map_id() {
+		return disease_map_id;
+	}
+
+	public void setDisease_map_id(String disease_map_id) {
+		this.disease_map_id = disease_map_id;
 	}
 }
