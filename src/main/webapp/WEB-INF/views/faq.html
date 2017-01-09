@@ -1,16 +1,19 @@
 #parse("/WEB-INF/views/container/header.html")
 
 <body>
-	#parse("/WEB-INF/views/container/menu.html")
 	<div class="container">
+		#parse("/WEB-INF/views/container/menu.html")
+
 		<div class="main__banner G-MarginTop50">
 
 			<h1>BioDis</h1>
-			<h2>The Disease Integration Database</h2>
+			<h2>The Disease Web Server</h2>
 			<p id="button-wrap-inner">
-				<a id="learnmore__btn_id" class="learnmore__btn" href="#">Learn
+				<a id="learnmore__btn_id" ,="" class="learnmore__btn"
+					href="//speakerdeck.com/player/1274175027cb0132ab8f668b8ed88715">Learn
 					more</a> &nbsp;&nbsp;or&nbsp;&nbsp;<a id="try_api_btn_id"
-					class="api__btn" href="api">Try live API now</a>
+					,="" class="learnmore__btn" href="http://mygene.info/v3/api">Try
+					live API now</a>
 			</p>
 			<p id="metadata_timestamp">
 				Data last updated: <a href="http://mygene.info/v3/metadata">2017-01-08</a>
@@ -20,9 +23,10 @@
 			<div class="row">
 				<strong class="text-uppercase"><span
 					class="glyphicon glyphicon-info-sign"> </span>BioDis Introduction</strong>
-				<p class="text-default alert  alert-warning G-MarginTop20 sys-brief">Long
-					noncoding RNAs are a biggest class of non-coding RNA with greater
-					than 200nt in length which can regulate gene expression in
+				<p class="text-default alert alert-info G-MarginTop20 ldap-brief">
+
+					Long noncoding RNAs are a biggest class of non-coding RNA with
+					greater than 200nt in length which can regulate gene expression in
 					different levels including transcriptional, pos-transcriptional and
 					epigenetic regulation. Identifing lncRNA-disease association would
 					contribute to dissect the complex mechanisms of disease
@@ -33,8 +37,13 @@
 					multiple sequences with FASTA format.</p>
 			</div>
 		</div>
+		#include("/WEB-INF/views/container/footer.html")
 	</div>
-	#include("/WEB-INF/views/container/footer.html")
+	<script type="text/javascript">
+		jQuery.noConflict();
+		(function($) {
+		})(jQuery)
+	</script>
 </body>
 
 </html>

@@ -1,0 +1,54 @@
+* {
+	font-weight: bold;
+}
+
+body {
+	min-width: 800px;
+}
+
+#brief {
+	height: 100px;
+}
+
+.sys-brief {
+	Word-spacing: 0.2em;
+}
+
+p {
+	margin: 10px 0px;
+	text-indent: 14px;
+}
+
+.tab-pane, .message {
+	min-height: 500px;
+}
+
+.email-error, .sequence-error, #email_div {
+	display: none;
+}
+
+img {
+	width: 100%;
+	height: 100%;
+}
+/*result page*/
+.seq {
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
+#gotop {
+	cursor: pointer;
+	display: none;
+	width: 55px;
+	height: 55px;
+	position: fixed;
+	right: 50px;
+	bottom: 50px;
+	background: url('../../images/backtop.png') no-repeat -70px 0px;
+}
+
+.error_or_404 {
+	min-height: 500px;
+	text-align: center;
+}

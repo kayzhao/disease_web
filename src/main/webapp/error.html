@@ -4,7 +4,7 @@
 		<!-- Navigation -->
 		#parse("/WEB-INF/views/container/menu.html")
 		<div id="page-wrapper">
-			<div class="container-fluid">
+			<div class="container-fluid error_or_404">
 				<!-- Page Heading -->
 				<div class="row">
 					<div class="col-lg-12">
@@ -19,6 +19,7 @@
 	</div>
 	<!-- /#wrapper -->
 </body>
+#include("/WEB-INF/views/container/footer.html")
 <script type="text/javascript">
 	(function($) {
 		$(function() {
@@ -26,4 +27,3 @@
 		});
 	})(jQuery)
 </script>
-#include("/WEB-INF/views/container/footer.html")
