@@ -104,11 +104,10 @@
 	<!-- Interceptors -->
 	<mvc:interceptors>
 		<!-- Global Interceptor -->
-		<bean class="com.csu.bio.frame.interceptor.GlobalInterceptor" />
-		<!-- Language configuration -->
-		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-			<property name="paramName" value="lang"></property>
-		</bean>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.csu.bio.frame.interceptor.GlobalInterceptor" />
+		</mvc:interceptor>
 	</mvc:interceptors>
 
 	<!-- annotation -->

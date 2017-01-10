@@ -1,13 +1,8 @@
 package com.csu.bio.controller.data;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Map;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
-import org.hamcrest.core.Is;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -29,13 +29,30 @@
 <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script
 	src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="js/plugins/bootstrapTable//bootstrap-table.min.js"></script>
-<script src="js/plugins/bootstrapTable/bootstrap-table-export.js"></script>
-<script src="js/plugins/bootstrapTable/tableExport.js"></script>
-<script src="js/plugins/bootstrapTable/bootstrap-select.min.js"></script>
+<!-- <script src="${basepath}/js/plugins/bootstrapTable//bootstrap-table.min.js"></script>
+<script src="${basepath}/js/plugins/bootstrapTable/bootstrap-table-export.js"></script>
+<script src="${basepath}/js/plugins/bootstrapTable/tableExport.js"></script>
+<script src="${basepath}/js/plugins/bootstrapTable/bootstrap-select.min.js"></script> -->
 <script type="text/javascript">
 	jQuery.noConflict();
 	(function($) {
+
+		var url = window.location.href;
+		var navs_li = $(".navbar-nav>li");
+		var navs_a = $(".navbar-nav>li>a");
+		for (i = 0; i < navs_a.length; i++) {
+			var nav_text = navs_a[i].innerText.toLowerCase().split(' ')[0]
+					.trim();
+			if (nav_text == 'visualization')
+				nav_text = 'net';
+			//console.log(nav_text);
+			if (url.indexOf(nav_text) >= 0) {
+				$(".navbar-nav>li").removeClass('active');
+				$(navs_li[i]).addClass('active');
+				break;
+			}
+		}
+
 		function goTop() {
 			$(window).scroll(function(e) {
 				//若滚动条离顶部大于100元素
@@ -45,7 +62,6 @@
 					$("#gotop").fadeOut(1000); //以1秒的间隔渐隐id=gotop的元素
 			});
 		}
-		;
 
 		$(function() {
 			//点击回到顶部的元素

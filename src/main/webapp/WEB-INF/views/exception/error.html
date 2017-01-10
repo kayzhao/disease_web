@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<title>error</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<!-- bootstrap相关组件 -->
+<link rel="stylesheet"
+	href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+<!-- 自定义基本CSS -->
+<link rel="stylesheet" href="css/customer/biodis.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/customer/index.css">
+<!-- font-awesome字体库 -->
+<link
+	href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<link href="css/plugins/bootstrap/bootstrapValidator.min.css"
+	rel="stylesheet">
+</head>
+<body>
+	<!-- Navigation -->
+	#parse("/WEB-INF/views/container/menu.html")
+	<div class="container">
+		<div class="container error_or_404">
+			<!-- Page Heading -->
+			<div class="row text-center">
+				<div class="col-lg-12">
+					<h1 class="page-header">Server error</h1>
+				</div>
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container-fluid -->
+		#include("/WEB-INF/views/container/footer.html")
+	</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+@CHARSET "UTF-8";
+
+.form-area {
+	resize: none;
+	word-wrap: normal;
+}
+
+#btn-upload {
+	height: 36px;
+	width: 80px;
+	/*border-radius:12px;*/
+}
+
+#filename {
+	height: 36px;
+	width: 230px;
+	line-height: 36px;
+	margin-left: 6px;
+	border: 1px solid #46b8da;
+	padding-left: 8px;
+	border-radius: 4px;
+}
+
+#sub-net {
+	margin-top: 25px;
+	height: 36px;
+}
+
+#select-file {
+	display: none;
+}
+
+#navbar-example {
+	background-color: #fff;
+	border-color: #e7e7e7;
+	margin-bottom: 2px;
+}
+
+#navbar-example .collapse>ul>li:first-child {
+	border-color:no;
+	border-left: 1px solid #e5e5e5;
+}
+
+#navbar-example .collapse>ul>li {
+	border-right: 1px solid #e5e5e5;
+	width: 120px;
+}
+
+#navbar-example .collapse>ul>li>button {
+	position: relative;
+	display: block;
+	padding: 15px 15px;
+	border: none;
+	border-radius: 0px;
+}
