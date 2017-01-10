@@ -54,6 +54,10 @@ This project is a web front-end of the disease data - a web service to providing
 - Jianxin Wang: jxwang@mail.csu.edu.cn
 - Min Li: limin@mail.csu.edu.cn
 
+## Our Group
+- [NetLab](http://netlab.csu.edu.cn/)
+- [BioGroup](http://bioinformatics.csu.edu.cn/)
+
 --------------------------------------
 ## Note
 
