@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
  * @author kayzhao
  */
 
-@Document
+@Document(collection = "mirna")
 public class MiRNA {
 	/**
 	 * common fields

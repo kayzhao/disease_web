@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
  *          for the CTD database
  */
 
-@Document
+@Document(collection = "go")
 public class GO {
 	/**
 	 * common fields

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>network visualization</title>
+<title>Retrieve/ID mapping</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -21,12 +21,6 @@
 <link
 	href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet">
-<link
-	href="${basepath}/css/plugins/bootstrap/bootstrapValidator.min.css"
-	rel="stylesheet">
-<!--bootstrap-select start-->
-<link rel="stylesheet"
-	href="${basepath}/css/plugins/bootstrap/bootstrap-select.min.css">
 <!--bootstrap-select end-->
 <!-- Google analysis -->
 <script>
@@ -49,166 +43,74 @@
 <body>
 	#parse("/WEB-INF/views/container/menu.html")
 	<div class="container">
-		<!-- 内容 -->
-		<div class="container main">
-			<div class="mainContent">
-				<!-- 网络图展示 -->
-				<div style="margin-top: 10px;">
-					<div style="width: 100%;">
-						<nav class="navbar navbar-default navbar-static">
-						<div class="container-fluid">
-							<div class="navbar-header">
-								<a class="navbar-brand text-info" href="#cy">Network
-									Visualization</a>
-							</div>
-							<div class="collapse navbar-collapse">
-								<ul class="nav navbar-nav">
-									<li class="dropdown"><a id="drop2" href="#"
-										class="dropdown-toggle" data-toggle="dropdown" role="button"
-										aria-haspopup="true" aria-expanded="false"> <span
-											class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-											Layout&nbsp; <span class="caret"></span>
-									</a>
-										<ul class="dropdown-menu" aria-labelledby="drop2">
-											<li><button type="button"
-													class="btn btn-default btn-block btn-layout"
-													style="border: 0" value="circle">Circle(default)</button></li>
-											<li><button type="button"
-													class="btn btn-default btn-block btn-layout"
-													style="border: 0" value="grid">Grid</button></li>
-											<li><button type="button"
-													class="btn btn-default btn-block btn-layout"
-													style="border: 0" value="concentric">Concentric</button></li>
-											<li><button type="button"
-													class="btn btn-default btn-block btn-layout"
-													style="border: 0" value="breadthfirst">Breadthfirst</button></li>
-										</ul></li>
-									<li class="dropdown"><a id="btn-export"
-										class="btn btn-default btn-block" style="border: 0"
-										role="button" aria-haspopup="false" aria-expanded="false">
-											<span class="glyphicon glyphicon-floppy-disk"
-											aria-hidden="true"></span> Export
-									</a></li>
-								</ul>
-							</div>
-						</div>
-						</nav>
-					</div>
-					<div style="width: 100%; border: 1px solid #bce8f1;">
-						<div id="cy"
-							style="width: 100%; height: 618px; background-color: #FFF;"></div>
-					</div>
-				</div>
-
+		<h3>
+			<strong class="text-uppercase"><span
+				class="glyphicon glyphicon-info-sign"> </span>Mapping Result</strong>
+		</h3>
+		<div class="clearfix"></div>
+		<hr class="row  G-MarginTop20 ">
+		<p class="text-default alert alert-info G-MarginTop20 ldap-brief">Here
+			is the result for your query</p>
+		<div class="text-default G-MarginTop20 row">
+			<div class="col-md-3">
+				Mapping Type: <strong class="text-danger">$!type</strong>
 			</div>
+			<div class="col-md-9">
+				#if($!errorInfo) <span class="text-warning" aria-label="Close"
+					role="alert"><span class="glyphicon glyphicon-remove"></span>$!errorInfo</span>
+				#end #if($!successInfo) <span class="text-success "
+					aria-label="Close" role="alert"><span
+					class="glyphicon glyphicon-ok"></span>$!successInfo</span> #end
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<hr class="row  G-MarginTop20 ">
+		<!-- 结果 -->
+		<div class="G-MarginTop20">
+			<!-- 标题 -->
+			<div class="">
+				<p class="text-default alert alert-info">Here is the result
+					calculated by LADP for the sequence [$!seq]</p>
+				#set($index = ${velocityCount} - 1) #if(${resultview.size()}>0)
+				<table class="table table-hover text-left" data-toggle="table"
+					data-sortable="true" data-pagination="true"
+					data-show-columns="true" data-striped="true" data-search="true"
+					data-show-export="true">
+					<thead>
+						<tr>
+							<th class="col-xs-2" data-sortable="true">Rank</th>
+							<th class="col-xs-8" data-sortable="true">Disease Name</th>
+							<th class="col-xs-2" data-sortable="true">Score</th>
+						</tr>
+					</thead>
+					<tbody>
+						#foreach($seq in $map)
+						<!-- foreach -->
+						#foreach($d_s in $resultview.get($index))
+						<tr>
+							<td class="col-xs-2">$!d_s.rank</td>
+							<td class="col-xs-8">$!d_s.disease</td>
+							<td class="col-xs-2">$!d_s.score</td>
+						</tr>
+						<!-- end foreach -->
+						#end #end
+					</tbody>
+				</table>
+				#else
+				<p class="text-default alert alert-danger">sorry, there is no
+					result for the sequence</p>
+				#end
+				<!-- end if -->
+			</div>
+			<div class="clearfix"></div>
+			<hr class="row  G-MarginTop20 ">
 		</div>
 		#include("/WEB-INF/views/container/footer.html")
 	</div>
-	<script src="${basepath}/js/plugins/cyto/cytoscape.min.js"></script>
-	<script type="text/javascript">
-		jQuery.noConflict();
-		(function($) {
-			//创建一个Cytoscape样式
-			var cy = null;
-			var cystyle = [ {
-				selector : 'node',
-				style : {
-					'content' : 'data(id)',
-					'text-valign' : 'top',
-					'text-halign' : 'center',
-					'shape' : 'circle',
-					'height' : 20,
-					'width' : 20,
-					'background-color' : '#63B8FF',
-					'color' : '#777'
-				}
-			}, {
-				selector : 'edge',
-				style : {
-					'label' : 'data(label)',
-					//'color' : 'red',
-					'edge-text-rotation' : 'autorotate',
-					'curve-style' : 'haystack',
-					'haystack-radius' : 0,
-					'width' : 1,
-					'opacity' : 1,
-					'line-color' : '#000'
-				}
-			}, {
-				selector : ':selected',
-				style : {
-					'background-color' : '#FFFF00',
-					'line-color' : '#FF0000'
-				}
-			} ];
-			var netData = {
-				"edges" : [ {
-					"data" : {
-						"source" : "P35202",
-						"target" : "P14164"
-					}
-				}, {
-					"data" : {
-						"source" : "P35202",
-						"target" : "Q04174"
-					}
-				} ],
-				"nodes" : [ {
-					"data" : {
-						"id" : "P35202",
-						"name" : "P35202"
-					}
-				}, {
-					"data" : {
-						"id" : "Q04174",
-						"name" : "Q04174"
-					}
-				}, {
-					"data" : {
-						"id" : "P14164",
-						"name" : "P14164"
-					}
-				} ]
-			}
-			//var netData = JSON.parse('${net}');
-			cy = cytoscape({
-				container : document.getElementById('cy'),
-
-				userZoomingEnabled : true,
-				userPanningEnabled : true,
-				boxSelectionEnabled : true,
-				autounselectify : false,
-				hideLabelsOnViewport : true,
-				wheelSensitivity : 0.4,
-				layout : {
-					name : 'circle'
-				},
-				style : cystyle,
-				elements : netData
-			});
-			$(".btn-layout").click(function() {
-				cy.layout({
-					name : $(this).val()
-				});
-			});
-			$("#btn-export").click(function() {
-				//先发出请求保存图片数据，再进行发出下载请求
-				var png64 = cy.png();
-				$.ajax({
-					type : "POST",
-					url : "${basepath}/net/decodepng",
-					data : {
-						png : png64
-					},
-					dataType : "json",
-					success : function(data) {
-						if (data == "ok") {
-							location.href = "${basepath}/net/downloadpng";
-						}
-					}
-				});
-			});
-		})(jQuery)
-	</script>
+	<script
+		src="${basepath}/js/plugins/bootstrapTable//bootstrap-table.min.js"></script>
+	<script
+		src="${basepath}/js/plugins/bootstrapTable/bootstrap-table-export.js"></script>
+	<script src="${basepath}/js/plugins/bootstrapTable/tableExport.js"></script>
 </body>
 </html>

@@ -15,7 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
  *          for the CTDgenes Collection
  */
 
-@Document
+@Document(collection = "gene")
 public class Gene {
 
 	/**

@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
  * 
  */
 
-@Document
+@Document(collection = "chemical")
 public class Chemical {
 	@Id
 	private String id;

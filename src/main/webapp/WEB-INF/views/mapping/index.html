@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>network visualization</title>
+<title>Retrieve/ID mapping</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -25,8 +25,9 @@
 	href="${basepath}/css/plugins/bootstrap/bootstrapValidator.min.css"
 	rel="stylesheet">
 <!--bootstrap-select start-->
+<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
-	href="${basepath}/css/plugins/bootstrap/bootstrap-select.min.css">
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
 <!--bootstrap-select end-->
 <!-- Google analysis -->
 <script>
@@ -53,38 +54,78 @@
 		<div class="G-MarginTop20">
 			<div class="center-block panel panel-info" style="width: 100%;">
 				<div class="panel-heading">
-					<h3 class="panel-title">NetworkVisualization</h3>
+					<h3 class="panel-title">Retrieve/ID mapping</h3>
 				</div>
 				<div class="panel-body">
 					<div class="alert alert-warning">
-						NOTICE: Enter or upload a list of identifiers which is a
-						tab-delimited or space-delimited string for each row, for example:<br>
-						<div style="margin-left: 60px;">
-							P35202&#09;P14164<br>P35202&#09;Q04174<br>
-						</div>
+						NOTICE:
+						<ol style="margin-left: 60px;">
+							<li>Enter or upload a list of identifiers which is a
+								tab-delimited or space-delimited string for each row, for
+								example:<br>
+								<div style="margin-left: 60px;">
+									DOID:4&#09;DOID:630<br>DOID:0080015&#09;DOID:225<br>
+								</div>
+							</li>
+							<li>If you need to convert to another identifier type,
+								select the source and target type from the dropdown menus.</li>
+							<li>Click the Go button.</li>
+						</ol>
 					</div>
-					<form method="post" action="${basepath}/net/show"
+					<form method="post" action="${basepath}/mapping/show"
 						enctype="multipart/form-data">
-						<div style="width: 600px; margin: 0 auto;">
+						<div style="width: 80%; margin: 0 auto;">
+							<hr class="G-MarginTop20">
+							<h4>
+								<strong>1. Provide your identifiers </strong>
+							</h4>
+							<hr class="G-MarginTop20">
 							<label>Input Data</label><br>
 							<textarea id="textData" name="inputData"
 								class="form-control form-area" rows="8"></textarea>
 							<div>
-								<div style="float: left">
-									<label><strong>OR</strong> upload your own file:</label> <input
-										id="select-file" type="file" name="file">
-									<div id="divFileupload">
-										<input type="button" class="btn btn-info" id="btn-upload"
-											value="select file"> <input id="filename"
-											name="fileName" class="input-large" type="text"
-											placeholder="the filename is..." readonly>
-									</div>
-								</div>
-								<div style="float: right;">
-									<input class="btn btn-success btn-submit" type="submit"
-										id="sub-net" value="Visual">
+								<label><strong>OR</strong> upload your own file:</label> <input
+									id="select-file" type="file" name="file">
+								<div id="divFileupload">
+									<input type="button" class="btn btn-info" id="btn-upload"
+										value="select file"> <input id="filename"
+										name="fileName" class="input-large" type="text"
+										placeholder="the filename is..." readonly>
 								</div>
 							</div>
+							<hr class="G-MarginTop20">
+							<h4>
+								<strong>2. Select options</strong>
+							</h4>
+							<hr class="G-MarginTop20">
+							<div>
+								<!-- <select class="selectpicker" data-live-search="true">
+									<option data-tokens="DOID">DOID</option>
+									<option data-tokens="KEGG">KEGG</option>
+									<option data-tokens="MESH">MESH</option>
+									<option data-tokens="OMIM">OMIM</option>
+									<option data-tokens="UMLS">UMLS</option>
+									<option data-tokens="HP">HPO</option>
+									<option data-tokens="ICD9CM">ICD9CM</option>
+									<option data-tokens="ICD10CM">ICD10CM</option>
+									<option data-tokens="ORPHANET">ORPHANET</option>
+								</select>-->
+								<strong>Mapping TO&#09;</strong><select class="selectpicker"
+									data-live-search="true" name="idType">
+									<option data-tokens="ALL">ALL</option>
+									<option data-tokens="DOID">DOID</option>
+									<option data-tokens="KEGG">KEGG</option>
+									<option data-tokens="MESH">MESH</option>
+									<option data-tokens="OMIM">OMIM</option>
+									<option data-tokens="UMLS_CUI">UMLS_CUI</option>
+									<option data-tokens="HP">HPO</option>
+									<option data-tokens="ICD9CM">ICD9CM</option>
+									<option data-tokens="ICD10CM">ICD10CM</option>
+									<option data-tokens="ORPHANET">ORPHANET</option>
+								</select>
+							</div>
+							<input class="btn btn-success btn-submit" type="submit"
+								id="sub-net" value="Go">
 						</div>
 					</form>
 				</div>
@@ -92,6 +133,9 @@
 		</div>
 		#include("/WEB-INF/views/container/footer.html")
 	</div>
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 	<script type="text/javascript">
 		jQuery.noConflict();
 		(function($) {
@@ -149,5 +193,6 @@
 			});
 		})(jQuery)
 	</script>
+
 </body>
 </html>

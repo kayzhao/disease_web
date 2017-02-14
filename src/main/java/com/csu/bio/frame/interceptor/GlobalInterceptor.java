@@ -26,7 +26,6 @@ public class GlobalInterceptor extends HandlerInterceptorAdapter {
 		String path = request.getContextPath();
 		String basePath = scheme + "://" + serverName + ":" + port + path;
 		request.setAttribute("basepath", basePath);
-		System.out.println(basePath);
 		return true;
 	}
 }

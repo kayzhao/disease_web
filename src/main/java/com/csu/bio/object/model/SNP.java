@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
  * @author kayzhao
  */
 
-@Document
+@Document(collection = "snp")
 public class SNP {
 	/**
 	 * common fields

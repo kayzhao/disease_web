@@ -99,8 +99,10 @@ public class NetController {
 				e.printStackTrace();
 			}
 		}
+		ModelMap model = new ModelMap();
+		model.addAttribute("net", datasets);
 		// request.setAttribute("net", Visual.encapsulateNet2Json(datasets));
 		System.out.println("----Show Network----");
-		return new ModelAndView("network/show");
+		return new ModelAndView("network/show", model);
 	}
 }
