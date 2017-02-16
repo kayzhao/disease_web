@@ -49,7 +49,7 @@ public class DisMap {
 	private List<String> umls_cui;
 
 	@Field("other")
-	private List<String> other_id;
+	private List<String> other;
 
 	public String getDisease_id() {
 		return disease_id;
@@ -131,11 +131,19 @@ public class DisMap {
 		this.umls_cui = umls_cui;
 	}
 
-	public List<String> getOther_id() {
-		return other_id;
+	public List<String> getHp() {
+		return hp;
 	}
 
-	public void setOther_id(List<String> other_id) {
-		this.other_id = other_id;
+	public void setHp(List<String> hp) {
+		this.hp = hp;
+	}
+
+	public List<String> getOther() {
+		return other;
+	}
+
+	public void setOther(List<String> other) {
+		this.other = other;
 	}
 }

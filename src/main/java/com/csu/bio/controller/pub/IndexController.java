@@ -21,9 +21,9 @@ public class IndexController {
 		return "about";
 	}
 
-	@RequestMapping("/faq")
+	@RequestMapping("/readme")
 	public String faq(ModelMap model) {
-		return "faq";
+		return "readme";
 	}
 
 	@RequestMapping("/api")

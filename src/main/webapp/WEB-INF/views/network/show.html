@@ -6,8 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/x-icon" href="${basepath}/favicon.ico">
+<link rel="shortcut icon" href="${basepath}/favicon.ico"
+	type="image/x-icon">
 <!-- bootstrap相关组件 -->
 <link rel="stylesheet"
 	href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -82,12 +83,21 @@
 											<li><button type="button"
 													class="btn btn-default btn-block btn-layout"
 													style="border: 0" value="breadthfirst">Breadthfirst</button></li>
+											<li><button type="button"
+													class="btn btn-default btn-block btn-layout"
+													style="border: 0" value="cose">CoSE</button></li>
+											<li><button type="button"
+													class="btn btn-default btn-block btn-layout"
+													style="border: 0" value="preset">Preset</button></li>
+											<li><button type="button"
+													class="btn btn-default btn-block btn-layout"
+													style="border: 0" value="random">Random</button></li>
 										</ul></li>
 									<li class="dropdown"><a id="btn-export"
-										class="btn btn-block" style="border: 0"
-										role="button" aria-haspopup="false" aria-expanded="false">
-											<span class="glyphicon glyphicon-floppy-disk"
-											aria-hidden="true"></span> Export
+										class="btn btn-block" style="border: 0" role="button"
+										aria-haspopup="false" aria-expanded="false"> <span
+											class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+											Export
 									</a></li>
 								</ul>
 							</div>
@@ -141,39 +151,9 @@
 					'line-color' : '#FF0000'
 				}
 			} ];
-			var netData = {
-				"edges" : [ {
-					"data" : {
-						"source" : "P35202",
-						"target" : "P14164"
-					}
-				}, {
-					"data" : {
-						"source" : "P35202",
-						"target" : "Q04174"
-					}
-				} ],
-				"nodes" : [ {
-					"data" : {
-						"id" : "P35202",
-						"name" : "P35202"
-					}
-				}, {
-					"data" : {
-						"id" : "Q04174",
-						"name" : "Q04174"
-					}
-				}, {
-					"data" : {
-						"id" : "P14164",
-						"name" : "P14164"
-					}
-				} ]
-			}
-			//var netData = JSON.parse('${net}');
+			var netData = JSON.parse('${net}');
 			cy = cytoscape({
 				container : document.getElementById('cy'),
-
 				userZoomingEnabled : true,
 				userPanningEnabled : true,
 				boxSelectionEnabled : true,

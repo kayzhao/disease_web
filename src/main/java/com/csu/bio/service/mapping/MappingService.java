@@ -7,5 +7,5 @@ import com.csu.bio.object.model.DisMap;
 
 public interface MappingService {
 
-	public Map<String, DisMap> getMappingData(List<String> ids);
+	public Map<String, DisMap> getMappingData(List<String> ids, String type);
 }

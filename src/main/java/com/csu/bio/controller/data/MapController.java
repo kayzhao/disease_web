@@ -5,6 +5,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import javax.servlet.http.HttpServletRequest;
@@ -109,7 +110,8 @@ public class MapController {
 			if (datasets.get(i) != null && datasets.get(i).length() > 0)
 				ids.add(datasets.get(i));
 		}
-		mav.addObject("map", ms.getMappingData(ids));
+		Map map = ms.getMappingData(ids, idType);
+		mav.addObject("map", map);
 		mav.addObject("type", idType);
 		mav.setViewName("mapping/show");
 		return mav;
