@@ -9,9 +9,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Service;
 
 import com.csu.bio.frame.dao.CommonNoSqlDao;
+import com.csu.bio.frame.dao.CommonNoSqlDao.SimpleCriteriaEntry;
 import com.csu.bio.frame.dao.FullTextRepository;
 import com.csu.bio.object.model.DisMap;
-import com.jayway.restassured.internal.http.Method;
 
 @Service
 public class MappingServiceImpl implements MappingService {
@@ -22,12 +22,28 @@ public class MappingServiceImpl implements MappingService {
 	private FullTextRepository fullTextRepository;
 
 	@Override
-	public Map<String, DisMap> getMappingData(List<String> ids) {
-		Map<String, DisMap> result = new HashMap<String, DisMap>();
+	public Map<String, Object> getMappingData(List<String> ids, String type) {
+		Map<String, Object> result = new HashMap<String, Object>();
 		if (ids == null || ids.size() == 0)
 			return null;
+		type = type.toLowerCase();
 		for (String id : ids) {
-			DisMap dis = commonNoSqlDao.findById(id, DisMap.class);
+			DisMap dis = null;
+			dis = commonNoSqlDao.findOne(DisMap.class, SimpleCriteriaEntry.createEqEntry("_id", id));
+			if (dis == null) {
+				if (result.get("errorids") == null) {
+					result.put("errorids", id);
+				} else {
+					result.put("errorids", result.get("errorids") + "," + id);
+				}
+				continue;
+			}
+			if (type.equals("all")) {
+				dis = commonNoSqlDao.findOne(DisMap.class, SimpleCriteriaEntry.createEqEntry("_id", id));
+			} else {
+				dis = commonNoSqlDao.findOne(DisMap.class, new String[] { type },
+						SimpleCriteriaEntry.createEqEntry("_id", id));
+			}
 			result.put(id, dis);
 		}
 		return result;

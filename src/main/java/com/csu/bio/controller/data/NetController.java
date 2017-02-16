@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.csu.bio.frame.dao.CommonNoSqlMongoFSDao;
 import com.csu.bio.object.model.*;
 import com.csu.bio.service.data.DataService;
+import com.csu.bio.util.CytoVisual;
 
 /**
  *
@@ -84,6 +85,7 @@ public class NetController {
 	public ModelAndView showNetwork(HttpServletRequest request, @RequestParam("file") MultipartFile file,
 			@RequestParam("inputData") String inputData) {
 		List<String> datasets;
+		ModelAndView mav = new ModelAndView();
 		if (file.isEmpty()) {
 			datasets = Arrays.asList(inputData.split("\r\n"));
 		} else {
@@ -99,10 +101,14 @@ public class NetController {
 				e.printStackTrace();
 			}
 		}
-		ModelMap model = new ModelMap();
-		model.addAttribute("net", datasets);
-		// request.setAttribute("net", Visual.encapsulateNet2Json(datasets));
-		System.out.println("----Show Network----");
-		return new ModelAndView("network/show", model);
+		// remove length=0 elements
+		ArrayList<String> ids = new ArrayList<String>();
+		for (int i = 0; i < datasets.size(); i++) {
+			if (datasets.get(i) != null && datasets.get(i).length() > 0)
+				ids.add(datasets.get(i));
+		}
+		mav.addObject("net", CytoVisual.encapsulateNet2Json(datasets));
+		mav.setViewName("network/show");
+		return mav;
 	}
 }

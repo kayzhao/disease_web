@@ -6,8 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/x-icon" href="${basepath}/favicon.ico">
+<link rel="shortcut icon" href="${basepath}/favicon.ico"
+	type="image/x-icon">
 <!-- bootstrap相关组件 -->
 <link rel="stylesheet"
 	href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -48,19 +49,14 @@
 				class="glyphicon glyphicon-info-sign"> </span>Mapping Result</strong>
 		</h3>
 		<div class="clearfix"></div>
-		<hr class="row  G-MarginTop20 ">
-		<p class="text-default alert alert-info G-MarginTop20 ldap-brief">Here
-			is the result for your query</p>
 		<div class="text-default G-MarginTop20 row">
 			<div class="col-md-3">
 				Mapping Type: <strong class="text-danger">$!type</strong>
 			</div>
 			<div class="col-md-9">
-				#if($!errorInfo) <span class="text-warning" aria-label="Close"
-					role="alert"><span class="glyphicon glyphicon-remove"></span>$!errorInfo</span>
-				#end #if($!successInfo) <span class="text-success "
-					aria-label="Close" role="alert"><span
-					class="glyphicon glyphicon-ok"></span>$!successInfo</span> #end
+				#if($!errorids.size()>0) Error disease ids: <span
+					class="text-danger" aria-label="Close" role="alert">$!errorids</span>
+				#end
 			</div>
 		</div>
 		<div class="clearfix"></div>
@@ -69,36 +65,49 @@
 		<div class="G-MarginTop20">
 			<!-- 标题 -->
 			<div class="">
-				<p class="text-default alert alert-info">Here is the result
-					calculated by LADP for the sequence [$!seq]</p>
-				#set($index = ${velocityCount} - 1) #if(${resultview.size()}>0)
+				<p class="text-default alert alert-info">Here is the result</p>
+				#if(${map.size()}>0)
 				<table class="table table-hover text-left" data-toggle="table"
 					data-sortable="true" data-pagination="true"
 					data-show-columns="true" data-striped="true" data-search="true"
 					data-show-export="true">
 					<thead>
 						<tr>
-							<th class="col-xs-2" data-sortable="true">Rank</th>
-							<th class="col-xs-8" data-sortable="true">Disease Name</th>
-							<th class="col-xs-2" data-sortable="true">Score</th>
+							<th data-sortable="true">Disease ID</th>
+							<th data-sortable="true">DOID</th>
+							<th data-sortable="true">KEGG</th>
+							<th data-sortable="true">MESH</th>
+							<th data-sortable="true">OMIM</th>
+							<th data-sortable="true">UMLS_CUI</th>
+							<th data-sortable="true">HPO</th>
+							<th data-sortable="true">ICD9CM</th>
+							<th data-sortable="true">ICD10CM</th>
+							<th data-sortable="true">ORPHANET</th>
+							<th data-sortable="true">Other</th>
 						</tr>
 					</thead>
 					<tbody>
-						#foreach($seq in $map)
-						<!-- foreach -->
-						#foreach($d_s in $resultview.get($index))
+						#foreach($m in $map.entrySet())
 						<tr>
-							<td class="col-xs-2">$!d_s.rank</td>
-							<td class="col-xs-8">$!d_s.disease</td>
-							<td class="col-xs-2">$!d_s.score</td>
+							<td data-sortable="true">$!m.key</td>
+							<td data-sortable="true">$!m.value.doid</td>
+							<td data-sortable="true">$!m.value.kegg</td>
+							<td data-sortable="true">$!m.value.mesh</td>
+							<td data-sortable="true">$!m.value.omim</td>
+							<td data-sortable="true">$!m.value.umls_cui</td>
+							<td data-sortable="true">$!m.value.hp</td>
+							<td data-sortable="true">$!m.value.icd9cm</td>
+							<td data-sortable="true">$!m.value.icd10cm</td>
+							<td data-sortable="true">$!m.value.orphanet</td>
+							<td data-sortable="true">$!m.value.other</td>
 						</tr>
 						<!-- end foreach -->
-						#end #end
+						#end
 					</tbody>
 				</table>
 				#else
 				<p class="text-default alert alert-danger">sorry, there is no
-					result for the sequence</p>
+					result for the query</p>
 				#end
 				<!-- end if -->
 			</div>

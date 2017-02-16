@@ -40,6 +40,24 @@ public class CommonNoSqlDaoImpl implements CommonNoSqlDao {
 		return t;
 	}
 
+	@Override
+	public <T> T findOne(Class<T> clz, String[] fields, SimpleCriteriaEntry... entries) {
+		Query query = new Query();
+
+		if (null != entries) {
+			for (int i = 0, len = entries.length; i < len; i++) {
+				query.addCriteria(entries[i].toCriteria());
+			}
+		}
+		if (fields != null) {
+			for (int i = 0; i < fields.length; i++) {
+				query.fields().include(fields[i]);
+			}
+		}
+		T t = this.mongoTemplate.findOne(query, clz);
+		return t;
+	}
+
 	public <T> List<T> findList(Class<T> clz, SimpleCriteriaEntry... entries) {
 		Query query = new Query();
 

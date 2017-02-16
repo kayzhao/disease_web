@@ -48,6 +48,17 @@ public interface CommonNoSqlDao {
 	 *            条件
 	 * @return
 	 */
+	public <T> T findOne(Class<T> clz, String[] fields, SimpleCriteriaEntry... entries);
+
+	/**
+	 * 查找列表
+	 * 
+	 * @param clz
+	 *            类型
+	 * @param entries
+	 *            条件
+	 * @return
+	 */
 	public <T> List<T> findList(Class<T> clz, SimpleCriteriaEntry... entries);
 
 	/**

@@ -21,7 +21,6 @@
 		CSU-Bioinformatics Group | All Rights Reserved</div>
 	<a href="#" class="totop"></a>
 </div>
-
 <!-- jquery -->
 <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script
@@ -29,7 +28,6 @@
 <script type="text/javascript">
 	jQuery.noConflict();
 	(function($) {
-
 		var url = window.location.href;
 		var navs_li = $(".navbar-nav>li");
 		var navs_a = $(".navbar-nav>li>a");
@@ -45,7 +43,6 @@
 				break;
 			}
 		}
-
 		function goTop() {
 			$(window).scroll(function(e) {
 				//若滚动条离顶部大于100元素
@@ -56,27 +53,25 @@
 			});
 		}
 
-		$(function() {
-			//点击回到顶部的元素
-			$("#gotop").click(function(e) {
-				//以1秒的间隔返回顶部
-				$('body,html').animate({
-					scrollTop : 0
-				}, 1000);
-			});
-			$("#gotop").mouseover(
-					function(e) {
-						$(this).css("background",
-								"url('images/backtop.png') no-repeat 0px 0px");
-					});
-			$("#gotop")
-					.mouseout(
-							function(e) {
-								$(this)
-										.css("background",
-												"url('images/backtop.png') no-repeat -70px 0px");
-							});
-			goTop(); //实现回到顶部元素的渐显与渐隐
-		})
+		//点击回到顶部的元素
+		$("#gotop").click(function(e) {
+			//以1秒的间隔返回顶部
+			$('body,html').animate({
+				scrollTop : 0
+			}, 1000);
+		});
+		var gotop_img = $("#top_img").val();
+		console.log(gotop_img);
+		$("#gotop").mouseover(
+				function(e) {
+					$(this).css("background",
+							"url('" + gotop_img + "') no-repeat 0px 0px");
+				});
+		$("#gotop").mouseout(
+				function(e) {
+					$(this).css("background",
+							"url('" + gotop_img + "') no-repeat 0px 0px");
+				});
+		goTop(); //实现回到顶部元素的渐显与渐隐
 	})(jQuery)
 </script>

@@ -1,0 +1,24 @@
+#parse("/WEB-INF/views/container/header.html")
+<body>
+	#parse("/WEB-INF/views/container/menu.html")
+	<div class="container">
+		<div class="G-MarginTop50">
+			<div class="row">
+				<h4>
+					<strong class="text-uppercase"><span
+						class="glyphicon glyphicon-info-sign"> </span>ReadMe</strong>
+				</h4>
+				<hr class="G-MarginTop20">
+				#include("/WEB-INF/views/container/readme.html")
+			</div>
+		</div>
+		#include("/WEB-INF/views/container/footer.html")
+	</div>
+	<script type="text/javascript">
+		jQuery.noConflict();
+		(function($) {
+		})(jQuery)
+	</script>
+</body>
+
+</html>

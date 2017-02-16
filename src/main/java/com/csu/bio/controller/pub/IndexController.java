@@ -16,14 +16,14 @@ public class IndexController {
 		return "index";
 	}
 
-	@RequestMapping("/about")
+	@RequestMapping("/contact")
 	public String about(ModelMap model) {
-		return "about";
+		return "contact";
 	}
 
-	@RequestMapping("/faq")
+	@RequestMapping("/readme")
 	public String faq(ModelMap model) {
-		return "faq";
+		return "readme";
 	}
 
 	@RequestMapping("/api")

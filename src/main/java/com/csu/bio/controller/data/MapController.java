@@ -2,10 +2,13 @@ package com.csu.bio.controller.data;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -102,14 +105,25 @@ public class MapController {
 				e.printStackTrace();
 			}
 		}
-		System.out.println(idType);
+		// System.out.println(idType);
 		// remove length=0 elements
 		ArrayList<String> ids = new ArrayList<String>();
 		for (int i = 0; i < datasets.size(); i++) {
 			if (datasets.get(i) != null && datasets.get(i).length() > 0)
 				ids.add(datasets.get(i));
 		}
-		mav.addObject("map", ms.getMappingData(ids));
+		// get the mapping ids
+		Map map = ms.getMappingData(ids, idType);
+		// get the error disease ids
+		ArrayList<Object> errorids = new ArrayList<>();
+		if (map.get("errorids") != null) {
+			for (String id : ((String) map.get("errorids")).split(",")) {
+				errorids.add(id);
+			}
+			map.remove("errorids");
+		}
+		mav.addObject("map", map);
+		mav.addObject("errorids", errorids);
 		mav.addObject("type", idType);
 		mav.setViewName("mapping/show");
 		return mav;
