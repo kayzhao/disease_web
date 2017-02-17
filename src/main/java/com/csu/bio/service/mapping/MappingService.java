@@ -6,6 +6,5 @@ import java.util.Map;
 import com.csu.bio.object.model.DisMap;
 
 public interface MappingService {
-
 	public Map<String, Object> getMappingData(List<String> ids, String type);
 }
