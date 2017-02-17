@@ -29,23 +29,6 @@
 <link rel="stylesheet"
 	href="${basepath}/css/plugins/bootstrap/bootstrap-select.min.css">
 <!--bootstrap-select end-->
-<!-- Google analysis -->
-<script>
-	(function(i, s, o, g, r, a, m) {
-		i['GoogleAnalyticsObject'] = r;
-		i[r] = i[r] || function() {
-			(i[r].q = i[r].q || []).push(arguments)
-		}, i[r].l = 1 * new Date();
-		a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-		a.async = 1;
-		a.src = g;
-		m.parentNode.insertBefore(a, m)
-	})(window, document, 'script',
-			'https://www.google-analytics.com/analytics.js', 'ga');
-
-	ga('create', 'UA-79942504-2', 'auto');
-	ga('send', 'pageview');
-</script>
 </head>
 <body>
 	#parse("/WEB-INF/views/container/menu.html")
@@ -55,62 +38,56 @@
 			<div class="mainContent">
 				<!-- 网络图展示 -->
 				<div class="G-MarginTop20">
-					<div style="width: 100%;">
-						<nav
-							class="navbar navbar-default navbar-static alert alert-warning">
-						<div class="container-fluid">
-							<div class="navbar-header">
-								<a class="navbar-brand text-info" href="#cy">Network
-									Visualization</a>
-							</div>
-							<div class="collapse navbar-collapse">
-								<ul class="nav navbar-nav">
-									<li class="dropdown"><a id="drop2" href="#"
-										class="dropdown-toggle" data-toggle="dropdown" role="button"
-										aria-haspopup="true" aria-expanded="false"> <span
-											class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-											Layout&nbsp; <span class="caret"></span>
-									</a>
-										<ul class="dropdown-menu" aria-labelledby="drop2">
-											<li><button type="button"
-													class="btn btn-default btn-block btn-layout"
-													style="border: 0" value="circle">Circle(default)</button></li>
-											<li><button type="button"
-													class="btn btn-default btn-block btn-layout"
-													style="border: 0" value="grid">Grid</button></li>
-											<li><button type="button"
-													class="btn btn-default btn-block btn-layout"
-													style="border: 0" value="concentric">Concentric</button></li>
-											<li><button type="button"
-													class="btn btn-default btn-block btn-layout"
-													style="border: 0" value="breadthfirst">Breadthfirst</button></li>
-											<li><button type="button"
-													class="btn btn-default btn-block btn-layout"
-													style="border: 0" value="cose">CoSE</button></li>
-											<li><button type="button"
-													class="btn btn-default btn-block btn-layout"
-													style="border: 0" value="preset">Preset</button></li>
-											<li><button type="button"
-													class="btn btn-default btn-block btn-layout"
-													style="border: 0" value="random">Random</button></li>
-										</ul></li>
-									<li class="dropdown"><a id="btn-export"
-										class="btn btn-block" style="border: 0" role="button"
-										aria-haspopup="false" aria-expanded="false"> <span
-											class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
-											Export
-									</a></li>
-								</ul>
-							</div>
-						</div>
-						</nav>
+					<nav class="navbar navbar-default navbar-static">
+					<div class="navbar-header">
+						<a class="navbar-brand text-info" href="javascript:void(0);">Network
+							Visualization</a>
 					</div>
+					<div class="collapse navbar-collapse bg-info">
+						<ul class="nav navbar-nav">
+							<li class="dropdown"><a id="drop2" href="#"
+								class="dropdown-toggle" data-toggle="dropdown" role="button"
+								aria-haspopup="true" aria-expanded="false"> <span
+									class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+									Layout&nbsp; <span class="caret"></span>
+							</a>
+								<ul class="dropdown-menu" aria-labelledby="drop2">
+									<li><button type="button"
+											class="btn btn-default btn-block btn-layout"
+											style="border: 0" value="circle">Circle(default)</button></li>
+									<li><button type="button"
+											class="btn btn-default btn-block btn-layout"
+											style="border: 0" value="grid">Grid</button></li>
+									<li><button type="button"
+											class="btn btn-default btn-block btn-layout"
+											style="border: 0" value="concentric">Concentric</button></li>
+									<li><button type="button"
+											class="btn btn-default btn-block btn-layout"
+											style="border: 0" value="breadthfirst">Breadthfirst</button></li>
+									<li><button type="button"
+											class="btn btn-default btn-block btn-layout"
+											style="border: 0" value="cose">CoSE</button></li>
+									<li><button type="button"
+											class="btn btn-default btn-block btn-layout"
+											style="border: 0" value="preset">Preset</button></li>
+									<li><button type="button"
+											class="btn btn-default btn-block btn-layout"
+											style="border: 0" value="random">Random</button></li>
+								</ul></li>
+							<li class="dropdown"><a id="btn-export"
+								class="btn btn-block" style="border: 0" role="button"
+								aria-haspopup="false" aria-expanded="false"> <span
+									class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+									Export
+							</a></li>
+						</ul>
+					</div>
+					</nav>
 					<div style="width: 100%; border: 1px solid #bce8f1;">
 						<div id="cy"
 							style="width: 100%; height: 618px; background-color: #FFF;"></div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 		#include("/WEB-INF/views/container/footer.html")
