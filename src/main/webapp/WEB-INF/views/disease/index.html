@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<title>Retrieve/ID mapping</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="icon" type="image/x-icon" href="${basepath}/favicon.ico">
+<link rel="shortcut icon" href="${basepath}/favicon.ico"
+	type="image/x-icon">
+<!-- bootstrap相关组件 -->
+<link rel="stylesheet"
+	href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+<!-- 自定义基本CSS -->
+<link rel="stylesheet" href="${basepath}/css/customer/biodis.css">
+<link rel="stylesheet" href="${basepath}/css/base.css">
+<link rel="stylesheet" href="${basepath}/css/customer/net.css">
+<!-- font-awesome字体库 -->
+<link
+	href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<link
+	href="${basepath}/css/plugins/bootstrap/bootstrapValidator.min.css"
+	rel="stylesheet">
+<!--bootstrap-select start-->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+<!--bootstrap-select end-->
+</head>
+<body>
+	#parse("/WEB-INF/views/container/menu.html")
+	<div class="container">
+		<!-- 内容 -->
+		<div class="G-MarginTop20">
+			<div class="center-block panel panel-info" style="width: 100%;">
+				<div class="panel-heading">
+					<h3 class="panel-title">Disease List</h3>
+				</div>
+				<div class="panel-body text-default">
+					The Disease Ontology has been developed as a standardized ontology
+					for human disease with the purpose of providing the biomedical
+					community with consistent, reusable and sustainable descriptions of
+					human disease terms, phenotype characteristics and related medical
+					vocabulary disease concepts through collaborative efforts of
+					researchers at Northwestern University, Center for Genetic Medicine
+					and the University of Maryland School of Medicine, Institute for
+					Genome Sciences. The Disease Ontology semantically integrates
+					disease and medical vocabularies through extensive cross mapping of
+					DO terms to MeSH, ICD, NCI’s thesaurus, SNOMED and OMIM. To get
+					started please visit the <a target='__blank'
+						href="${basepath}/readme">tutorial page</a>.
+					<div class="alert alert-warning">
+						NOTICE:
+						<ol style="margin-left: 60px;">
+							<li>Synonym: split by comma</li>
+							<li>Xref: split by comma， format is [(ID Type)=[ID list],(ID
+								Type)=[ID list]]</li>
+							<li>Sources: split by comma， format is [(source
+								name),(source name)]</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="G-MarginTop20">
+			<!-- 标题 -->
+			<table class="table table-hover text-left" data-toggle="table"
+				data-sortable="true" data-pagination="true" data-show-columns="true"
+				data-striped="true" data-show-export="true" data-search="true"
+				data-url="page" data-side-pagination="server">
+				<thead>
+					<tr>
+						<th data-field="id" data-formatter="idFormatter"
+							data-sortable="true">Disease ID</th>
+						<th data-field="disease_name" data-sortable="true">Name</th>
+						<th data-field="disease_synonyms"
+							data-formatter="synonymFormatter">Synonym</th>
+						<th data-field="disease_xrefs" data-formatter="xrefFormatter">Xref</th>
+						<th data-field="sources">Sources</th>
+					</tr>
+				</thead>
+			</table>
+			<div class="clearfix"></div>
+			<hr class="row  G-MarginTop20 ">
+		</div>
+		#include("/WEB-INF/views/container/footer.html")
+	</div>
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+	<script
+		src="${basepath}/js/plugins/bootstrapTable//bootstrap-table.min.js"></script>
+	<script
+		src="${basepath}/js/plugins/bootstrapTable/bootstrap-table-export.js"></script>
+	<script src="${basepath}/js/plugins/bootstrapTable/tableExport.js"></script>
+	<script type="text/javascript">
+		jQuery.noConflict();
+		//the column formatter
+		function idFormatter(row, value, index) {
+			var disease_id = value['id'];
+			return "<a href='${basepath}/data/disease/"+disease_id+"'>"
+					+ disease_id + "</a>";
+		}
+
+		function synonymFormatter(row, value, index) {
+			new_format = "";
+			var synonyms = value['disease_synonyms'];
+			for (i in synonyms) {
+				new_format += (synonyms[i] + "<strong class='text-danger'>;&nbsp;</strong><br>")
+			}
+			return new_format;
+		}
+
+		function xrefFormatter(row, value, index) {
+			xrefs = value['disease_xrefs'];
+			new_format = "";
+			for (key in xrefs) {
+				new_format += ("<strong>" + key + ": </strong>");
+				for (i in xrefs[key]) {
+					new_format += ("<span class='text-info'>" + xrefs[key][i] + "</span>，");
+				}
+				new_format += "<br>";
+			}
+			return new_format;
+		}
+		(function($) {
+		})(jQuery)
+	</script>
+
+</body>
+</html>

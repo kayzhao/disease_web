@@ -48,9 +48,11 @@
 		var url = window.location.href;
 		var navs_li = $(".navbar-nav>li");
 		var navs_a = $(".navbar-nav>li>a");
+		console.log(navs_a);
 		for (i = 0; i < navs_a.length; i++) {
 			var nav_text = navs_a[i].innerText.toLowerCase().split(' ')[0]
 					.trim();
+			console.log(nav_text);
 			if (nav_text == 'visualization')
 				nav_text = 'net';
 			//console.log(nav_text);

@@ -22,7 +22,7 @@ public class MiRNA {
 	private String id;
 
 	@Field("map_id")
-	private String disease_map_id;
+	private String disease_id;
 
 	@Field("disease_id")
 	private String disease_original_id;
@@ -68,12 +68,12 @@ public class MiRNA {
 		this.id = id;
 	}
 
-	public String getDisease_map_id() {
-		return disease_map_id;
+	public String getDisease_id() {
+		return disease_id;
 	}
 
-	public void setDisease_map_id(String disease_map_id) {
-		this.disease_map_id = disease_map_id;
+	public void setDisease_id(String disease_id) {
+		this.disease_id = disease_id;
 	}
 
 	public String getDisease_original_id() {

@@ -1,9 +1,12 @@
 package com.csu.bio.frame.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+
+import com.csu.bio.object.model.RelCount;
 
 /**
  * 
@@ -62,6 +65,13 @@ public interface CommonNoSqlDao {
 	public <T> List<T> findList(Class<T> clz, SimpleCriteriaEntry... entries);
 
 	/**
+	 * @param clz
+	 * @param type
+	 * @return
+	 */
+	public <T> List<RelCount> findListGroupBy(Class<T> clz, String type);
+
+	/**
 	 * 
 	 * findListByQuery:根据query进行查找,比findList方法更广泛. <br/>
 	 * 
@@ -81,6 +91,17 @@ public interface CommonNoSqlDao {
 	 * @return
 	 */
 	public <T> Long findCount(Class<T> clz, SimpleCriteriaEntry... entries);
+
+	/**
+	 * 查询文档总数
+	 * 
+	 * @param clz
+	 *            类型
+	 * @param query
+	 *            条件
+	 * @return
+	 */
+	public <T> Long findCountByQuery(Class<T> clz, Query query);
 
 	/**
 	 * 根据主键删除

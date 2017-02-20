@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+
+#header-link {
+	width: 100%;
+	z-index: 999;
+	background: #f8f8f8;
+}
+
+.info-table>tbody>tr>th {
+	background: #D9F5FE;
+	color: #555555;
+	width: 20%;
+}
+
+.info-table>tbody>tr>th.divider {
+	background: #555555;
+	color: #F0F0F0;
+	font-weight: normal;
+	text-shadow: black 0px -1px 0px
+}

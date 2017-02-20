@@ -3,6 +3,7 @@ package com.csu.bio.object.model;
 import java.util.HashMap;
 import java.util.List;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -15,17 +16,21 @@ public class Disease {
 	 * common fields
 	 */
 	@Id
+	@TextIndexed
 	private String id;
+
+	@TextIndexed
+	@Field("synonym")
+	private List<String> disease_synonyms;
+
+	@TextIndexed
+	@Field("name")
+	private String disease_name;
 
 	@Field("xref")
 	private HashMap<String, List<String>> disease_xrefs;
 
-	@Field("synonym")
-	private List<String> disease_synonyms;
-
-	@Field("name")
-	private String disease_name;
-
+	@TextIndexed
 	@Field("source")
 	private List<String> sources;
 
