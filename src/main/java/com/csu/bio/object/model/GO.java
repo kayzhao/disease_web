@@ -3,6 +3,7 @@ package com.csu.bio.object.model;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -22,29 +23,35 @@ public class GO {
 	@Id
 	private String id;
 
+	@TextIndexed
 	@Field("disease_id")
 	private String disease_id;
-	
+
+	@TextIndexed
 	@Field("map_id")
 	private String disease_map_id;
 
+	@TextIndexed
 	@Field("disease_name")
 	private String disease_name;
 
 	@Field("source")
 	private String source;
 
+	@TextIndexed
 	@Field("annotation_type")
 	private String annotation_type;
 
 	/**
 	 * go fields
 	 */
+	@TextIndexed
 	@Field("go_id")
-	private String gene_id;
+	private String go_id;
 
+	@TextIndexed
 	@Field("go_name")
-	private String gene_name;
+	private String go_name;
 
 	@Field("inference_gene_qty")
 	private int inference_gene_qty;
@@ -104,20 +111,20 @@ public class GO {
 		this.annotation_type = annotation_type;
 	}
 
-	public String getGene_id() {
-		return gene_id;
+	public String getGo_id() {
+		return go_id;
 	}
 
-	public void setGene_id(String gene_id) {
-		this.gene_id = gene_id;
+	public void setGo_id(String go_id) {
+		this.go_id = go_id;
 	}
 
-	public String getGene_name() {
-		return gene_name;
+	public String getGo_name() {
+		return go_name;
 	}
 
-	public void setGene_name(String gene_name) {
-		this.gene_name = gene_name;
+	public void setGo_name(String go_name) {
+		this.go_name = go_name;
 	}
 
 	public int getInference_gene_qty() {

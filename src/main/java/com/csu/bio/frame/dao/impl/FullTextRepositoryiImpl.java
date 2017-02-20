@@ -41,6 +41,24 @@ public class FullTextRepositoryiImpl implements FullTextRepository {
 		return page;
 	}
 
+	@Override
+	public <T> List<T> findAllByWords(Class<T> clz, Query query) {
+		if (query == null) {
+			return null;
+		}
+		List<T> resultList = this.mongoTemplate.find(query, clz);
+		return resultList;
+	}
+
+	@Override
+	public <T> Long findAllCountByWords(Class<T> clz, Query query) {
+		if (query == null) {
+			return null;
+		}
+		int count = this.mongoTemplate.find(query, clz).size();
+		return (long) count;
+	}
+
 	public <T extends Serializable> Page<T> findAllByPage(String[] words, String userId, Class<T> clz, Integer pageNo,
 			Integer pageSize, SimpleCriteriaEntry... entries) {
 		Query query = TextQuery.queryText(new TextCriteria().matchingAny(words)).sortByScore().restrict(clz);
@@ -60,5 +78,4 @@ public class FullTextRepositoryiImpl implements FullTextRepository {
 
 		return page;
 	}
-
 }

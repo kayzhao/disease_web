@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -25,17 +26,21 @@ public class Gene {
 	private String id;
 
 	@Field("disease_id")
+	@TextIndexed
 	private String disease_id;
 
 	@Field("map_id")
 	private String disease_map_id;
 
+	@TextIndexed
 	@Field("disease_name")
 	private String disease_name;
 
+	@TextIndexed
 	@Field("gene_id")
 	private String gene_id;
 
+	@TextIndexed
 	@Field("gene_name")
 	private String gene_name;
 

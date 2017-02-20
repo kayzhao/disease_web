@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -21,18 +23,22 @@ public class LncRNA {
 	@Id
 	private String id;
 
+	@TextIndexed
 	@Field("map_id")
 	private String disease_map_id;
 
+	@TextIndexed
 	@Field("disease_id")
 	private String disease_original_id;
 
+	@TextIndexed
 	@Field("disease_name")
 	private String disease_name;
 
 	@Field("source")
 	private String source;
 
+	@TextIndexed
 	@Field("lncrna_name")
 	private String lncrna_name;
 
@@ -57,6 +63,7 @@ public class LncRNA {
 	@Field("end")
 	private String end;
 
+	@Indexed(unique = false)
 	@Field("alias")
 	private String lncrna_alias;
 

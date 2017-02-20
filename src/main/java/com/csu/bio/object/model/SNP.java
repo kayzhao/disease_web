@@ -1,6 +1,7 @@
 package com.csu.bio.object.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -17,12 +18,15 @@ public class SNP {
 	@Id
 	private String id;
 
+	@TextIndexed
 	@Field("disease_id")
 	private String disease_id;
 
+	@TextIndexed
 	@Field("map_id")
 	private String disease_map_id;
 
+	@TextIndexed
 	@Field("disease_name")
 	private String disease_name;
 

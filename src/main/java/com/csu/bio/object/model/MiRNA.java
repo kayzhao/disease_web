@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -21,11 +22,13 @@ public class MiRNA {
 	@Id
 	private String id;
 
+	@TextIndexed
 	@Field("map_id")
 	private String disease_map_id;
 
+	@TextIndexed
 	@Field("disease_id")
-	private String disease_original_id;
+	private String disease_id;
 
 	@Field("disease_name")
 	private String disease_name;
@@ -76,12 +79,12 @@ public class MiRNA {
 		this.disease_map_id = disease_map_id;
 	}
 
-	public String getDisease_original_id() {
-		return disease_original_id;
+	public String getDisease_id() {
+		return disease_id;
 	}
 
-	public void setDisease_original_id(String disease_original_id) {
-		this.disease_original_id = disease_original_id;
+	public void setDisease_id(String disease_id) {
+		this.disease_id = disease_id;
 	}
 
 	public String getDisease_name() {

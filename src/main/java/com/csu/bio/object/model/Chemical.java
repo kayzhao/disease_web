@@ -3,6 +3,7 @@ package com.csu.bio.object.model;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -18,9 +19,11 @@ public class Chemical {
 	@Id
 	private String id;
 
+	@TextIndexed
 	@Field("disease")
 	private String disease_id;
 
+	@TextIndexed
 	@Field("map_id")
 	private String disease_map_id;
 
@@ -36,9 +39,11 @@ public class Chemical {
 	@Field("omim")
 	private List<String> omim_ids;
 
+	@TextIndexed
 	@Field("inference_gene_symbol")
 	private String inference_gene_symbol;
 
+	@TextIndexed
 	@Field("chemical_id")
 	private String chemical_id;
 

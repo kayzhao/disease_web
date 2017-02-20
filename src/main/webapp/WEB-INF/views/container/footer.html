@@ -53,7 +53,6 @@
 					.trim();
 			if (nav_text == 'visualization')
 				nav_text = 'net';
-			//console.log(nav_text);
 			if (url.indexOf(nav_text) >= 0) {
 				$(".navbar-nav>li").removeClass('active');
 				$(navs_li[i]).addClass('active');
@@ -78,7 +77,6 @@
 			}, 1000);
 		});
 		var gotop_img = $("#top_img").val();
-		console.log(gotop_img);
 		$("#gotop").mouseover(
 				function(e) {
 					$(this).css("background",

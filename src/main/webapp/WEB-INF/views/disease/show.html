@@ -27,11 +27,10 @@
 <body>
 	#parse("/WEB-INF/views/container/menu.html")
 	<div class="container">
-		<h3 class="G-MarginTop20">
+		<h3>
 			<strong class="text-uppercase"><span
 				class="glyphicon glyphicon-info-sign"> </span>Mapping Result</strong>
 		</h3>
-		<hr class="row  G-MarginTop20 ">
 		<div class="clearfix"></div>
 		<div class="text-default G-MarginTop20 row">
 			<div class="col-md-3">
@@ -49,8 +48,8 @@
 		<div class="G-MarginTop20">
 			<!-- 标题 -->
 			<div class="">
-				#if(${map.size()}>0)
 				<p class="text-default alert alert-info">Here is the result</p>
+				#if(${map.size()}>0)
 				<table class="table table-hover text-left" data-toggle="table"
 					data-sortable="true" data-pagination="true"
 					data-show-columns="true" data-striped="true" data-search="true"

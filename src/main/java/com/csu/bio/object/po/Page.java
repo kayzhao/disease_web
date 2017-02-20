@@ -1,6 +1,5 @@
 package com.csu.bio.object.po;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,7 +7,7 @@ import java.util.List;
  * 
  * @param <T>
  */
-public class Page<T extends Serializable> implements Serializable {
+public class Page<T> {
 	public static final Integer DEFAULT_PAGE_SIZE = 10;
 
 	public static final Integer DEFAULT_PAGE_NO = 1;

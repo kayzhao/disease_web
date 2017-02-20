@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.TextCriteria;
 import org.springframework.data.repository.Repository;
 
@@ -22,6 +23,28 @@ public interface FullTextRepository extends Repository {
 	 */
 	public <T extends Serializable> Page<T> findAllByPage(String[] words, Class<T> clz, Integer pageNo,
 			Integer pageSize);
+
+	/**
+	 * 全文搜索
+	 * 
+	 * @param words
+	 * @param clz
+	 * @param pageNo
+	 * @param pageSize
+	 * @return
+	 */
+	public <T> List<T> findAllByWords(Class<T> clz, Query query);
+
+	/**
+	 * 全文搜索
+	 * 
+	 * @param words
+	 * @param clz
+	 * @param pageNo
+	 * @param pageSize
+	 * @return
+	 */
+	public <T> Long findAllCountByWords(Class<T> clz, Query query);
 
 	/**
 	 * 用户的全文搜索
