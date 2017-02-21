@@ -1,32 +1,20 @@
 package com.csu.bio.controller.data;
 
-import java.io.IOException;
 import java.util.List;
-
-import javax.management.Query;
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.csu.bio.controller.pub.XkaptchaController;
 import com.csu.bio.frame.dao.CommonNoSqlDao;
 import com.csu.bio.frame.dao.CommonNoSqlMongoFSDao;
 import com.csu.bio.object.model.*;
-import com.csu.bio.object.po.Page;
 import com.csu.bio.object.po.PageList;
 import com.csu.bio.object.po.QueryParams;
 import com.csu.bio.service.data.DataService;
-import com.csu.bio.util.oper.GridfsUtil;
-import com.mongodb.gridfs.GridFSDBFile;
 
 /**
  *

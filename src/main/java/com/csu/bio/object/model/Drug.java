@@ -19,8 +19,8 @@ public class Drug {
 	@Field("disease_id")
 	private String disease_id;
 
-	@Field("map_id")
-	private String disease_map_id;
+	/*@Field("map_id")
+	private String disease_map_id;*/
 
 	@TextIndexed
 	@Field("disease_name")
@@ -181,13 +181,5 @@ public class Drug {
 
 	public void setDrug_id_type(String drug_id_type) {
 		this.drug_id_type = drug_id_type;
-	}
-
-	public String getDisease_map_id() {
-		return disease_map_id;
-	}
-
-	public void setDisease_map_id(String disease_map_id) {
-		this.disease_map_id = disease_map_id;
 	}
 }
