@@ -6,6 +6,15 @@
 	background: #f8f8f8;
 }
 
+.api-title {
+	width: 100%;
+	/* z-index: 999; */
+	height: 40px;
+	line-height: 40px;
+	padding-left: 10px;
+	background: #f8f8f8;
+}
+
 .info-table>tbody>tr>th {
 	background: #D9F5FE;
 	color: #555555;

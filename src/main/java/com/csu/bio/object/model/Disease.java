@@ -17,7 +17,7 @@ public class Disease {
 	 * common fields
 	 */
 	@Id
-	@Indexed(unique = false)
+	@TextIndexed
 	private String id;
 
 	@TextIndexed

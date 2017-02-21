@@ -6,9 +6,10 @@
 			<h1>BioDis</h1>
 			<h2>The Disease Integration Database</h2>
 			<p id="button-wrap-inner">
-				<a id="learnmore__btn_id" class="learnmore__btn" href="readme">Learn
-					more</a> &nbsp;&nbsp;or&nbsp;&nbsp;<a id="try_api_btn_id"
-					class="api__btn" href="api">Try live API now</a>
+				<a id="learnmore__btn_id" class="learnmore__btn"
+					href="${basepath}/readme">Learn more</a> &nbsp;&nbsp;or&nbsp;&nbsp;<a
+					id="try_api_btn_id" class="api__btn" href="${basepath}/api">Try
+					live API</a>
 			</p>
 			<!-- <p id="metadata_timestamp">
 				Data last updated: <a href="http://mygene.info/v3/metadata">2017-01-08</a>
@@ -17,18 +18,20 @@
 			<hr class="G-MarginTop20">
 			<div class="row">
 				<strong class="text-uppercase"><span
-					class="glyphicon glyphicon-info-sign"> </span>BioDis Introduction</strong>
-				<p class="text-default alert  alert-warning G-MarginTop20 sys-brief">Long
-					noncoding RNAs are a biggest class of non-coding RNA with greater
-					than 200nt in length which can regulate gene expression in
-					different levels including transcriptional, pos-transcriptional and
-					epigenetic regulation. Identifing lncRNA-disease association would
-					contribute to dissect the complex mechanisms of disease
-					pathogenesis. Here, we developed a new lncRNA-disease association
-					predictor, LDAP (lncRNA-disease association predictor), by
-					integrating multiple biological data resources. The LDAP provides
-					two ways to input your data: a lncRNA sequence or a txt file with
-					multiple sequences with FASTA format.</p>
+					class="glyphicon glyphicon-info-sign"> </span>Introduction</strong>
+				<p class="text-default alert  alert-info G-MarginTop20 sys-brief">
+					The <strong class="text-danger">BioDis</strong> has been developed
+					as a standardized ontology for human disease with the purpose of
+					providing the biomedical community with consistent, reusable and
+					sustainable descriptions of human disease terms, phenotype
+					characteristics and related medical vocabulary disease concepts
+					through collaborative efforts of researchers at Northwestern
+					University, Center for Genetic Medicine and the University of
+					Maryland School of Medicine, Institute for Genome Sciences. The
+					Disease Ontology semantically integrates disease and medical
+					vocabularies through extensive cross mapping of DO terms to MeSH,
+					ICD, NCI’s thesaurus, SNOMED and OMIM.
+				</p>
 			</div>
 		</div>
 		#include("/WEB-INF/views/container/footer.html")

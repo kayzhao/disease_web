@@ -1,4 +1,4 @@
-package com.csu.bio.controller.data;
+package com.csu.bio.controller.pub;
 
 import java.util.List;
 import org.apache.log4j.Logger;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import com.csu.bio.controller.pub.XkaptchaController;
+
 import com.csu.bio.frame.dao.CommonNoSqlDao;
 import com.csu.bio.frame.dao.CommonNoSqlMongoFSDao;
 import com.csu.bio.object.model.*;
@@ -23,35 +23,25 @@ import com.csu.bio.service.data.DataService;
  */
 
 @RestController
-@RequestMapping(value = "/data")
-public class DataController {
+@RequestMapping(value = "/api")
+public class APIController {
 	private final Logger logger = Logger.getLogger(XkaptchaController.class);
 
 	@Autowired
 	public DataService rs;
 
-	@Autowired
-	CommonNoSqlMongoFSDao cFsDao;
-
-	@Autowired
-	CommonNoSqlDao cDao;
-
 	@RequestMapping(value = "/diseases", method = RequestMethod.GET)
-	public ModelAndView diseaseIndex() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("disease/index");
-		return mav;
-	}
-
-	@RequestMapping(value = "/diseases/page", method = RequestMethod.GET)
 	public PageList<Disease> getdisease(QueryParams queryParams) {
 		PageList<Disease> page = new PageList<Disease>();
 		if (queryParams == null) {
 			queryParams = new QueryParams();
-			queryParams.setLimit(10);
-			queryParams.setOffset(0);
-			queryParams.setOrder("asc");
 		}
+		if (queryParams.getLimit() == null)
+			queryParams.setLimit(2);
+		if (queryParams.getOffset() == null)
+			queryParams.setOffset(0);
+		if (queryParams.getOrder() == null || queryParams.getOrder().length() == 0)
+			queryParams.setOrder("asc");
 		if (queryParams.getSort() == null || queryParams.getSort().length() == 0)
 			queryParams.setSort("id");
 		if (queryParams.getSearch() == null || queryParams.getSearch().length() == 0)
@@ -65,12 +55,9 @@ public class DataController {
 	}
 
 	@RequestMapping(value = "/disease/{id}", method = RequestMethod.GET)
-	public Object getDiseaseByID(@PathVariable("id") String id) {
-		ModelAndView mav = new ModelAndView();
+	public Disease getDiseaseByID(@PathVariable("id") String id) {
 		Disease disease = rs.getDataByID(id, Disease.class);
-		mav.setViewName("disease/info");
-		mav.addObject("disease", disease);
-		return mav;
+		return disease;
 	}
 
 	@RequestMapping(value = "/disease/{id}/drugs", method = RequestMethod.GET)
@@ -78,10 +65,13 @@ public class DataController {
 		PageList<Drug> page = new PageList<Drug>();
 		if (queryParams == null) {
 			queryParams = new QueryParams();
-			queryParams.setLimit(10);
-			queryParams.setOffset(0);
-			queryParams.setOrder("asc");
 		}
+		if (queryParams.getLimit() == null)
+			queryParams.setLimit(2);
+		if (queryParams.getOffset() == null)
+			queryParams.setOffset(0);
+		if (queryParams.getOrder() == null || queryParams.getOrder().length() == 0)
+			queryParams.setOrder("asc");
 		if (queryParams.getSort() == null || queryParams.getSort().length() == 0)
 			queryParams.setSort("id");
 		if (queryParams.getSearch() == null || queryParams.getSearch().length() == 0)
@@ -99,10 +89,13 @@ public class DataController {
 		PageList<MiRNA> page = new PageList<MiRNA>();
 		if (queryParams == null) {
 			queryParams = new QueryParams();
-			queryParams.setLimit(10);
-			queryParams.setOffset(0);
-			queryParams.setOrder("asc");
 		}
+		if (queryParams.getLimit() == null)
+			queryParams.setLimit(2);
+		if (queryParams.getOffset() == null)
+			queryParams.setOffset(0);
+		if (queryParams.getOrder() == null || queryParams.getOrder().length() == 0)
+			queryParams.setOrder("asc");
 		if (queryParams.getSort() == null || queryParams.getSort().length() == 0)
 			queryParams.setSort("id");
 		if (queryParams.getSearch() == null || queryParams.getSearch().length() == 0)
@@ -120,10 +113,13 @@ public class DataController {
 		PageList<Gene> page = new PageList<Gene>();
 		if (queryParams == null) {
 			queryParams = new QueryParams();
-			queryParams.setLimit(10);
-			queryParams.setOffset(0);
-			queryParams.setOrder("asc");
 		}
+		if (queryParams.getLimit() == null)
+			queryParams.setLimit(2);
+		if (queryParams.getOffset() == null)
+			queryParams.setOffset(0);
+		if (queryParams.getOrder() == null || queryParams.getOrder().length() == 0)
+			queryParams.setOrder("asc");
 		if (queryParams.getSort() == null || queryParams.getSort().length() == 0)
 			queryParams.setSort("id");
 		if (queryParams.getSearch() == null || queryParams.getSearch().length() == 0)
@@ -141,10 +137,13 @@ public class DataController {
 		PageList<LncRNA> page = new PageList<LncRNA>();
 		if (queryParams == null) {
 			queryParams = new QueryParams();
-			queryParams.setLimit(10);
-			queryParams.setOffset(0);
-			queryParams.setOrder("asc");
 		}
+		if (queryParams.getLimit() == null)
+			queryParams.setLimit(2);
+		if (queryParams.getOffset() == null)
+			queryParams.setOffset(0);
+		if (queryParams.getOrder() == null || queryParams.getOrder().length() == 0)
+			queryParams.setOrder("asc");
 		if (queryParams.getSort() == null || queryParams.getSort().length() == 0)
 			queryParams.setSort("id");
 		if (queryParams.getSearch() == null || queryParams.getSearch().length() == 0)
@@ -162,10 +161,13 @@ public class DataController {
 		PageList<SNP> page = new PageList<SNP>();
 		if (queryParams == null) {
 			queryParams = new QueryParams();
-			queryParams.setLimit(10);
-			queryParams.setOffset(0);
-			queryParams.setOrder("asc");
 		}
+		if (queryParams.getLimit() == null)
+			queryParams.setLimit(2);
+		if (queryParams.getOffset() == null)
+			queryParams.setOffset(0);
+		if (queryParams.getOrder() == null || queryParams.getOrder().length() == 0)
+			queryParams.setOrder("asc");
 		if (queryParams.getSort() == null || queryParams.getSort().length() == 0)
 			queryParams.setSort("id");
 		if (queryParams.getSearch() == null || queryParams.getSearch().length() == 0)
@@ -183,10 +185,13 @@ public class DataController {
 		PageList<GO> page = new PageList<GO>();
 		if (queryParams == null) {
 			queryParams = new QueryParams();
-			queryParams.setLimit(10);
-			queryParams.setOffset(0);
-			queryParams.setOrder("asc");
 		}
+		if (queryParams.getLimit() == null)
+			queryParams.setLimit(2);
+		if (queryParams.getOffset() == null)
+			queryParams.setOffset(0);
+		if (queryParams.getOrder() == null || queryParams.getOrder().length() == 0)
+			queryParams.setOrder("asc");
 		if (queryParams.getSort() == null || queryParams.getSort().length() == 0)
 			queryParams.setSort("id");
 		if (queryParams.getSearch() == null || queryParams.getSearch().length() == 0)
@@ -204,10 +209,13 @@ public class DataController {
 		PageList<Chemical> page = new PageList<Chemical>();
 		if (queryParams == null) {
 			queryParams = new QueryParams();
-			queryParams.setLimit(10);
-			queryParams.setOffset(0);
-			queryParams.setOrder("asc");
 		}
+		if (queryParams.getLimit() == null)
+			queryParams.setLimit(2);
+		if (queryParams.getOffset() == null)
+			queryParams.setOffset(0);
+		if (queryParams.getOrder() == null || queryParams.getOrder().length() == 0)
+			queryParams.setOrder("asc");
 		if (queryParams.getSort() == null || queryParams.getSort().length() == 0)
 			queryParams.setSort("id");
 		if (queryParams.getSearch() == null || queryParams.getSearch().length() == 0)

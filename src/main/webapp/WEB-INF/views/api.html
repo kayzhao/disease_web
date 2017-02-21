@@ -1,47 +1,307 @@
-#parse("/WEB-INF/views/container/header.html")
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<title>API</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="icon" type="image/x-icon" href="${basepath}/favicon.ico">
+<link rel="shortcut icon" href="${basepath}/favicon.ico"
+	type="image/x-icon">
+<!-- bootstrap相关组件 -->
+<link rel="stylesheet"
+	href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+<!-- 自定义基本CSS -->
+<link rel="stylesheet" href="${basepath}/css/customer/biodis.css">
+<link rel="stylesheet" href="${basepath}/css/base.css">
+<!-- font-awesome字体库 -->
+<link
+	href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="${basepath}/css/customer/info.css">
+<link rel="stylesheet"
+	href="${basepath}/css/plugins/jsonviewer/jquery.jsonview.min.css">
+</head>
 <body>
 	#parse("/WEB-INF/views/container/menu.html")
 	<div class="container">
-		<div class="main__banner G-MarginTop50">
+		<div class="G-MarginTop50">
+			<h4>
+				<strong class="text-uppercase"><span
+					class="glyphicon glyphicon-info-sign"> </span> Data REST API</strong>
+			</h4>
+			<hr class="G-MarginTop20">
+			<div id="header-link" class="btn-group btn-group-sm" role="group">
+				<a class="btn btn-default" href="#diseases">Diseases</a> <a
+					class="btn btn-default" href="#identification">Identification</a><a
+					class="btn btn-default" href="#drugs">Drugs</a><a
+					class="btn btn-default" href="#genes">Genes</a><a
+					class="btn btn-default" href="#lncrnas">LncRNAs</a><a
+					class="btn btn-default" href="#mirnas">MiRNAs</a><a
+					class="btn btn-default" href="#snps">SNPs</a><a
+					class="btn btn-default" href="#gos">GO Annotation</a><a
+					class="btn btn-default" href="#chemicals">Chemicals</a>
+			</div>
+			<hr class="G-MarginTop20">
 
-			<h1>BioDis</h1>
-			<h2>The Disease Web Server</h2>
-			<p id="button-wrap-inner">
-				<a id="learnmore__btn_id" ,="" class="learnmore__btn"
-					href="//speakerdeck.com/player/1274175027cb0132ab8f668b8ed88715">Learn
-					more</a> &nbsp;&nbsp;or&nbsp;&nbsp;<a id="try_api_btn_id"
-					,="" class="learnmore__btn" href="http://mygene.info/v3/api">Try
-					live API now</a>
-			</p>
-			<p id="metadata_timestamp">
-				Data last updated: <a href="http://mygene.info/v3/metadata">2017-01-08</a>
-			</p>
+			<!--  diseases -->
+			<div id="diseases" class="text-uppercase text-info api-title">Diseases</div>
 
 			<hr class="G-MarginTop20">
-			<div class="row">
-				<strong class="text-uppercase"><span
-					class="glyphicon glyphicon-info-sign"> </span>BioDis Introduction</strong>
-				<p class="text-default alert alert-info G-MarginTop20 ldap-brief">
+			A RESTful API service is also offered to users of the Disease
+			Ontology browser website to allow for programmatic access to the
+			metadata found in the database. Metadata returned in JSON format may
+			currently be requested by use of the following URL:
+			<p class="text-default alert G-MarginTop10">
+				<a href="${basepath}/api/diseases" target="__blank">
+					${basepath}/api/diseases</a>
+			<hr class="G-MarginTop20">
+			<span class="glyphicon glyphicon-star"> </span> <strong
+				class="text-danger">Note</strong>: you can use the params to get the
+			search options(default search text is "UMLS_CUI",limit is
+			pageSize,offset is pageNumber)
+			<p class="alert G-MarginTop10" id="diseases_params_json"></p>
+			which would return the following JSON:
+			<p class="alert alert-info G-MarginTop10" id="diseases_json"></p>
 
-					Long noncoding RNAs are a biggest class of non-coding RNA with
-					greater than 200nt in length which can regulate gene expression in
-					different levels including transcriptional, pos-transcriptional and
-					epigenetic regulation. Identifing lncRNA-disease association would
-					contribute to dissect the complex mechanisms of disease
-					pathogenesis. Here, we developed a new lncRNA-disease association
-					predictor, LDAP (lncRNA-disease association predictor), by
-					integrating multiple biological data resources. The LDAP provides
-					two ways to input your data: a lncRNA sequence or a txt file with
-					multiple sequences with FASTA format.</p>
-			</div>
+			<hr class="G-MarginTop20">
+
+			<!--  identification -->
+			<div id="identification" class="text-uppercase text-info api-title">Identification</div>
+			<hr class="G-MarginTop20">
+			A RESTful API service is also offered to users of the Disease
+			Ontology browser website to allow for programmatic access to the
+			metadata found in the database. Metadata returned in JSON format may
+			currently be requested by use of the following URL:
+			<p class="text-default alert alert-info G-MarginTop10">
+				${basepath}/api/disease/(DiseaseID)
+			<hr class="G-MarginTop20">
+			Example usage here would be querying for metadata from the term
+			"Disease" (DOID:4):
+			<p class="text-default alert G-MarginTop10">
+				<a href="${basepath}/api/disease/DOID:4" target="__blank">
+					${basepath}/api/disease/DOID:4</a>
+			<hr class="G-MarginTop20">
+			which would return the following JSON:
+			<p class="alert alert-info G-MarginTop10" id="disease_id_json"></p>
+			<hr class="G-MarginTop20">
+
+			<!--  drugs -->
+			<div id="drugs" class="text-uppercase text-info api-title">Drugs</div>
+			<hr class="G-MarginTop20">
+			Drugs of Disease returned in JSON format may currently be requested
+			by use of the following URL:
+			<p class="text-default alert alert-info G-MarginTop10">
+				${basepath}/api/disease/(DiseaseID)/drugs
+			<hr class="G-MarginTop20">
+			<span class="glyphicon glyphicon-star"> </span> <strong
+				class="text-danger">Note</strong>: you can use the params to get the
+			search options(limit is pageSize,offset is pageNumber),Example usage
+			here would be querying for drugs from the term "Disease"
+			(KEGG:H00001):
+			<p class="text-default alert G-MarginTop10">
+				<a href="${basepath}/api/disease/KEGG:H00001/drugs" target="__blank">
+					${basepath}/api/disease/KEGG:H00001/drugs</a>
+			<hr class="G-MarginTop20">
+			which would return the following JSON:
+			<p class="alert alert-info G-MarginTop10" id="disease_drugs_json"></p>
+			<hr class="G-MarginTop20">
+
+
+			<!--  genes -->
+			<div id="genes" class="text-uppercase text-info api-title">Genes</div>
+			<hr class="G-MarginTop20">
+			Genes of Disease returned in JSON format may currently be requested
+			by use of the following URL:
+			<p class="text-default alert alert-info G-MarginTop10">
+				${basepath}/api/disease/(DiseaseID)/genes
+			<hr class="G-MarginTop20">
+			<span class="glyphicon glyphicon-star"> </span> <strong
+				class="text-danger">Note</strong>: you can use the params to get the
+			search options(limit is pageSize,offset is pageNumber),Example usage
+			here would be querying for drugs from the term "Disease"
+			(KEGG:H00001):
+			<p class="text-default alert G-MarginTop10">
+				<a href="${basepath}/api/disease/KEGG:H00001/genes" target="__blank">
+					${basepath}/api/disease/KEGG:H00001/genes</a>
+			<hr class="G-MarginTop20">
+			which would return the following JSON(same to drugs)
+			<hr class="G-MarginTop20">
+
+			<!--  lncrnas -->
+			<div id="lncrnas" class="text-uppercase text-info api-title">LncRNAs</div>
+			<hr class="G-MarginTop20">
+			LncRNAs of Disease returned in JSON format may currently be requested
+			by use of the following URL:
+			<p class="text-default alert alert-info G-MarginTop10">
+				${basepath}/api/disease/(DiseaseID)/lncrnas
+			<hr class="G-MarginTop20">
+			<span class="glyphicon glyphicon-star"> </span> <strong
+				class="text-danger">Note</strong>: you can use the params to get the
+			search options(limit is pageSize,offset is pageNumber),Example usage
+			here would be querying for drugs from the term "Disease"
+			(KEGG:H00001):
+			<p class="text-default alert G-MarginTop10">
+				<a href="${basepath}/api/disease/KEGG:H00001/lncrnas"
+					target="__blank"> ${basepath}/api/disease/KEGG:H00001/lncrnas</a>
+			<hr class="G-MarginTop20">
+			which would return the following JSON(same to drugs)
+			<hr class="G-MarginTop20">
+
+
+			<!--  mirnas -->
+			<div id="mirnas" class="text-uppercase text-info api-title">MirRNAs</div>
+			<hr class="G-MarginTop20">
+			MirRNAs of Disease returned in JSON format may currently be requested
+			by use of the following URL:
+			<p class="text-default alert alert-info G-MarginTop10">
+				${basepath}/api/disease/(DiseaseID)/mirnas
+			<hr class="G-MarginTop20">
+			<span class="glyphicon glyphicon-star"> </span> <strong
+				class="text-danger">Note</strong>: you can use the params to get the
+			search options(limit is pageSize,offset is pageNumber),Example usage
+			here would be querying for drugs from the term "Disease"
+			(KEGG:H00001):
+			<p class="text-default alert G-MarginTop10">
+				<a href="${basepath}/api/disease/KEGG:H00001/mirnas"
+					target="__blank"> ${basepath}/api/disease/KEGG:H00001/mirnas</a>
+			<hr class="G-MarginTop20">
+			which would return the following JSON(same to drugs)
+			<hr class="G-MarginTop20">
+
+
+			<!--  SNPs -->
+			<div id="snps" class="text-uppercase text-info api-title">SNPs</div>
+			<hr class="G-MarginTop20">
+			SNPs of Disease returned in JSON format may currently be requested by
+			use of the following URL:
+			<p class="text-default alert alert-info G-MarginTop10">
+				${basepath}/api/disease/(DiseaseID)/snps
+			<hr class="G-MarginTop20">
+			<span class="glyphicon glyphicon-star"> </span> <strong
+				class="text-danger">Note</strong>: you can use the params to get the
+			search options(limit is pageSize,offset is pageNumber),Example usage
+			here would be querying for drugs from the term "Disease"
+			(KEGG:H00001):
+			<p class="text-default alert G-MarginTop10">
+				<a href="${basepath}/api/disease/KEGG:H00001/snps" target="__blank">
+					${basepath}/api/disease/KEGG:H00001/snps</a>
+			<hr class="G-MarginTop20">
+			which would return the following JSON(same to drugs)
+			<hr class="G-MarginTop20">
+
+			<!--  GO -->
+			<div id="gos" class="text-uppercase text-info api-title">GO
+				Annotations</div>
+			<hr class="G-MarginTop20">
+			GO Annotations of Disease returned in JSON format may currently be
+			requested by use of the following URL:
+			<p class="text-default alert alert-info G-MarginTop10">
+				${basepath}/api/disease/(DiseaseID)/gos
+			<hr class="G-MarginTop20">
+			<span class="glyphicon glyphicon-star"> </span> <strong
+				class="text-danger">Note</strong>: you can use the params to get the
+			search options(limit is pageSize,offset is pageNumber),Example usage
+			here would be querying for drugs from the term "Disease"
+			(KEGG:H00001):
+			<p class="text-default alert G-MarginTop10">
+				<a href="${basepath}/api/disease/KEGG:H00001/gos" target="__blank">
+					${basepath}/api/disease/KEGG:H00001/gos</a>
+			<hr class="G-MarginTop20">
+			which would return the following JSON(same to drugs)
+			<hr class="G-MarginTop20">
+
+			<!--  GO -->
+			<div id="chemicals" class="text-uppercase text-info api-title">Chemicals</div>
+			<hr class="G-MarginTop20">
+			Chemicals of Disease returned in JSON format may currently be
+			requested by use of the following URL:
+			<p class="text-default alert alert-info G-MarginTop10">
+				${basepath}/api/disease/(DiseaseID)/chemicals
+			<hr class="G-MarginTop20">
+			<span class="glyphicon glyphicon-star"> </span> <strong
+				class="text-danger">Note</strong>: you can use the params to get the
+			search options(limit is pageSize,offset is pageNumber),Example usage
+			here would be querying for drugs from the term "Disease"
+			(KEGG:H00001):
+			<p class="text-default alert G-MarginTop10">
+				<a href="${basepath}/api/disease/KEGG:H00001/chemicals"
+					target="__blank"> ${basepath}/api/disease/KEGG:H00001/chemicals</a>
+			<hr class="G-MarginTop20">
+			which would return the following JSON(same to drugs)
+			<hr class="G-MarginTop20">
+
+			<!-- end -->
+			<p class="text-default alert alert-warning G-MarginTop10">In the
+				future we hope to offer all the services that are available on the
+				our browser website through the REST API as well.
 		</div>
 		#include("/WEB-INF/views/container/footer.html")
 	</div>
+	<script src="${basepath}/js/plugins/jsonviewer/jquery.jsonview.min.js"></script>
+	<script src="${basepath}/js/plugins/sticky/jquery.sticky.js"></script>
 	<script type="text/javascript">
 		jQuery.noConflict();
 		(function($) {
+			$("#header-link").sticky({
+				topSpacing : 0,
+				zIndex : 999
+			});
+
+			// init api json : disease/id
+			$.ajax({
+				type : 'GET',
+				dataType : "JSON",
+				url : "${basepath}/api/diseases",
+				success : function(data) {
+					var params = {
+						"params" : data['params']
+					}
+					$("#diseases_params_json").JSONView(params);
+					$("#diseases_json").JSONView(data);
+				},
+				error : function() {
+					$("#diseases_json").removeClass("alert-info");
+					$("#diseases_json").addClass("alert-danger");
+					$("#diseases_json").html("unable to load the api example");
+				}
+			});
+
+			// init api json : disease/id
+			$.ajax({
+				type : 'GET',
+				dataType : "JSON",
+				url : "${basepath}/api/disease/DOID:4",
+				success : function(data) {
+					$("#disease_id_json").JSONView(data);
+				},
+				error : function() {
+					$("#disease_id_json").addClass("text-danger");
+					$("#disease_id_json")
+							.html("unable to load the api example");
+				}
+			});
+
+			// init api json : disease/id
+			$.ajax({
+				type : 'GET',
+				dataType : "JSON",
+				url : "${basepath}/api/disease/KEGG:H00001/drugs",
+				success : function(data) {
+					$("#disease_drugs_json").JSONView(data);
+				},
+				error : function() {
+					$("#disease_drugs_json").addClass("text-danger");
+					$("#disease_drugs_json").html(
+							"unable to load the api example");
+				}
+			});
+
+			//
 		})(jQuery)
 	</script>
 </body>
-
 </html>

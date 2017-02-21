@@ -1,8 +1,6 @@
 package com.csu.bio.service.data;
 
-import java.io.Serializable;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -12,10 +10,8 @@ import org.springframework.data.mongodb.core.query.TextCriteria;
 import org.springframework.data.mongodb.core.query.TextQuery;
 import org.springframework.stereotype.Service;
 import com.csu.bio.frame.dao.CommonNoSqlDao;
-import com.csu.bio.frame.dao.CommonNoSqlDao.SimpleCriteriaEntry;
 import com.csu.bio.frame.dao.FullTextRepository;
 import com.csu.bio.object.model.RelCount;
-import com.csu.bio.object.po.Page;
 import com.csu.bio.object.po.QueryParams;
 
 @Service

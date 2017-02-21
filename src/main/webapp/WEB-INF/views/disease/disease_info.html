@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<title>Disease Info</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="icon" type="image/x-icon" href="${basepath}/favicon.ico">
+<link rel="shortcut icon" href="${basepath}/favicon.ico"
+	type="image/x-icon">
+<!-- bootstrap相关组件 -->
+<link rel="stylesheet"
+	href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+<!-- 自定义基本CSS -->
+<link rel="stylesheet" href="${basepath}/css/customer/biodis.css">
+<link rel="stylesheet" href="${basepath}/css/base.css">
+<link rel="stylesheet" href="${basepath}/css/customer/net.css">
+<link rel="stylesheet" href="${basepath}/css/customer/disease_info.css">
+<!-- font-awesome字体库 -->
+<link
+	href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<link
+	href="${basepath}/css/plugins/bootstrap/bootstrapValidator.min.css"
+	rel="stylesheet">
+<!--bootstrap-select start-->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+<!--bootstrap-select end-->
+</head>
+<body>
+	#parse("/WEB-INF/views/container/menu.html")
+	<div class="container">
+		<!-- 内容 -->
+		<div class="G-MarginTop20">
+			<h3>
+				Information For ID <strong class="text-uppercase text-danger">[$!disease.id]</strong>
+			</h3>
+			<div class="center-block panel panel-info G-MarginTop20">
+				<div class="panel-heading">
+					<h3 class="panel-title">Disease Info</h3>
+				</div>
+				<div class="panel-body text-default">
+					The Disease detail information.To get more info of database please
+					visit the <a target='__blank' href="${basepath}/readme">tutorial
+						page</a>.
+					<div class="alert alert-warning G-MarginTop10">
+						NOTICE:
+						<ol style="margin-left: 60px;">
+							<li>Synonym: split by comma</li>
+							<li>Xref: split by comma， format is [(ID Type)=[ID list],(ID
+								Type)=[ID list]]</li>
+							<li>Sources: split by comma， format is [(source
+								name),(source name)]</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="G-MarginTop20">
+			<div id="header-link" class="btn-group btn-group-sm" role="group">
+				<a class="btn btn-default" href="#identification">Identification</a><a
+					class="btn btn-default" href="#drug">Drugs</a><a
+					class="btn btn-default" href="#gene">Genes</a><a
+					class="btn btn-default" href="#lncrna">LncRNAs</a><a
+					class="btn btn-default" href="#mirna">MiRNAs</a><a
+					class="btn btn-default" href="#snp">SNPs</a><a
+					class="btn btn-default" href="#go">GO Annotation</a><a
+					class="btn btn-default" href="#chemical">Chemicals</a><a
+					class="btn btn-default" href="#sources">Sources</a>
+			</div>
+			<!-- 标题 -->
+			#if($disease)
+			<table class="info-table table table-hover G-MarginTop20">
+				<tbody>
+					<tr id="identification">
+						<th class="divider" colspan="2">Identification</th>
+					</tr>
+					<tr>
+						<th>Name</th>
+						<td>$!disease.disease_name</td>
+					</tr>
+					<tr>
+						<th>Access Number</th>
+						<td>$!disease.id</td>
+					</tr>
+					<tr>
+						<th>Synonyms</th>
+						<td>#foreach($synonym in $!disease.disease_synonyms) <span
+							class="text-info">$synonym </span><br> #end
+						</td>
+					</tr>
+					<tr>
+						<th>External Identifiers</th>
+						<td>#foreach($m in $!disease.disease_xrefs.entrySet()) <strong
+							class="text-info">$!m.key: </strong> <span class="text-default">$!m.value</span>
+							<br> #end
+						</td>
+					</tr>
+					<tr>
+						<th>Definition</th>
+						<td>$!disease.definition</td>
+					</tr>
+					<tr>
+						<th>Comment</th>
+						<td>$!disease.comment</td>
+					</tr>
+					<tr>
+						<th>Subsets</th>
+						<td>#foreach($s in $!disease.subsets) <span class="text-info">$s
+						</span><br> #end
+						</td>
+					</tr>
+					<tr>
+						<th>Namespace</th>
+						<td>$!disease.namespace</td>
+					</tr>
+					<tr>
+						<th>Relationships(is_a)</th>
+						<td>#foreach($s in $!disease.relationships_of_is_a) <span
+							class="text-info">$s </span><br> #end
+						</td>
+					</tr>
+					<tr>
+						<th>Relationships(part_of)</th>
+						<td>#foreach($s in $!disease.relationships_of_part_of) <span
+							class="text-info">$s </span><br> #end
+						</td>
+					</tr>
+					<tr>
+						<th>Alternate IDs</th>
+						<td>#foreach($s in $!disease.alternate_ids) <span
+							class="text-info">$s </span><br> #end
+						</td>
+					</tr>
+					<tr>
+						<th>Created By</th>
+						<td>$!disease.created_by</td>
+					</tr>
+					<tr>
+						<th>Created Date</th>
+						<td>$!disease.created_date</td>
+					</tr>
+					<tr>
+						<th>Last Updated</th>
+						<td>$!disease.last_updated</td>
+					</tr>
+					<tr>
+						<th>Disease Category</th>
+						<td>$!disease.disease_category</td>
+					</tr>
+					<tr>
+						<th>Disease Description</th>
+						<td>$!disease.disease_description</td>
+					</tr>
+					<tr>
+						<th>Note</th>
+						<td>$!disease.note</td>
+					</tr>
+					<tr>
+						<th>See Also</th>
+						<td>#foreach($s in $!disease.see_also) <span
+							class="text-info">$s </span><br> #end
+						</td>
+					</tr>
+					<tr>
+						<th>Semantic Types</th>
+						<td>#foreach($s in $!disease.semantic_types) <span
+							class="text-info">$s </span><br> #end
+						</td>
+					</tr>
+					<tr>
+						<th>Semantic Type IDs</th>
+						<td>#foreach($s in $!disease.semantic_type_ids) <span
+							class="text-info">$s </span><br> #end
+						</td>
+					</tr>
+					<tr>
+						<th>Record Type</th>
+						<td>$!disease.record_type</td>
+					</tr>
+					<tr>
+						<th>MESH Trees</th>
+						<td>#foreach($s in $!disease.mesh_trees) <span
+							class="text-info">$s </span><br> #end
+						</td>
+					</tr>
+					<tr>
+						<th>Descriptor Class</th>
+						<td>$!disease.descriptor_class</td>
+					</tr>
+					<tr>
+						<th>MESH Term</th>
+						<td>$!disease.term</td>
+					</tr>
+
+					<!--disease-drugs -->
+					<tr id="drug">
+						<th class="divider" colspan="2">Drugs</th>
+					</tr>
+					<tr>
+						<th>Name</th>
+						<td>Jacob</td>
+					</tr>
+					<tr>
+						<th scope="row">3</th>
+						<td>Larry</td>
+					</tr>
+
+
+					<tr id="snps">
+						<th class="divider" colspan="2">Snps</th>
+					</tr>
+					<tr>
+						<th>Name</th>
+						<td>Jacob</td>
+					</tr>
+					<tr>
+						<th scope="row">3</th>
+						<td>Larry</td>
+					</tr>
+
+					<tr id="sources">
+						<th class="divider" colspan="2">sources</th>
+					</tr>
+					<tr>
+						<th>Data Original Sources</th>
+						<td>$!disease.sources</td>
+					</tr>
+				</tbody>
+			</table>
+			#else
+			<p class="text-default alert alert-danger">sorry, there is no
+				result for the disease</p>
+			#end
+			<!-- end if -->
+			<div class="clearfix"></div>
+			<hr class="row  G-MarginTop20 ">
+		</div>
+		#include("/WEB-INF/views/container/footer.html")
+	</div>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="${basepath}/js/plugins/sticky/jquery.sticky.js"></script>
+	<script type="text/javascript">
+		jQuery.noConflict();
+		(function($) {
+			$("#header-link").sticky({
+				topSpacing : 0
+			});
+		})(jQuery)
+	</script>
+
+</body>
+</html>
