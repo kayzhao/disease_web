@@ -23,13 +23,8 @@
 	href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet">
 <link
-	href="${basepath}/css/plugins/bootstrap/bootstrapValidator.min.css"
+	href="${basepath}/css/plugins/bootstrap/bootstrap-table-sticky-header.css"
 	rel="stylesheet">
-<!--bootstrap-select start-->
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
-<!--bootstrap-select end-->
 </head>
 <body>
 	#parse("/WEB-INF/views/container/menu.html")
@@ -67,11 +62,11 @@
 			</div>
 		</div>
 		<div class="G-MarginTop20">
-			<table class="table table-hover text-left" data-toggle="table"
-				data-sortable="true" data-pagination="true" data-show-columns="true"
-				data-striped="true" data-show-export="true" data-search="true"
-				data-url="${basepath}/data/diseases/page"
-				data-side-pagination="server">
+			<table id="table" class="table table-hover text-left"
+				data-toggle="table" data-sortable="true" data-pagination="true"
+				data-show-columns="true" data-striped="true" data-show-export="true"
+				data-search="true" data-url="${basepath}/data/diseases/page"
+				data-side-pagination="server" stickyHeader="true">
 				<thead>
 					<tr>
 						<th data-field="id" data-formatter="idFormatter"
@@ -97,6 +92,8 @@
 	<script
 		src="${basepath}/js/plugins/bootstrapTable/bootstrap-table-export.js"></script>
 	<script src="${basepath}/js/plugins/bootstrapTable/tableExport.js"></script>
+	<script
+		src="${basepath}/js/plugins/bootstrapTable/bootstrap-table-sticky-header.js"></script>
 	<script type="text/javascript">
 		jQuery.noConflict();
 		//the column formatter
@@ -128,8 +125,10 @@
 			return new_format;
 		}
 		(function($) {
+			$("#table").bootstrapTable({
+				stickyHeader : true
+			})
 		})(jQuery)
 	</script>
-
 </body>
 </html>

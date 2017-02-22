@@ -18,6 +18,9 @@
 <link rel="stylesheet" href="${basepath}/css/customer/biodis.css">
 <link rel="stylesheet" href="${basepath}/css/base.css">
 <link rel="stylesheet" href="${basepath}/css/customer/net.css">
+<link
+	href="${basepath}/css/plugins/bootstrap/bootstrap-table-sticky-header.css"
+	rel="stylesheet">
 <!-- font-awesome字体库 -->
 <link
 	href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
@@ -51,39 +54,39 @@
 			<div class="">
 				#if(${map.size()}>0)
 				<p class="text-default alert alert-info">Here is the result</p>
-				<table class="table table-hover text-left" data-toggle="table"
-					data-sortable="true" data-pagination="true"
+				<table id="table" class="table table-hover text-left"
+					data-toggle="table" data-sortable="true" data-pagination="true"
 					data-show-columns="true" data-striped="true" data-search="true"
 					data-show-export="true">
 					<thead>
 						<tr>
-							<th data-sortable="true">Disease ID</th>
-							<th data-sortable="true">DOID</th>
-							<th data-sortable="true">KEGG</th>
-							<th data-sortable="true">MESH</th>
-							<th data-sortable="true">OMIM</th>
-							<th data-sortable="true">UMLS_CUI</th>
-							<th data-sortable="true">HPO</th>
-							<th data-sortable="true">ICD9CM</th>
-							<th data-sortable="true">ICD10CM</th>
-							<th data-sortable="true">ORPHANET</th>
-							<th data-sortable="true">Other</th>
+							<th data-sortable="true" data-visible="false">Disease ID</th>
+							<th data-sortable="true" data-visible="false">DOID</th>
+							<th data-sortable="true" data-visible="false">KEGG</th>
+							<th data-sortable="true" data-visible="false">MESH</th>
+							<th data-sortable="true" data-visible="false">OMIM</th>
+							<th data-sortable="true" data-visible="false">UMLS_CUI</th>
+							<th data-sortable="true" data-visible="false">HPO</th>
+							<th data-sortable="true" data-visible="false">ICD9CM</th>
+							<th data-sortable="true" data-visible="false">ICD10CM</th>
+							<th data-sortable="true" data-visible="false">ORPHANET</th>
+							<th data-sortable="true" data-visible="false">Other</th>
 						</tr>
 					</thead>
 					<tbody>
 						#foreach($m in $map.entrySet())
 						<tr>
-							<td data-sortable="true">$!m.key</td>
-							<td data-sortable="true">$!m.value.doid</td>
-							<td data-sortable="true">$!m.value.kegg</td>
-							<td data-sortable="true">$!m.value.mesh</td>
-							<td data-sortable="true">$!m.value.omim</td>
-							<td data-sortable="true">$!m.value.umls_cui</td>
-							<td data-sortable="true">$!m.value.hp</td>
-							<td data-sortable="true">$!m.value.icd9cm</td>
-							<td data-sortable="true">$!m.value.icd10cm</td>
-							<td data-sortable="true">$!m.value.orphanet</td>
-							<td data-sortable="true">$!m.value.other</td>
+							<td>$!m.key</td>
+							<td>$!m.value.doid</td>
+							<td>$!m.value.kegg</td>
+							<td>$!m.value.mesh</td>
+							<td>$!m.value.omim</td>
+							<td>$!m.value.umls_cui</td>
+							<td>$!m.value.hp</td>
+							<td>$!m.value.icd9cm</td>
+							<td>$!m.value.icd10cm</td>
+							<td>$!m.value.orphanet</td>
+							<td>$!m.value.other</td>
 						</tr>
 						<!-- end foreach -->
 						#end
@@ -101,9 +104,40 @@
 		#include("/WEB-INF/views/container/footer.html")
 	</div>
 	<script
-		src="${basepath}/js/plugins/bootstrapTable//bootstrap-table.min.js"></script>
+		src="${basepath}/js/plugins/bootstrapTable/bootstrap-table.min.js"></script>
 	<script
 		src="${basepath}/js/plugins/bootstrapTable/bootstrap-table-export.js"></script>
 	<script src="${basepath}/js/plugins/bootstrapTable/tableExport.js"></script>
+	<script
+		src="${basepath}/js/plugins/bootstrapTable/bootstrap-table-sticky-header.js"></script>
+	<script type="text/javascript">
+		jQuery.noConflict();
+		(function($) {
+			//stickyHeader
+			$("#table").bootstrapTable({
+				stickyHeader : true
+			})
+
+			//auto hide columns
+			var t = "${type}";
+			var visibles = $("#table").bootstrapTable("getHiddenColumns", "-");
+			console.log(visibles)
+			if (t == "ALL") {
+				for ( var i in visibles) {
+					$("#table").bootstrapTable("showColumn", visibles[i].field);
+				}
+			} else {
+				$("#table").bootstrapTable("showColumn", 0);
+				for ( var i in visibles) {
+					if (t == visibles[i].title) {
+						console.log(i)
+						$("#table").bootstrapTable("showColumn",
+								visibles[i].field);
+						break;
+					}
+				}
+			}
+		})(jQuery)
+	</script>
 </body>
 </html>

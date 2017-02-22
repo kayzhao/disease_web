@@ -27,6 +27,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.csu.bio.frame.dao.CommonNoSqlMongoFSDao;
 import com.csu.bio.object.model.*;
+import com.csu.bio.object.po.PageList;
+import com.csu.bio.object.po.QueryParams;
 import com.csu.bio.service.data.DataService;
 import com.csu.bio.service.mapping.MappingService;
 import com.csu.bio.util.CytoVisual;
@@ -122,6 +124,7 @@ public class MapController {
 			}
 			map.remove("errorids");
 		}
+
 		mav.addObject("map", map);
 		mav.addObject("errorids", errorids);
 		mav.addObject("type", idType);
