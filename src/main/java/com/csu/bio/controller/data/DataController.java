@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.csu.bio.controller.pub.XkaptchaController;
 import com.csu.bio.frame.dao.CommonNoSqlDao;
 import com.csu.bio.frame.dao.CommonNoSqlMongoFSDao;
+import com.csu.bio.object.disease.Disease;
 import com.csu.bio.object.model.*;
 import com.csu.bio.object.po.PageList;
 import com.csu.bio.object.po.QueryParams;
@@ -71,6 +72,12 @@ public class DataController {
 		mav.setViewName("disease/info");
 		mav.addObject("disease", disease);
 		return mav;
+	}
+
+	@RequestMapping(value = "/disease/{id}", method = RequestMethod.POST)
+	public Disease getDiseaseByIDPOST(@PathVariable("id") String id) {
+		Disease disease = rs.getDataByID(id, Disease.class);
+		return disease;
 	}
 
 	@RequestMapping(value = "/disease/{id}/drugs", method = RequestMethod.GET)

@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.csu.bio.frame.dao.CommonNoSqlDao;
 import com.csu.bio.frame.dao.CommonNoSqlMongoFSDao;
+import com.csu.bio.object.disease.Disease;
 import com.csu.bio.object.model.*;
 import com.csu.bio.object.po.PageList;
 import com.csu.bio.object.po.QueryParams;

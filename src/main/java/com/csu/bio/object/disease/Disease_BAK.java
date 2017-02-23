@@ -1,17 +1,16 @@
-package com.csu.bio.object.model;
+package com.csu.bio.object.disease;
 
 import java.util.HashMap;
 import java.util.List;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import com.csu.bio.object.po.Concept;
 
-@Document(collection = "disease")
-public class Disease {
+@Document(collection = "umls_disease")
+public class Disease_BAK {
 
 	/**
 	 * common fields
@@ -169,39 +168,6 @@ public class Disease {
 
 	@Field("prevalence")
 	private List<HashMap<String, String>> prevalence_records;
-
-	/**
-	 * associations flag
-	 */
-	@Field("drugs")
-	private Boolean has_drug_associations;
-
-	@Field("genes")
-	private Boolean has_gene_associations;
-
-	@Field("gos")
-	private Boolean has_go_associations;
-
-	@Field("snps")
-	private Boolean has_snp_associations;
-
-	@Field("pathways")
-	private Boolean has_pathway_associations;
-
-	@Field("markers")
-	private Boolean has_marker_associations;
-
-	@Field("phenotypes")
-	private Boolean has_phenotype_associations;
-
-	@Field("chemicals")
-	private Boolean has_chemical_associations;
-
-	@Field("lncrnas")
-	private Boolean has_lncrna_associations;
-
-	@Field("mirnas")
-	private Boolean has_mirna_associations;
 
 	/**
 	 * getters and setters
@@ -420,86 +386,6 @@ public class Disease {
 
 	public void setCreated_date(String created_date) {
 		this.created_date = created_date;
-	}
-
-	public Boolean getHas_drug_associations() {
-		return has_drug_associations;
-	}
-
-	public void setHas_drug_associations(Boolean has_drug_associations) {
-		this.has_drug_associations = has_drug_associations;
-	}
-
-	public Boolean getHas_gene_associations() {
-		return has_gene_associations;
-	}
-
-	public void setHas_gene_associations(Boolean has_gene_associations) {
-		this.has_gene_associations = has_gene_associations;
-	}
-
-	public Boolean getHas_go_associations() {
-		return has_go_associations;
-	}
-
-	public void setHas_go_associations(Boolean has_go_associations) {
-		this.has_go_associations = has_go_associations;
-	}
-
-	public Boolean getHas_snp_associations() {
-		return has_snp_associations;
-	}
-
-	public void setHas_snp_associations(Boolean has_snp_associations) {
-		this.has_snp_associations = has_snp_associations;
-	}
-
-	public Boolean getHas_pathway_associations() {
-		return has_pathway_associations;
-	}
-
-	public void setHas_pathway_associations(Boolean has_pathway_associations) {
-		this.has_pathway_associations = has_pathway_associations;
-	}
-
-	public Boolean getHas_marker_associations() {
-		return has_marker_associations;
-	}
-
-	public void setHas_marker_associations(Boolean has_marker_associations) {
-		this.has_marker_associations = has_marker_associations;
-	}
-
-	public Boolean getHas_phenotype_associations() {
-		return has_phenotype_associations;
-	}
-
-	public void setHas_phenotype_associations(Boolean has_phenotype_associations) {
-		this.has_phenotype_associations = has_phenotype_associations;
-	}
-
-	public Boolean getHas_chemical_associations() {
-		return has_chemical_associations;
-	}
-
-	public void setHas_chemical_associations(Boolean has_chemical_associations) {
-		this.has_chemical_associations = has_chemical_associations;
-	}
-
-	public Boolean getHas_lncrna_associations() {
-		return has_lncrna_associations;
-	}
-
-	public void setHas_lncrna_associations(Boolean has_lncrna_associations) {
-		this.has_lncrna_associations = has_lncrna_associations;
-	}
-
-	public Boolean getHas_mirna_associations() {
-		return has_mirna_associations;
-	}
-
-	public void setHas_mirna_associations(Boolean has_mirna_associations) {
-		this.has_mirna_associations = has_mirna_associations;
 	}
 
 	public List<String> getSources() {

@@ -51,11 +51,16 @@
 					<div class="alert alert-warning">
 						NOTICE:
 						<ol style="margin-left: 60px;">
-							<li>Synonym: split by comma</li>
-							<li>Xref: split by comma， format is [(ID Type)=[ID list],(ID
-								Type)=[ID list]]</li>
-							<li>Sources: split by comma， format is [(source
-								name),(source name)]</li>
+							<li>Synonym: split by ";"(only display the English synonyms)</li>
+							<li>Xref: split by ","， format is:<br> (ID Type)=[ID
+								list]<br> (ID Type)=[ID list]<br> <span
+								class="glyphicon glyphicon-star"> </span><span
+								class="text-danger">In this page, only display the
+									:"MESH", "KEGG", "DOID", "OMIM", "HPO", "ICD9CM", "ICD10CM",
+									"ORPHANET" </span>
+							</li>
+							<li>Sources: split by ","， format is [(source name),(source
+								name)]</li>
 						</ol>
 					</div>
 				</div>
@@ -75,7 +80,7 @@
 						<th data-field="disease_synonyms"
 							data-formatter="synonymFormatter">Synonym</th>
 						<th data-field="disease_xrefs" data-formatter="xrefFormatter">Xref</th>
-						<th data-field="sources">Sources</th>
+						<th data-field="sources" data-formatter="sourceFormatter">Sources</th>
 					</tr>
 				</thead>
 			</table>
@@ -106,21 +111,43 @@
 		function synonymFormatter(row, value, index) {
 			new_format = "";
 			var synonyms = value['disease_synonyms'];
+			var num_of_synonyms = 0;
 			for (i in synonyms) {
-				new_format += (synonyms[i] + "<strong class='text-danger'>;&nbsp;</strong><br>")
+				if (synonyms[i].indexOf("(ENG)") >= 0) {
+					num_of_synonyms++;
+					new_format += (synonyms[i] + "<strong class='text-danger'>;&nbsp;</strong><br>")
+					if (num_of_synonyms > 5)
+						break;
+				}
 			}
 			return new_format;
 		}
 
 		function xrefFormatter(row, value, index) {
+			var type_of_dis = [ "MESH", "KEGG", "DOID", "OMIM", "HPO",
+					"ICD9CM", "ICD10CM", "ORPHANET" ];
 			xrefs = value['disease_xrefs'];
 			new_format = "";
 			for (key in xrefs) {
-				new_format += ("<strong>" + key + ": </strong>");
-				for (i in xrefs[key]) {
-					new_format += ("<span class='text-info'>" + xrefs[key][i] + "</span>，");
+				console.log(key)
+				console.log(type_of_dis);
+				if (type_of_dis.indexOf(key) > -1) {
+					new_format += ("<strong>" + key + ": </strong>");
+					for (i in xrefs[key]) {
+						new_format += ("<span class='text-info'>"
+								+ xrefs[key][i] + "</span>，");
+					}
+					new_format += "<br>";
 				}
-				new_format += "<br>";
+			}
+			return new_format;
+		}
+
+		function sourceFormatter(row, value, index) {
+			new_format = "";
+			var sources = value['sources'];
+			for (i in sources) {
+				new_format += (sources[i] + "<strong class='text-danger'>;&nbsp;</strong><br>")
 			}
 			return new_format;
 		}
