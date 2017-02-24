@@ -328,6 +328,7 @@
 	<script src="${basepath}/js/plugins/jsonviewer/jquery.jsonview.min.js"></script>
 	<script type="text/javascript">
 		jQuery.noConflict();
+
 		//the column formatter
 		function idFormatter(row, value, index) {
 			var disease_id = value['disease_id'];
@@ -345,7 +346,6 @@
 			$("#expand").on('click', function() {
 				$("#merge_doc_info").JSONView('expand');
 			});
-
 			// init jsonviewer merge doc: disease/id
 			$
 					.ajax({

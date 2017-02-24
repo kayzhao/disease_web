@@ -114,6 +114,7 @@ public class MapController {
 			if (datasets.get(i) != null && datasets.get(i).length() > 0)
 				ids.add(datasets.get(i));
 		}
+		System.out.println(idType);
 		// get the mapping ids
 		Map map = ms.getMappingData(ids, idType);
 		// get the error disease ids
