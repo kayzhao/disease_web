@@ -23,8 +23,8 @@ public class SNP {
 	private String disease_id;
 
 	@TextIndexed
-	@Field("map_id")
-	private String disease_map_id;
+	@Field("umls_cui")
+	private String umls_cui;
 
 	@TextIndexed
 	@Field("disease_name")
@@ -63,6 +63,9 @@ public class SNP {
 	@Field("chromosome")
 	private String chromosome;
 
+	@Field("pubmed")
+	private String pubmed;
+
 	@Field("chr")
 	private String chr;
 
@@ -71,6 +74,16 @@ public class SNP {
 
 	@Field("year")
 	private int year;
+
+	private String data_type;
+
+	public String getData_type() {
+		return data_type;
+	}
+
+	public void setData_type(String data_type) {
+		this.data_type = data_type;
+	}
 
 	public String getId() {
 		return id;
@@ -200,11 +213,19 @@ public class SNP {
 		this.year = year;
 	}
 
-	public String getDisease_map_id() {
-		return disease_map_id;
+	public String getUmls_cui() {
+		return umls_cui;
 	}
 
-	public void setDisease_map_id(String disease_map_id) {
-		this.disease_map_id = disease_map_id;
+	public void setUmls_cui(String umls_cui) {
+		this.umls_cui = umls_cui;
+	}
+
+	public String getPubmed() {
+		return pubmed;
+	}
+
+	public void setPubmed(String pubmed) {
+		this.pubmed = pubmed;
 	}
 }

@@ -74,6 +74,55 @@ public class DataController {
 		return mav;
 	}
 
+	@RequestMapping(value = "/drug/{id}", method = RequestMethod.POST)
+	public Drug getDrugByIDPOST(@PathVariable("id") String id) {
+		Drug drug = rs.getDataByID(id, Drug.class);
+		drug.setData_type("drug");
+		return drug;
+	}
+
+	@RequestMapping(value = "/gene/{id}", method = RequestMethod.POST)
+	public Gene getGeneByIDPOST(@PathVariable("id") String id) {
+		Gene gene = rs.getDataByID(id, Gene.class);
+		gene.setData_type("gene");
+		return gene;
+	}
+
+	@RequestMapping(value = "/lncrna/{id}", method = RequestMethod.POST)
+	public LncRNA getLncRNAByIDPOST(@PathVariable("id") String id) {
+		LncRNA lncrna = rs.getDataByID(id, LncRNA.class);
+		lncrna.setData_type("lncrna");
+		return lncrna;
+	}
+
+	@RequestMapping(value = "/mirna/{id}", method = RequestMethod.POST)
+	public MiRNA getMiRNAByIDPOST(@PathVariable("id") String id) {
+		MiRNA mirna = rs.getDataByID(id, MiRNA.class);
+		mirna.setData_type("mirna");
+		return mirna;
+	}
+
+	@RequestMapping(value = "/snp/{id}", method = RequestMethod.POST)
+	public SNP getSNPByIDPOST(@PathVariable("id") String id) {
+		SNP snp = rs.getDataByID(id, SNP.class);
+		snp.setData_type("snp");
+		return snp;
+	}
+
+	@RequestMapping(value = "/go/{id}", method = RequestMethod.POST)
+	public GO getGOByIDPOST(@PathVariable("id") String id) {
+		GO go = rs.getDataByID(id, GO.class);
+		go.setData_type("go");
+		return go;
+	}
+
+	@RequestMapping(value = "/chemical/{id}", method = RequestMethod.POST)
+	public Chemical getChemicalByIDPOST(@PathVariable("id") String id) {
+		Chemical chemical = rs.getDataByID(id, Chemical.class);
+		chemical.setData_type("chemical");
+		return chemical;
+	}
+
 	@RequestMapping(value = "/disease/{id}", method = RequestMethod.POST)
 	public Disease getDiseaseByIDPOST(@PathVariable("id") String id) {
 		Disease disease = rs.getDataByID(id, Disease.class);
@@ -94,6 +143,11 @@ public class DataController {
 		if (queryParams.getSearch() == null || queryParams.getSearch().length() == 0)
 			queryParams.setSearch(disease_id);
 		List<Drug> list = rs.getAssociationListByDisease(disease_id, Drug.class, queryParams);
+		if (list != null) {
+			for (Drug d : list) {
+				d.setData_type("drug");
+			}
+		}
 		Long total = rs.getAssociationListCountByDisease(disease_id, Drug.class, queryParams);
 		page.setParams(queryParams);
 		page.setTotal(total);
@@ -115,6 +169,11 @@ public class DataController {
 		if (queryParams.getSearch() == null || queryParams.getSearch().length() == 0)
 			queryParams.setSearch(disease_id);
 		List<MiRNA> list = rs.getAssociationListByDisease(disease_id, MiRNA.class, queryParams);
+		if (list != null) {
+			for (MiRNA m : list) {
+				m.setData_type("mirna");
+			}
+		}
 		Long total = rs.getAssociationListCountByDisease(disease_id, MiRNA.class, queryParams);
 		page.setParams(queryParams);
 		page.setTotal(total);
@@ -136,6 +195,11 @@ public class DataController {
 		if (queryParams.getSearch() == null || queryParams.getSearch().length() == 0)
 			queryParams.setSearch(disease_id);
 		List<Gene> list = rs.getAssociationListByDisease(disease_id, Gene.class, queryParams);
+		if (list != null) {
+			for (Gene m : list) {
+				m.setData_type("gene");
+			}
+		}
 		Long total = rs.getAssociationListCountByDisease(disease_id, Gene.class, queryParams);
 		page.setParams(queryParams);
 		page.setTotal(total);
@@ -157,6 +221,11 @@ public class DataController {
 		if (queryParams.getSearch() == null || queryParams.getSearch().length() == 0)
 			queryParams.setSearch(disease_id);
 		List<LncRNA> list = rs.getAssociationListByDisease(disease_id, LncRNA.class, queryParams);
+		if (list != null) {
+			for (LncRNA m : list) {
+				m.setData_type("lncrna");
+			}
+		}
 		Long total = rs.getAssociationListCountByDisease(disease_id, LncRNA.class, queryParams);
 		page.setParams(queryParams);
 		page.setTotal(total);
@@ -178,6 +247,11 @@ public class DataController {
 		if (queryParams.getSearch() == null || queryParams.getSearch().length() == 0)
 			queryParams.setSearch(disease_id);
 		List<SNP> list = rs.getAssociationListByDisease(disease_id, SNP.class, queryParams);
+		if (list != null) {
+			for (SNP m : list) {
+				m.setData_type("snp");
+			}
+		}
 		Long total = rs.getAssociationListCountByDisease(disease_id, SNP.class, queryParams);
 		page.setParams(queryParams);
 		page.setTotal(total);
@@ -199,6 +273,11 @@ public class DataController {
 		if (queryParams.getSearch() == null || queryParams.getSearch().length() == 0)
 			queryParams.setSearch(disease_id);
 		List<GO> list = rs.getAssociationListByDisease(disease_id, GO.class, queryParams);
+		if (list != null) {
+			for (GO m : list) {
+				m.setData_type("go");
+			}
+		}
 		Long total = rs.getAssociationListCountByDisease(disease_id, GO.class, queryParams);
 		page.setParams(queryParams);
 		page.setTotal(total);
@@ -220,6 +299,11 @@ public class DataController {
 		if (queryParams.getSearch() == null || queryParams.getSearch().length() == 0)
 			queryParams.setSearch(disease_id);
 		List<Chemical> list = rs.getAssociationListByDisease(disease_id, Chemical.class, queryParams);
+		if (list != null) {
+			for (Chemical m : list) {
+				m.setData_type("chemical");
+			}
+		}
 		Long total = rs.getAssociationListCountByDisease(disease_id, Chemical.class, queryParams);
 		page.setParams(queryParams);
 		page.setTotal(total);

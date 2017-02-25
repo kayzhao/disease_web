@@ -41,7 +41,7 @@ public class DataServiceImpl implements DataService {
 		} else {
 			query.with(new Sort(Sort.Direction.DESC, queryParams.getSort()));
 		}
-		query.addCriteria(Criteria.where("disease_id").is(disease_id));
+		query.addCriteria(Criteria.where("umls_cui").is(disease_id));
 		// page info
 		query.with(new PageRequest(queryParams.getOffset(), queryParams.getLimit()));
 		return commonNoSqlDao.findListByQuery(clz, query);
@@ -50,7 +50,7 @@ public class DataServiceImpl implements DataService {
 	@Override
 	public <T> Long getAssociationListCountByDisease(String disease_id, Class<T> clz, QueryParams queryParams) {
 		Query query = TextQuery.queryText(TextCriteria.forDefaultLanguage().matchingAny(queryParams.getSearch()));
-		query.addCriteria(Criteria.where("disease_id").is(disease_id));
+		query.addCriteria(Criteria.where("umls_cui").is(disease_id));
 		return commonNoSqlDao.findCountByQuery(clz, query);
 	}
 

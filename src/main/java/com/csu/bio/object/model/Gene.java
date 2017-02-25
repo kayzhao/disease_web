@@ -29,8 +29,9 @@ public class Gene {
 	@TextIndexed
 	private String disease_id;
 
-	@Field("map_id")
-	private String disease_map_id;
+	@TextIndexed
+	@Field("umls_cui")
+	private String umls_cui;
 
 	@TextIndexed
 	@Field("disease_name")
@@ -54,7 +55,7 @@ public class Gene {
 	private String inference_chemical_name;
 
 	@Field("pubmed")
-	private List<String> pubmed_references;
+	private List<String> pubmed;
 
 	@Field("inference_score")
 	private double inference_score;
@@ -108,6 +109,16 @@ public class Gene {
 
 	@Field("description")
 	private String description;
+	
+	private String data_type;
+
+	public String getData_type() {
+		return data_type;
+	}
+
+	public void setData_type(String data_type) {
+		this.data_type = data_type;
+	}
 
 	public String getId() {
 		return id;
@@ -165,12 +176,12 @@ public class Gene {
 		this.inference_chemical_name = inference_chemical_name;
 	}
 
-	public List<String> getPubmed_references() {
-		return pubmed_references;
+	public List<String> getPubmed() {
+		return pubmed;
 	}
 
-	public void setPubmed_references(List<String> pubmed_references) {
-		this.pubmed_references = pubmed_references;
+	public void setPubmed(List<String> pubmed) {
+		this.pubmed = pubmed;
 	}
 
 	public double getInference_score() {
@@ -285,11 +296,11 @@ public class Gene {
 		this.description = description;
 	}
 
-	public String getDisease_map_id() {
-		return disease_map_id;
+	public String getUmls_cui() {
+		return umls_cui;
 	}
 
-	public void setDisease_map_id(String disease_map_id) {
-		this.disease_map_id = disease_map_id;
+	public void setUmls_cui(String umls_cui) {
+		this.umls_cui = umls_cui;
 	}
 }
