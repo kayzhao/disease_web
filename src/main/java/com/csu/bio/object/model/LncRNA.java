@@ -24,8 +24,8 @@ public class LncRNA {
 	private String id;
 
 	@TextIndexed
-	@Field("map_id")
-	private String disease_map_id;
+	@Field("umls_cui")
+	private String umls_cui;
 
 	@TextIndexed
 	@Field("disease_id")
@@ -49,7 +49,7 @@ public class LncRNA {
 	private List<HashMap<String, String>> mirna_targets;
 
 	@Field("pmid")
-	private Integer pubmed_reference;
+	private String pubmed;
 
 	@Field("chr")
 	private String chromosome;
@@ -73,6 +73,16 @@ public class LncRNA {
 	@Field("genbank_id")
 	private String genbank_id;
 
+	private String data_type;
+
+	public String getData_type() {
+		return data_type;
+	}
+
+	public void setData_type(String data_type) {
+		this.data_type = data_type;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -81,12 +91,12 @@ public class LncRNA {
 		this.id = id;
 	}
 
-	public String getDisease_map_id() {
-		return disease_map_id;
+	public String getUmls_cui() {
+		return umls_cui;
 	}
 
-	public void setDisease_map_id(String disease_map_id) {
-		this.disease_map_id = disease_map_id;
+	public void setUmls_cui(String umls_cui) {
+		this.umls_cui = umls_cui;
 	}
 
 	public String getDisease_original_id() {
@@ -137,12 +147,12 @@ public class LncRNA {
 		this.mirna_targets = mirna_targets;
 	}
 
-	public Integer getPubmed_reference() {
-		return pubmed_reference;
+	public String getPubmed() {
+		return pubmed;
 	}
 
-	public void setPubmed_reference(Integer pubmed_reference) {
-		this.pubmed_reference = pubmed_reference;
+	public void setPubmed(String pubmed) {
+		this.pubmed = pubmed;
 	}
 
 	public String getChromosome() {

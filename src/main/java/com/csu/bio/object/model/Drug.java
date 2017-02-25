@@ -19,8 +19,9 @@ public class Drug {
 	@Field("disease_id")
 	private String disease_id;
 
-	/*@Field("map_id")
-	private String disease_map_id;*/
+	@TextIndexed
+	@Field("umls_cui")
+	private String umls_cui;
 
 	@TextIndexed
 	@Field("disease_name")
@@ -34,7 +35,6 @@ public class Drug {
 	@Field("drug_name")
 	private String drug_name;
 
-	@TextIndexed
 	@Field("source")
 	private String source;
 
@@ -70,6 +70,16 @@ public class Drug {
 	 */
 	@Field("drug_id_type")
 	private String drug_id_type;
+
+	private String data_type;
+
+	public String getData_type() {
+		return data_type;
+	}
+
+	public void setData_type(String data_type) {
+		this.data_type = data_type;
+	}
 
 	public String getId() {
 		return id;
@@ -165,6 +175,14 @@ public class Drug {
 
 	public void setFda_unii(String fda_unii) {
 		this.fda_unii = fda_unii;
+	}
+
+	public String getUmls_cui() {
+		return umls_cui;
+	}
+
+	public void setUmls_cui(String umls_cui) {
+		this.umls_cui = umls_cui;
 	}
 
 	public String getLevel() {

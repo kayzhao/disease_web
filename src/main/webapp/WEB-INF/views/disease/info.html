@@ -137,14 +137,15 @@
 				data-side-pagination="server">
 				<thead>
 					<tr>
-						<th data-field="disease_id" data-formatter="idFormatter">Disease
-							ID</th>
+						<th data-field="umls_cui" data-formatter="idFormatter">UMLS
+							CUI</th>
 						<!-- <th data-field="disease_name" data-sortable="true">Disease
 							Name</th> -->
 						<th data-field="drug_id" data-sortable="true">Drug ID</th>
 						<th data-field="drug_name" data-sortable="true">Drug Name</th>
 						<th data-field="description">Description</th>
 						<th data-field="source">Source</th>
+						<th data-formatter="moreFormatter">More</th>
 					</tr>
 				</thead>
 			</table>
@@ -160,8 +161,8 @@
 				data-side-pagination="server">
 				<thead>
 					<tr>
-						<th data-field="disease_id" data-formatter="idFormatter">Disease
-							ID</th>
+						<th data-field="umls_cui" data-formatter="idFormatter">UMLS
+							CUI</th>
 						<!-- <th data-field="disease_name" data-sortable="true">Disease
 							Name</th> -->
 						<th data-field="gene_id" data-sortable="true">Gene ID</th>
@@ -170,8 +171,10 @@
 							Chemical Name</th>
 						<th data-field="inference_score" data-sortable="true">Inference
 							Score</th>
-						<th data-field="pubmed">Pubmed Reference</th>
+						<th data-field="pubmed" data-formatter="pubmedFormatter">Pubmed
+							Reference</th>
 						<th data-field="source">Source</th>
+						<th data-formatter="moreFormatter">More</th>
 					</tr>
 				</thead>
 			</table>
@@ -187,8 +190,8 @@
 				data-side-pagination="server">
 				<thead>
 					<tr>
-						<th data-field="disease_id" data-formatter="idFormatter">Disease
-							ID</th>
+						<th data-field="umls_cui" data-formatter="idFormatter">UMLS
+							CUI</th>
 						<!-- <th data-field="disease_name" data-sortable="true">Disease
 							Name</th> -->
 						<!-- <th data-field="lncrna_id" data-sortable="true">LncRNA ID</th> -->
@@ -196,8 +199,10 @@
 						<th data-field="alias" data-sortable="true">LncRNA Alias</th>
 						<th data-field="dyregluation_type">Dyregluation Type</th>
 						<th data-field="description">Description</th>
-						<th data-field="pmid">Pubmed Reference</th>
+						<th data-field="pubmed" data-formatter="pubmedFormatter">Pubmed
+							Reference</th>
 						<th data-field="source">Source</th>
+						<th data-formatter="moreFormatter">More</th>
 					</tr>
 				</thead>
 			</table>
@@ -213,15 +218,17 @@
 				data-side-pagination="server">
 				<thead>
 					<tr>
-						<th data-field="disease_id" data-formatter="idFormatter">Disease
-							ID</th>
+						<th data-field="umls_cui" data-formatter="idFormatter">UMLS
+							CUI</th>
 						<!-- <th data-field="disease_name" data-sortable="true">Disease
 							Name</th> -->
 						<!-- <th data-field="mirna_id" data-sortable="true">MiRNA ID</th> -->
 						<th data-field="mirna_name" data-sortable="true">MiRNA Name</th>
 						<th data-field="description">Description</th>
-						<th data-field="pubmed">Pubmed Reference</th>
+						<th data-field="pubmed" data-formatter="pubmedFormatter">Pubmed
+							Reference</th>
 						<th data-field="source">Source</th>
+						<th data-formatter="moreFormatter">More</th>
 					</tr>
 				</thead>
 			</table>
@@ -238,8 +245,8 @@
 				data-side-pagination="server">
 				<thead>
 					<tr>
-						<th data-field="disease_id" data-formatter="idFormatter">Disease
-							ID</th>
+						<th data-field="umls_cui" data-formatter="idFormatter">UMLS
+							CUI</th>
 						<!-- <th data-field="disease_name" data-sortable="true">Disease
 							Name</th> -->
 						<th data-field="gene_id" data-sortable="true">Gene ID</th>
@@ -247,8 +254,10 @@
 						<th data-field="gene_symbol" data-sortable="true">Gene Symbol</th>
 						<th data-field="score" data-sortable="true">Score</th>
 						<th data-field="description">Description</th>
-						<th data-field="pubmed">Pubmed Reference</th>
+						<th data-field="pubmed" data-formatter="pubmedFormatter">Pubmed
+							Reference</th>
 						<th data-field="source">Source</th>
+						<th data-formatter="moreFormatter">More</th>
 					</tr>
 				</thead>
 			</table>
@@ -264,8 +273,8 @@
 				data-side-pagination="server">
 				<thead>
 					<tr>
-						<th data-field="disease_id" data-formatter="idFormatter">Disease
-							ID</th>
+						<th data-field="umls_cui" data-formatter="idFormatter">UMLS
+							CUI</th>
 						<!-- <th data-field="disease_name" data-sortable="true">Disease
 							Name</th> -->
 						<th data-field="go_id" data-sortable="true">GO ID</th>
@@ -276,6 +285,7 @@
 						<th data-field="annotation_type" data-sortable="true">Annotation
 							Type</th>
 						<th data-field="source">Source</th>
+						<th data-formatter="moreFormatter">More</th>
 					</tr>
 				</thead>
 			</table>
@@ -292,8 +302,8 @@
 				data-side-pagination="server">
 				<thead>
 					<tr>
-						<th data-field="disease_id" data-formatter="idFormatter">Disease
-							ID</th>
+						<th data-field="umls_cui" data-formatter="idFormatter">UMLS
+							CUI</th>
 						<!-- <th data-field="disease_name" data-sortable="true">Disease
 							Name</th> -->
 						<th data-field="chemical_id" data-sortable="true">Chemical ID</th>
@@ -301,8 +311,10 @@
 							Gene Symbol</th>
 						<th data-field="inference_score">Inference Score</th>
 						<th data-field="casrn">CasRN</th>
-						<th data-field="pubmed">Pubmed Reference</th>
+						<th data-field="pubmed" data-formatter="pubmedFormatter">Pubmed
+							Reference</th>
 						<th data-field="source">Source</th>
+						<th data-formatter="moreFormatter">More</th>
 					</tr>
 				</thead>
 			</table>
@@ -316,6 +328,22 @@
 		</div>
 		#include("/WEB-INF/views/container/footer.html")
 	</div>
+
+	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+		aria-labelledby="moreInfoModalLabel" id="moreInfoModal">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="panel panel-ino">
+					<div class="panel-heading">More Information</div>
+					<div class="panel-body">
+						<div id="json-info-body" class="alert alert-info G-MarginTop10"></div>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- Latest compiled and minified JavaScript -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
@@ -331,8 +359,32 @@
 
 		//the column formatter
 		function idFormatter(row, value, index) {
-			var disease_id = value['disease_id'];
+			var disease_id = value['umls_cui'];
 			return "<strong class='text-danger'>" + disease_id + "</strong>";
+		}
+		function pubmedFormatter(row, value, index) {
+			var pubmeds = value['pubmed'];
+			var newformat = "";
+			if (pubmeds) {
+				if (Array.isArray(pubmeds)) {
+					for ( var i in pubmeds) {
+						newformat += ("<a target='__blank' href='https://www.ncbi.nlm.nih.gov/pubmed/"+pubmeds[i]+"'>"
+								+ pubmeds[i] + "</a><br>");
+					}
+				} else {
+					newformat += ("<a target='__blank' href='https://www.ncbi.nlm.nih.gov/pubmed/"+pubmeds+"'>"
+							+ pubmeds + "</a><br>");
+				}
+			}
+			return newformat;
+		}
+		function moreFormatter(row, value, index) {
+			console.log(value)
+			var id = value['id'];
+			var type = value['data_type'];
+			return "<a class='btn btn-default more-info'"+
+			" data-type='"+type+"' data-id='"+id+"' data-json='"+value+
+			"' data-toggle='modal' data-taeget='#moreInfoModal'>More</a>";
 		}
 		(function($) {
 			$("#header-link").sticky({
@@ -347,30 +399,53 @@
 				$("#merge_doc_info").JSONView('expand');
 			});
 			// init jsonviewer merge doc: disease/id
-			$
-					.ajax({
-						type : 'POST',
-						dataType : "JSON",
-						url : "${basepath}/data/disease/${disease.id}",
-						success : function(data) {
-							//delete umls key
-							delete data.id;
-							delete data.disease_name;
-							delete data.disease_synonyms;
-							delete data.disease_xrefs;
-							delete data.disease_concepts;
-							delete data.sources;
-							$("#merge_doc_info").JSONView(data, {
-								collapsed : true
-							});
-						},
-						error : function() {
-							$("#merge_doc_info").removeClass("alert-info");
-							$("#merge_doc_info").addClass("alert-danger");
-							$("#merge_doc_info").html(
-									"unable to load the api example");
-						}
+			var load_json_faild = "unable to load the api example,please refersh again";
+			$.ajax({
+				type : 'GET',
+				dataType : "JSON",
+				url : "${basepath}/data/disease/${disease.id}",
+				success : function(data) {
+					//delete umls key
+					delete data.id;
+					delete data.disease_name;
+					delete data.disease_synonyms;
+					delete data.disease_xrefs;
+					delete data.disease_concepts;
+					delete data.sources;
+					$("#merge_doc_info").JSONView(data, {
+						collapsed : true
 					});
+				},
+				error : function() {
+					$("#merge_doc_info").removeClass("alert-info");
+					$("#merge_doc_info").addClass("alert-danger");
+					$("#merge_doc_info").html(load_json_faild);
+				}
+			});
+
+			//jquery ajax dynamically bind click event
+			$(document).on('click', '.more-info', function() {
+				var type = $(this).attr('data-type');
+				var id = $(this).attr('data-id');
+				var baseurl = "${basepath}/data/" + type + "/" + id;
+				$.ajax({
+					type : 'GET',
+					dataType : "JSON",
+					url : baseurl,
+					success : function(data) {
+						$("#json-info-body").JSONView(data, {
+							collapsed : true
+						});
+						$('#moreInfoModal').modal('show');
+					},
+					error : function() {
+						$("#json-info-body").removeClass("alert-info");
+						$("#json-info-body").addClass("alert-danger");
+						$("#json-info-body").html(load_json_faild);
+						$('#moreInfoModal').modal('show');
+					}
+				});
+			});
 		})(jQuery)
 	</script>
 </body>
