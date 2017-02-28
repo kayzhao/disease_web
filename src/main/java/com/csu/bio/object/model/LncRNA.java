@@ -72,7 +72,7 @@ public class LncRNA {
 
 	@Field("genbank_id")
 	private String genbank_id;
-
+	
 	private String data_type;
 
 	public String getData_type() {

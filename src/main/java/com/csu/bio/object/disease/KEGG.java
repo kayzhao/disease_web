@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import com.csu.bio.object.po.Concept;
 
-@Document(collection = "umls_disease")
 public class KEGG {
 
 	/**

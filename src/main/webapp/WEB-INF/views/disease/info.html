@@ -143,7 +143,7 @@
 							Name</th> -->
 						<th data-field="drug_id" data-sortable="true">Drug ID</th>
 						<th data-field="drug_name" data-sortable="true">Drug Name</th>
-						<th data-field="description">Description</th>
+						<th data-field="description" data-formatter="descFormatter">Description</th>
 						<th data-field="source">Source</th>
 						<th data-formatter="moreFormatter">More</th>
 					</tr>
@@ -198,7 +198,7 @@
 						<th data-field="lncrna_name" data-sortable="true">LncRNA Name</th>
 						<th data-field="alias" data-sortable="true">LncRNA Alias</th>
 						<th data-field="dyregluation_type">Dyregluation Type</th>
-						<th data-field="description">Description</th>
+						<th data-field="description" data-formatter="descFormatter">Description</th>
 						<th data-field="pubmed" data-formatter="pubmedFormatter">Pubmed
 							Reference</th>
 						<th data-field="source">Source</th>
@@ -224,7 +224,7 @@
 							Name</th> -->
 						<!-- <th data-field="mirna_id" data-sortable="true">MiRNA ID</th> -->
 						<th data-field="mirna_name" data-sortable="true">MiRNA Name</th>
-						<th data-field="description">Description</th>
+						<th data-field="description" data-formatter="descFormatter">Description</th>
 						<th data-field="pubmed" data-formatter="pubmedFormatter">Pubmed
 							Reference</th>
 						<th data-field="source">Source</th>
@@ -253,7 +253,7 @@
 						<th data-field="gene_name" data-sortable="true">Gene Name</th>
 						<th data-field="gene_symbol" data-sortable="true">Gene Symbol</th>
 						<th data-field="score" data-sortable="true">Score</th>
-						<th data-field="description">Description</th>
+						<th data-field="description" data-formatter="descFormatter">Description</th>
 						<th data-field="pubmed" data-formatter="pubmedFormatter">Pubmed
 							Reference</th>
 						<th data-field="source">Source</th>
@@ -336,8 +336,14 @@
 				<div class="panel panel-ino">
 					<div class="panel-heading">More Information</div>
 					<div class="panel-body">
+						<div class="btn-group btn-group-sm" role="group"
+							aria-label="JSONViewer">
+							<button type="button" class="btn btn-default" id="info-collapse">Collapse</button>
+							<button type="button" class="btn btn-default" id="info-expand">Expand</button>
+						</div>
 						<div id="json-info-body" class="alert alert-info G-MarginTop10"></div>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-default pull-right"
+							data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
@@ -379,12 +385,19 @@
 			return newformat;
 		}
 		function moreFormatter(row, value, index) {
-			console.log(value)
 			var id = value['id'];
 			var type = value['data_type'];
 			return "<a class='btn btn-default more-info'"+
 			" data-type='"+type+"' data-id='"+id+"' data-json='"+value+
 			"' data-toggle='modal' data-taeget='#moreInfoModal'>More</a>";
+		}
+		function descFormatter(row, value, index) {
+			var desc = value['description'];
+			var desc_origin = desc
+			if (desc.length > 50)
+				desc = desc.substring(0, 50) + "...";
+			return "<span class='text-default' title='" + desc_origin + "'>"
+					+ desc + "</span>";
 		}
 		(function($) {
 			$("#header-link").sticky({
@@ -398,6 +411,14 @@
 			$("#expand").on('click', function() {
 				$("#merge_doc_info").JSONView('expand');
 			});
+
+			$("#info-collapse").on('click', function() {
+				$("#json-info-body").JSONView('collapse');
+			});
+			$("#info-expand").on('click', function() {
+				$("#json-info-body").JSONView('expand');
+			});
+
 			// init jsonviewer merge doc: disease/id
 			var load_json_faild = "unable to load the api example,please refersh again";
 			$.ajax({

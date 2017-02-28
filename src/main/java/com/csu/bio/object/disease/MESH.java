@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import com.csu.bio.object.po.Concept;
 
-@Document(collection = "umls_disease")
 public class MESH {
 
 	/**
@@ -19,11 +18,9 @@ public class MESH {
 	@TextIndexed
 	private String id;
 
-	@TextIndexed
 	@Field("synonym")
 	private List<String> disease_synonyms;
 
-	@TextIndexed
 	@Field("name")
 	private String disease_name;
 
