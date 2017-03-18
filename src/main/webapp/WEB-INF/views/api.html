@@ -35,7 +35,8 @@
 			</h4>
 			<hr class="G-MarginTop20">
 			<div id="header-link" class="btn-group btn-group-sm" role="group">
-				<a class="btn btn-default" href="#diseases">Diseases</a> <a
+				<a class="btn btn-default" href="#mapping">Mapping</a> <a
+					class="btn btn-default" href="#diseases">Diseases</a> <a
 					class="btn btn-default" href="#identification">Identification</a><a
 					class="btn btn-default" href="#drugs">Drugs</a><a
 					class="btn btn-default" href="#genes">Genes</a><a
@@ -47,9 +48,30 @@
 			</div>
 			<hr class="G-MarginTop20">
 
-			<!--  diseases -->
-			<div id="diseases" class="text-uppercase text-info api-title">Diseases</div>
+			<!--  mapping -->
+			<div id="mapping" class="text-uppercase text-info api-title">Mapping</div>
+			<hr class="G-MarginTop20">
+			Mapping RESTful API service is returned in JSON format may currently
+			be requested by use of the following URL:
+			<p class="text-default alert alert-info G-MarginTop10">
+				${basepath}/api/mapping/(DiseaseID)
+			<hr class="G-MarginTop20">
+			Example usage here would be querying for metadata from the term
+			"Disease" (DOID:4):
+			<p class="text-default alert G-MarginTop10">
+				<a href="${basepath}/api/mapping/UMLS_CUI:C0073629" target="__blank">
+					${basepath}/api/mapping/UMLS_CUI:C0073629</a>
+			<hr c lass="G-MarginTop20">
+			which would return the following JSON:
+			<div class="btn-group btn-group-sm" role="group"
+				aria-label="JSONViewer">
+				<button type="button" class="btn btn-default" id="mapping_collapse">Collapse</button>
+				<button type="button" class="btn btn-default" id="mapping_expand">Expand</button>
+			</div>
+			<p class="alert alert-info G-MarginTop10" id="mapping_json"></p>
+			<hr class="G-MarginTop20">
 
+			<div id="diseases" class="text-uppercase text-info api-title">Diseases</div>
 			<hr class="G-MarginTop20">
 			A RESTful API service is also offered to users of the Disease
 			Ontology browser website to allow for programmatic access to the
@@ -87,8 +109,8 @@
 			Example usage here would be querying for metadata from the term
 			"Disease" (DOID:4):
 			<p class="text-default alert G-MarginTop10">
-				<a href="${basepath}/api/disease/UMLS_CUI:C0000727" target="__blank">
-					${basepath}/api/disease/UMLS_CUI:C0000727</a>
+				<a href="${basepath}/api/disease/UMLS_CUI:C0073629" target="__blank">
+					${basepath}/api/disease/UMLS_CUI:C0073629</a>
 			<hr class="G-MarginTop20">
 			which would return the following JSON:
 			<div class="btn-group btn-group-sm" role="group"
@@ -112,11 +134,11 @@
 				class="text-danger">Note</strong>: you can use the params to get the
 			search options(limit is pageSize,offset is pageNumber),Example usage
 			here would be querying for drugs from the term "Disease"
-			(UMLS_CUI:C0000727):
+			(UMLS_CUI:C0073629):
 			<p class="text-default alert G-MarginTop10">
-				<a href="${basepath}/api/disease/UMLS_CUI:C0000727/drugs"
+				<a href="${basepath}/api/disease/UMLS_CUI:C0073629/drugs"
 					target="__blank">
-					${basepath}/api/disease/UMLS_CUI:C0000727/drugs</a>
+					${basepath}/api/disease/UMLS_CUI:C0073629/drugs</a>
 			<hr class="G-MarginTop20">
 			which would return the following JSON:
 			<div class="btn-group btn-group-sm" role="group"
@@ -140,11 +162,11 @@
 				class="text-danger">Note</strong>: you can use the params to get the
 			search options(limit is pageSize,offset is pageNumber),Example usage
 			here would be querying for drugs from the term "Disease"
-			(UMLS_CUI:C0000727):
+			(UMLS_CUI:C0073629):
 			<p class="text-default alert G-MarginTop10">
-				<a href="${basepath}/api/disease/UMLS_CUI:C0000727/genes"
+				<a href="${basepath}/api/disease/UMLS_CUI:C0073629/genes"
 					target="__blank">
-					${basepath}/api/disease/UMLS_CUI:C0000727/genes</a>
+					${basepath}/api/disease/UMLS_CUI:C0073629/genes</a>
 			<hr class="G-MarginTop20">
 			which would return the following JSON(same to drugs)
 			<hr class="G-MarginTop20">
@@ -161,11 +183,11 @@
 				class="text-danger">Note</strong>: you can use the params to get the
 			search options(limit is pageSize,offset is pageNumber),Example usage
 			here would be querying for drugs from the term "Disease"
-			(UMLS_CUI:C0000727):
+			(UMLS_CUI:C0073629):
 			<p class="text-default alert G-MarginTop10">
-				<a href="${basepath}/api/disease/UMLS_CUI:C0000727/lncrnas"
+				<a href="${basepath}/api/disease/UMLS_CUI:C0073629/lncrnas"
 					target="__blank">
-					${basepath}/api/disease/UMLS_CUI:C0000727/lncrnas</a>
+					${basepath}/api/disease/UMLS_CUI:C0073629/lncrnas</a>
 			<hr class="G-MarginTop20">
 			which would return the following JSON(same to drugs)
 			<hr class="G-MarginTop20">
@@ -183,11 +205,11 @@
 				class="text-danger">Note</strong>: you can use the params to get the
 			search options(limit is pageSize,offset is pageNumber),Example usage
 			here would be querying for drugs from the term "Disease"
-			(UMLS_CUI:C0000727):
+			(UMLS_CUI:C0073629):
 			<p class="text-default alert G-MarginTop10">
-				<a href="${basepath}/api/disease/UMLS_CUI:C0000727/mirnas"
+				<a href="${basepath}/api/disease/UMLS_CUI:C0073629/mirnas"
 					target="__blank">
-					${basepath}/api/disease/UMLS_CUI:C0000727/mirnas</a>
+					${basepath}/api/disease/UMLS_CUI:C0073629/mirnas</a>
 			<hr class="G-MarginTop20">
 			which would return the following JSON(same to drugs)
 			<hr class="G-MarginTop20">
@@ -205,11 +227,11 @@
 				class="text-danger">Note</strong>: you can use the params to get the
 			search options(limit is pageSize,offset is pageNumber),Example usage
 			here would be querying for drugs from the term "Disease"
-			(UMLS_CUI:C0000727):
+			(UMLS_CUI:C0073629):
 			<p class="text-default alert G-MarginTop10">
-				<a href="${basepath}/api/disease/UMLS_CUI:C0000727/snps"
+				<a href="${basepath}/api/disease/UMLS_CUI:C0073629/snps"
 					target="__blank">
-					${basepath}/api/disease/UMLS_CUI:C0000727/snps</a>
+					${basepath}/api/disease/UMLS_CUI:C0073629/snps</a>
 			<hr class="G-MarginTop20">
 			which would return the following JSON(same to drugs)
 			<hr class="G-MarginTop20">
@@ -227,10 +249,10 @@
 				class="text-danger">Note</strong>: you can use the params to get the
 			search options(limit is pageSize,offset is pageNumber),Example usage
 			here would be querying for drugs from the term "Disease"
-			(UMLS_CUI:C0000727):
+			(UMLS_CUI:C0073629):
 			<p class="text-default alert G-MarginTop10">
-				<a href="${basepath}/api/disease/UMLS_CUI:C0000727/gos"
-					target="__blank"> ${basepath}/api/disease/UMLS_CUI:C0000727/gos</a>
+				<a href="${basepath}/api/disease/UMLS_CUI:C0073629/gos"
+					target="__blank"> ${basepath}/api/disease/UMLS_CUI:C0073629/gos</a>
 			<hr class="G-MarginTop20">
 			which would return the following JSON(same to drugs)
 			<hr class="G-MarginTop20">
@@ -247,11 +269,11 @@
 				class="text-danger">Note</strong>: you can use the params to get the
 			search options(limit is pageSize,offset is pageNumber),Example usage
 			here would be querying for drugs from the term "Disease"
-			(UMLS_CUI:C0000727):
+			(UMLS_CUI:C0073629):
 			<p class="text-default alert G-MarginTop10">
-				<a href="${basepath}/api/disease/UMLS_CUI:C0000727/chemicals"
+				<a href="${basepath}/api/disease/UMLS_CUI:C0073629/chemicals"
 					target="__blank">
-					${basepath}/api/disease/UMLS_CUI:C0000727/chemicals</a>
+					${basepath}/api/disease/UMLS_CUI:C0073629/chemicals</a>
 			<hr class="G-MarginTop20">
 			which would return the following JSON(same to drugs)
 			<hr class="G-MarginTop20">
@@ -274,6 +296,12 @@
 			});
 
 			//collapse and expand
+			$("#mapping_collapse").on('click', function() {
+				$("#mapping_json").JSONView('collapse');
+			});
+			$("#mapping_expand").on('click', function() {
+				$("#mapping_json").JSONView('expand');
+			});
 			$("#diseases_collapse").on('click', function() {
 				$("#diseases_json").JSONView('collapse');
 			});
@@ -296,7 +324,25 @@
 			});
 
 			var load_json_faild = "unable to load the api example,please refersh again";
-			// init api json : disease/id
+
+			// init api json : mapping
+			$.ajax({
+				type : 'GET',
+				dataType : "JSON",
+				url : "${basepath}/api/mapping/UMLS_CUI:C0073629",
+				success : function(data) {
+					$("#mapping_json").JSONView(data, {
+						collapsed : true
+					});
+				},
+				error : function() {
+					$("#mapping_json").removeClass("alert-info");
+					$("#mapping_json").addClass("alert-danger");
+					$("#mapping_json").html(load_json_faild);
+				}
+			});
+
+			// init api json : diseases
 			$.ajax({
 				type : 'GET',
 				dataType : "JSON",
@@ -321,7 +367,7 @@
 			$.ajax({
 				type : 'GET',
 				dataType : "JSON",
-				url : "${basepath}/api/disease/UMLS_CUI:C0000727",
+				url : "${basepath}/api/disease/UMLS_CUI:C0073629",
 				success : function(data) {
 					$("#disease_id_json").JSONView(data, {
 						collapsed : true
@@ -334,11 +380,11 @@
 				}
 			});
 
-			// init api json : disease/id
+			// init api json : disease/id/drugs
 			$.ajax({
 				type : 'GET',
 				dataType : "JSON",
-				url : "${basepath}/api/disease/UMLS_CUI:C0000727/drugs",
+				url : "${basepath}/api/disease/UMLS_CUI:C0073629/drugs",
 				success : function(data) {
 					$("#disease_drugs_json").JSONView(data, {
 						collapsed : true

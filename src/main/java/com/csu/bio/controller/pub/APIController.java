@@ -1,6 +1,12 @@
 package com.csu.bio.controller.pub;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.print.DocFlavor.STRING;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +22,7 @@ import com.csu.bio.object.model.*;
 import com.csu.bio.object.po.PageList;
 import com.csu.bio.object.po.QueryParams;
 import com.csu.bio.service.data.DataService;
+import com.csu.bio.service.mapping.MappingService;
 
 /**
  *
@@ -30,6 +37,9 @@ public class APIController {
 
 	@Autowired
 	public DataService rs;
+
+	@Autowired
+	public MappingService ms;
 
 	@RequestMapping(value = "/diseases", method = RequestMethod.GET)
 	public PageList<Disease> getdisease(QueryParams queryParams) {
@@ -229,8 +239,25 @@ public class APIController {
 		return page;
 	}
 
-	@RequestMapping(value = "/synonym/{keyword}", method = RequestMethod.GET)
-	public Object getDataByName(@PathVariable("keyword") String keyword) {
-		return rs.getDataByID(keyword, Disease.class);
+	@RequestMapping(value = "/mapping/{id}", method = RequestMethod.GET)
+	public Map getMappingDataByID(@PathVariable("id") String disease_id) {
+		Map map = new HashMap<>();
+		if (disease_id == null && disease_id.length() == 0) {
+			map.put("error", "error disease id");
+			return map;
+		}
+		ArrayList<String> ids = new ArrayList<>();
+		ids.add(disease_id);
+		// get the mapping ids
+		map = ms.getMappingData(ids, "ALL");
+		// get the error disease ids
+		ArrayList<Object> errorids = new ArrayList<>();
+		if (map.get("errorids") != null) {
+			for (String id : ((String) map.get("errorids")).split(",")) {
+				errorids.add(id);
+			}
+			map.remove("errorids");
+		}
+		return map;
 	}
 }

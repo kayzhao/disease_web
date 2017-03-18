@@ -93,4 +93,53 @@ public class DataServiceImpl implements DataService {
 		Query query = TextQuery.queryText(new TextCriteria().matchingAny(words)).sortByScore().restrict(clz);
 		return fullTextRepository.findAllCountByWords(clz, query);
 	}
+
+	@Override
+	public <T> Long getListCount(Class<T> clz, String type, QueryParams queryParams) {
+		Query query = null;
+
+		// search
+		if (queryParams.getSearch() == null || queryParams.getSearch().length() == 0) {
+			return null;
+		}
+		String[] words = queryParams.getSearch().split(",");
+
+		// type
+		if ("keywords".equals(type)) {
+			query = TextQuery.queryText(TextCriteria.forDefaultLanguage().matchingAny(words));
+		} else {
+			query = new Query();
+			query.addCriteria(Criteria.where(type).is(words[0]));
+		}
+		return commonNoSqlDao.findCountByQuery(clz, query);
+	}
+
+	@Override
+	public <T> List<T> getList(Class<T> clz, String type, QueryParams queryParams) {
+		Query query = null;
+		// search
+		if (queryParams.getSearch() == null || queryParams.getSearch().length() == 0) {
+			return null;
+		}
+		String[] words = queryParams.getSearch().split(",");
+
+		// type
+		if ("keywords".equals(type)) {
+			query = TextQuery.queryText(TextCriteria.forDefaultLanguage().matchingAny(words));
+		} else {
+			query = new Query();
+			query.addCriteria(Criteria.where(type).is(words[0]));
+		}
+
+		// sort
+		if (queryParams.getOrder().equals("asc")) {
+			query.with(new Sort(Sort.Direction.ASC, queryParams.getSort()));
+		} else {
+			query.with(new Sort(Sort.Direction.DESC, queryParams.getSort()));
+		}
+		// page info
+		query.with(new PageRequest(queryParams.getOffset(), queryParams.getLimit()));
+		return commonNoSqlDao.findListByQuery(clz, query);
+	}
+
 }

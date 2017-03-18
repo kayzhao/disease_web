@@ -43,7 +43,7 @@
 						<a class="navbar-brand text-info" href="javascript:void(0);">Network
 							Visualization</a>
 					</div>
-					<div class="collapse navbar-collapse bg-info">
+					<div class="collapse navbar-collapse bg-success">
 						<ul class="nav navbar-nav">
 							<li class="dropdown"><a id="drop2" href="#"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -129,7 +129,6 @@
 					'line-color' : '#FF0000'
 				}
 			} ];
-			var netData = JSON.parse('${net}');
 			cy = cytoscape({
 				container : document.getElementById('cy'),
 				userZoomingEnabled : true,
@@ -142,7 +141,7 @@
 					name : 'circle'
 				},
 				style : cystyle,
-				elements : netData
+				elements : JSON.parse('${net}')
 			});
 			$(".btn-layout").click(function() {
 				cy.layout({

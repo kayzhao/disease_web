@@ -1,0 +1,734 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<title>Download</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="icon" type="image/x-icon" href="${basepath}/favicon.ico">
+<link rel="shortcut icon" href="${basepath}/favicon.ico"
+	type="image/x-icon">
+<!-- bootstrap相关组件 -->
+<link rel="stylesheet"
+	href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+<!-- 自定义基本CSS -->
+<link rel="stylesheet" href="${basepath}/css/customer/biodis.css">
+<link rel="stylesheet" href="${basepath}/css/base.css">
+<link rel="stylesheet" href="${basepath}/css/customer/net.css">
+<!-- font-awesome字体库 -->
+<link
+	href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<link
+	href="${basepath}/css/plugins/bootstrap/bootstrapValidator.min.css"
+	rel="stylesheet">
+<!--bootstrap-select start-->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+<!--bootstrap-select end-->
+</head>
+<body>
+	#parse("/WEB-INF/views/container/menu.html")
+	<div class="container">
+		<!-- 下载页面的主体内容 -->
+		<div class="G-Width container ">
+			<div class="row page-header well well-sm">
+				<i class="fa fa-download fa-fw fa-2x"></i> Latest Updates<i
+					class="fa fa-clock-o fa-fw"></i>2015.06.10
+			</div>
+			<!-- nav tabs -->
+			<ul class="row nav nav-tabs tabber" id="nav_tabs"
+				style="background-color: white; z-index: 99;">
+				<li class="active"><a data-toggle="tab" href="#drug_drug"
+					aria-expanded="true">Disease to Disease</a></li>
+				<li><a data-toggle="tab" href="#drug_target">Disease to
+						Target</a></li>
+				<li><a data-toggle="tab" href="#drug_disease">Disease to
+						Disease</a></li>
+				<li><a data-toggle="tab" href="#other-database">Other
+						Online Database</a></li>
+			</ul>
+			<!-- nav content -->
+			<div class="tab-content G-MarginTop20 text-left">
+				<div class="tab-pane fade in active" id="drug_drug">
+					<p class="alert alert-info">
+						<span class="glyphicon glyphicon-info-sign"> </span> We've
+						collected five methods to calculate drug and drug similarity, <strong>They
+							are as follows：</strong><br> <em>Chemical-based / Ligand-based /
+							Expression-based / Side-effect based / Annotation-based</em>
+					</p>
+					<h5>Disease Data</h5>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th></th>
+								<th class="dlink-timestamp">Released on</th>
+								<th class="dlink">Txt</th>
+								<th class="dlink">Excel</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>All Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/all_target_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/all_target_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- methods' results download -->
+					<h5>Disease-Disease Similarity</h5>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Methods</th>
+								<th class="dlink-timestamp">Released on</th>
+								<th class="dlink">Txt</th>
+								<th class="dlink">Excel</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Chemical-based</td>
+								<td>2015-04-01</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/drugbank.xml.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/../../../docs/drugbank.xsd"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Ligand-based</td>
+								<td>2015-04-01</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/drugbank.xml.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/../../../docs/drugbank.xsd"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Expression-based</td>
+								<td>2015-04-01</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/drugbank.xml.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/../../../docs/drugbank.xsd"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Side-effect based</td>
+								<td>2015-04-01</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/drugbank.xml.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/../../../docs/drugbank.xsd"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Annotation-based</td>
+								<td>2015-04-01</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/drugbank.xml.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/../../../docs/drugbank.xsd"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="tab-pane fade" id="drug_target">
+					<p class="alert alert-info">
+						<span class="glyphicon glyphicon-info-sign"> </span> We've
+						collected five methods to calculate drug and drug similarity, <strong>They
+							are as follows：</strong><br> <em>Chemical-based / Ligand-based /
+							Expression-based / Side-effect based / Annotation-based</em>
+					</p>
+					<h5>Disease Target Interactions</h5>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th></th>
+								<th class="dlink-timestamp">Released on</th>
+								<th class="dlink">Text</th>
+								<th class="dlink">Excel</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>All drugs-target interactions</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/drug_links.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/drug_links.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<h5>Disease Target Prediction Results</h5>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Disease-UniProt External Links for Approved Diseases</th>
+								<th class="dlink-timestamp">Released on</th>
+								<th class="dlink">CSV (Microsoft Excel compatible)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Targets</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/drug_target_uniprot_links.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Enzymes</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/drug_enzyme_uniprot_links.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Carriers</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/drug_carrier_uniprot_links.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Transporters</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/drug_transporter_uniprot_links.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="tab-pane fade" id="drug_disease">
+					<p class="alert alert-info">
+						<span class="glyphicon glyphicon-info-sign"> </span> Protein
+						identifiers include external IDs to resources such as UniProt and
+						PDB.These downloads are divided first by protein/compound type
+						(target, transporter, etc.).Secondly they are divided by drug
+						group (approved, illicit, etc.).Lastly, they are divided by
+						whether the target/enzyme/transporter/carrier was markedas <em>directly
+							related</em> to the mechanism of action for <em>at least one of
+							the associated drugs</em> (this is the called the <strong>known
+							pharmacological action</strong> <br>Note that each row in the export
+						CSV file also includes a concatenated list of DiseaseBank drugs
+						IDs (semi-colon delimited) as the last column.
+					</p>
+					<h5>Disease Target Identifiers</h5>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>CSV (Microsoft Excel compatible)</th>
+								<th class="dlink-timestamp">Released on</th>
+								<th class="dlink">All</th>
+								<th class="dlink">Known pharmacological action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>All Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/all_target_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/all_target_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Approved Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/approved_target_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/approved_target_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Small molecule Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/small_molecule_target_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/small_molecule_target_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Experimental Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/experimental_target_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/experimental_target_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Nutraceutical Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/nutraceutical_target_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/nutraceutical_target_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Illicit Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/illicit_target_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/illicit_target_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Withdrawn Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/withdrawn_target_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/withdrawn_target_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Investigational Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/investigational_target_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/investigational_target_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<h5>Disease Enzyme Identifiers</h5>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>CSV (Microsoft Excel compatible)</th>
+								<th class="dlink-timestamp">Released on</th>
+								<th class="dlink">All</th>
+								<th class="dlink">Known pharmacological action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>All Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/all_enzyme_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/all_enzyme_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Approved Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/approved_enzyme_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/approved_enzyme_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Small molecule Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/small_molecule_enzyme_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/small_molecule_enzyme_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Experimental Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/experimental_enzyme_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/experimental_enzyme_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Nutraceutical Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/nutraceutical_enzyme_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/nutraceutical_enzyme_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Illicit Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/illicit_enzyme_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/illicit_enzyme_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Withdrawn Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/withdrawn_enzyme_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/withdrawn_enzyme_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Investigational Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/investigational_enzyme_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/investigational_enzyme_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<h5>Disease Carrier Identifiers</h5>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>CSV (Microsoft Excel compatible)</th>
+								<th class="dlink-timestamp">Released on</th>
+								<th class="dlink">All</th>
+								<th class="dlink">Known pharmacological action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>All Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/all_carrier_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/all_carrier_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Approved Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/approved_carrier_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/approved_carrier_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Small molecule Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/small_molecule_carrier_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/small_molecule_carrier_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Experimental Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/experimental_carrier_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/experimental_carrier_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Nutraceutical Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/nutraceutical_carrier_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/nutraceutical_carrier_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Illicit Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/illicit_carrier_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/illicit_carrier_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Withdrawn Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/withdrawn_carrier_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/withdrawn_carrier_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Investigational Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/investigational_carrier_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/investigational_carrier_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<h5>Disease Transporter Identifiers</h5>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>CSV (Microsoft Excel compatible)</th>
+								<th class="dlink-timestamp">Released on</th>
+								<th class="dlink">All</th>
+								<th class="dlink">Known pharmacological action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>All Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/all_transporter_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/all_transporter_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Approved Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/approved_transporter_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/approved_transporter_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Small molecule Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/small_molecule_transporter_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/small_molecule_transporter_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Experimental Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/experimental_transporter_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/experimental_transporter_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Nutraceutical Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/nutraceutical_transporter_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/nutraceutical_transporter_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Illicit Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/illicit_transporter_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/illicit_transporter_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Withdrawn Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/withdrawn_transporter_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/withdrawn_transporter_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+							<tr>
+								<td>Investigational Diseases</td>
+								<td>2015-06-09</td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/investigational_transporter_ids_all.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+								<td><a class="btn btn-inverse "
+									href="${basePath}/downloads/current/investigational_transporter_ids_with_known_action.csv.zip"><span
+										class="glyphicon glyphicon-download"> </span> Download</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="tab-pane fade" id="other-database">
+					<p class="alert alert-info">
+						<span class="glyphicon glyphicon-info-sign"> </span> <em>
+							Other online drug databases</em>
+					</p>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Online Website Name</th>
+								<th class="dlink">Link</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>DiseaseBank</td>
+								<td><a class="btn btn-inverse "
+									href="http://www.drugbank.ca/" target="__blank"><span
+										class="glyphicon glyphicon-hand-right"> </span> links</a></td>
+							</tr>
+							<tr>
+								<td>Kegg Disease</td>
+								<td><a class="btn btn-inverse "
+									href="http://www.kegg.jp/kegg/drug/" target="__blank"><span
+										class="glyphicon glyphicon-hand-right"> </span> links</a></td>
+							</tr>
+							<tr>
+								<td>PubChem</td>
+								<td><a class="btn btn-inverse "
+									href="https://pubchem.ncbi.nlm.nih.gov/" target="__blank"><span
+										class="glyphicon glyphicon-hand-right"> </span> links</a></td>
+							</tr>
+							<tr>
+								<td>PharmGKB</td>
+								<td><a class="btn btn-inverse "
+									href="https://www.pharmgkb.org/" target="__blank"><span
+										class="glyphicon glyphicon-hand-right"> </span> links</a></td>
+							</tr>
+							<tr>
+								<td>UniProt</td>
+								<td><a class="btn btn-inverse "
+									href="http://www.uniprot.org/" target="__blank"><span
+										class="glyphicon glyphicon-hand-right"> </span> links</a></td>
+							</tr>
+							<tr>
+								<td>GeneBank</td>
+								<td><a class="btn btn-inverse "
+									href="http://www.ncbi.nlm.nih.gov/genbank/" target="__blank"><span
+										class="glyphicon glyphicon-hand-right"> </span> links</a></td>
+							</tr>
+							<tr>
+								<td>TTD</td>
+								<td><a class="btn btn-inverse "
+									href="http://bidd.nus.edu.sg/group/ttd/" target="__blank"><span
+										class="glyphicon glyphicon-hand-right"> </span> links</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		#include("/WEB-INF/views/container/footer.html")
+	</div>
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+	<script type="text/javascript">
+		jQuery.noConflict();
+		(function($) {
+			//根据用户上传文件名改变文本内容
+			function fileChange() {
+				var path = $("#select-file").val();
+				var pos1 = path.lastIndexOf('/');
+				var pos2 = path.lastIndexOf('\\');
+				var pos = Math.max(pos1, pos2);
+				if (pos < 0)
+					$("#filename").val(path);
+				else
+					$("#filename").val(path.substring(pos + 1));
+				//设定文本区域样式
+				if ($("#filename").val() != "") {
+					$("#textData").val("");
+					$("#textData").css("border-color", "");
+				}
+			}
+			$("#btn-upload").click(function() {
+				$('#select-file').click();
+			});
+			$('#select-file').change(function() {
+				var path = $("#select-file").val();
+				var pos1 = path.lastIndexOf('/');
+				var pos2 = path.lastIndexOf('\\');
+				var pos = Math.max(pos1, pos2);
+				if (pos < 0)
+					$("#filename").val(path);
+				else
+					$("#filename").val(path.substring(pos + 1));
+				//设定文本区域样式
+				if ($("#filename").val() != "") {
+					$("#textData").val("");
+					$("#textData").css("border-color", "");
+				}
+			});
+			$("#sub-net").click(function() {
+				if ($("#filename").val() == "" && $("#textData").val() == "") {
+					$("#textData").focus();
+					$("#textData").css("border-color", "red");
+					//恢复正常颜色
+					//$("#textData").css("border-color","");
+					return false;
+				}
+			});
+			$("#textData").bind("input propertychange", function() {
+				if ($("#filename").val() != "") {
+					var fileBox = $("#select-file");
+					fileBox.after(fileBox.clone().val(""));
+					fileBox.remove();
+					$("#filename").val("");
+				}
+				$("#textData").css("border-color", "");
+			});
+		})(jQuery)
+	</script>
+
+</body>
+</html>
