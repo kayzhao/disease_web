@@ -317,9 +317,4 @@ public class DataController {
 		page.setRows(list);
 		return page;
 	}
-
-	@RequestMapping(value = "/synonym/{keyword}", method = RequestMethod.GET)
-	public Object getDataByName(@PathVariable("keyword") String keyword) {
-		return rs.getDataByID(keyword, Disease.class);
-	}
 }

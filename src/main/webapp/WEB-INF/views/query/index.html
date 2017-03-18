@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<title>Search</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="icon" type="image/x-icon" href="${basepath}/favicon.ico">
+<link rel="shortcut icon" href="${basepath}/favicon.ico"
+	type="image/x-icon">
+<!-- bootstrap相关组件 -->
+<link rel="stylesheet"
+	href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+<!-- 自定义基本CSS -->
+<link rel="stylesheet" href="${basepath}/css/customer/biodis.css">
+<link rel="stylesheet" href="${basepath}/css/base.css">
+<link rel="stylesheet" href="${basepath}/css/customer/net.css">
+<!-- font-awesome字体库 -->
+<link
+	href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<link
+	href="${basepath}/css/plugins/bootstrap/bootstrap-table-sticky-header.css"
+	rel="stylesheet">
+
+<!--bootstrap-select start-->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+<!--bootstrap-select end-->
+</head>
+<body>
+	#parse("/WEB-INF/views/container/menu.html")
+	<div class="container">
+		<!-- 内容 -->
+		<div class="G-MarginTop20">
+			<div class="center-block panel panel-info" style="width: 100%;">
+				<div class="panel-heading">
+					<h3 class="panel-title">Disease Search</h3>
+				</div>
+				<div class="panel-body text-default">
+					To get started please visit the <a target='__blank'
+						href="${basepath}/readme">tutorial page</a>.
+					<div class="alert alert-warning">
+						NOTICE:
+						<ol style="margin-left: 60px;">
+							<li>By Keywords: Search the diseases from multiple words
+								split by ",". <br>Such as:<br> <span
+								class="text-danger">Disease,Infectious</span>
+							</li>
+							<li>By UMLS_CUI ID:Search the diseases from UMLS_CUI ID.<br>
+								Such as:<br> <span class="text-danger">UMLS_CUI:C0000473</span></li>
+							<li>By UMLS_CUI Name:Search the diseases from UMLS_CUI Name.<br>
+								Such as:<br> <span class="text-danger">para-Aminobenzoic
+									Acid</span>
+							</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+
+			<form method="post" action="${basepath}/data/query/keywords"
+				enctype="multipart/form-data">
+				<hr class="G-MarginTop20">
+				<div class="col-xs-2 ">
+					<select class="selectpicker form-control" data-live-search="true"
+						name="type">
+						<option value="keywords">Keywords</option>
+						<option value="_id">UMLS_CUI ID</option>
+						<option value="name">UMLS_CUI Name</option>
+					</select>
+				</div>
+				<div class="col-xs-9">
+					<input id="word-input" name="words" class="form-control" />
+				</div>
+				<div class="col-xs-1">
+					<input class="btn btn-success btn-submit form-control"
+						type="submit" id="search-btn" value="Search" />
+				</div>
+			</form>
+
+			<!-- error info -->
+			#if($!errorInfo)
+			<div class="alert alert-danger G-MarginTop20 col-xs-12 text-center">
+				<span class="text-danger"><span
+					class="glyphicon glyphicon-remove"></span>$!errorInfo</span>
+			</div>
+			#end
+		</div>
+		#include("/WEB-INF/views/container/footer.html")
+	</div>
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+	<script
+		src="${basepath}/js/plugins/bootstrapTable//bootstrap-table.min.js"></script>
+	<script
+		src="${basepath}/js/plugins/bootstrapTable/bootstrap-table-export.js"></script>
+	<script src="${basepath}/js/plugins/bootstrapTable/tableExport.js"></script>
+	<script
+		src="${basepath}/js/plugins/bootstrapTable/bootstrap-table-sticky-header.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+	<script type="text/javascript">
+		jQuery.noConflict();
+		(function($) {
+		})(jQuery)
+	</script>
+</body>
+</html>

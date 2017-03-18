@@ -29,6 +29,28 @@ public interface DataService {
 	 *            查询参数（参考自bootstrap-table的queryParams）
 	 * @return
 	 */
+	public <T> Long getListCount(Class<T> clz, String type, QueryParams queryParams);
+
+	/**
+	 * 获取列表
+	 * 
+	 * @param clz
+	 *            class类
+	 * @param queryParams
+	 *            查询参数（参考自bootstrap-table的queryParams）
+	 * @return
+	 */
+	public <T> List<T> getList(Class<T> clz, String type, QueryParams queryParams);
+
+	/**
+	 * 获取列表的总个数
+	 * 
+	 * @param clz
+	 *            class类
+	 * @param queryParams
+	 *            查询参数（参考自bootstrap-table的queryParams）
+	 * @return
+	 */
 	public <T> Long getListCount(Class<T> clz, QueryParams queryParams);
 
 	/**

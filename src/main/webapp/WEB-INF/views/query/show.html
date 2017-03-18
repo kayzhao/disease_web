@@ -33,22 +33,12 @@
 		<div class="G-MarginTop20">
 			<div class="center-block panel panel-info" style="width: 100%;">
 				<div class="panel-heading">
-					<h3 class="panel-title">Disease List</h3>
+					<h3 class="panel-title">Disease Search Result</h3>
 				</div>
 				<div class="panel-body text-default">
-					The Biodis has been developed as a standardized ontology
-					for disease with the purpose of providing the biomedical
-					community with consistent, reusable and sustainable descriptions of
-					human disease terms, phenotype characteristics and related medical
-					vocabulary disease concepts through collaborative efforts of
-					researchers at Northwestern University, Center for Genetic Medicine
-					and the University of Maryland School of Medicine, Institute for
-					Genome Sciences. The Disease Ontology semantically integrates
-					disease and medical vocabularies through extensive cross mapping of
-					DO terms to MeSH, ICD, NCI’s thesaurus, SNOMED and OMIM. To get
-					started please visit the <a target='__blank'
+					To get started please visit the <a target='__blank'
 						href="${basepath}/readme">tutorial page</a>.
-					<div class="alert alert-info G-MarginTop20">
+					<div class="alert alert-warning">
 						NOTICE:
 						<ol style="margin-left: 60px;">
 							<li>Synonym: split by ";"(only display the English synonyms)</li>
@@ -70,6 +60,28 @@
 			<table id="table" class="table table-hover text-left"
 				data-toggle="table" data-sortable="true" data-pagination="true"
 				data-show-columns="true" data-striped="true" data-show-export="true"
+				data-side-pagination="server" stickyHeader="true"
+				data-url="${basepath}/data/query/page?type=${request.getParameter('type')}&search=${request.getParameter('words')}">
+				<thead>
+					<tr>
+						<th data-field="id" data-formatter="idFormatter"
+							data-sortable="true">Disease ID</th>
+						<th data-field="disease_name" data-sortable="true">Name</th>
+						<th data-field="disease_synonyms"
+							data-formatter="synonymFormatter">Synonym</th>
+						<th data-field="disease_xrefs" data-formatter="xrefFormatter">Xref</th>
+						<th data-field="sources" data-formatter="sourceFormatter">Sources</th>
+					</tr>
+				</thead>
+			</table>
+			<div class="clearfix"></div>
+			<hr class="row  G-MarginTop20 ">
+		</div>
+
+		<!-- <div class="G-MarginTop20">
+			<table id="table" class="table table-hover text-left"
+				data-toggle="table" data-sortable="true" data-pagination="true"
+				data-show-columns="true" data-striped="true" data-show-export="true"
 				data-search="true" data-url="${basepath}/data/diseases/page"
 				data-side-pagination="server" stickyHeader="true">
 				<thead>
@@ -86,7 +98,7 @@
 			</table>
 			<div class="clearfix"></div>
 			<hr class="row  G-MarginTop20 ">
-		</div>
+		</div> -->
 		#include("/WEB-INF/views/container/footer.html")
 	</div>
 	<!-- Latest compiled and minified JavaScript -->

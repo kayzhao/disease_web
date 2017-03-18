@@ -1,9 +1,8 @@
 package com.csu.bio.object.model;
 
-import java.util.HashMap;
 import java.util.List;
-
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -19,6 +18,7 @@ public class DisMap {
 	 * common fields
 	 */
 	@Id
+	@TextIndexed
 	private String disease_id;
 
 	@Field("doid")
@@ -47,6 +47,12 @@ public class DisMap {
 
 	@Field("umls_cui")
 	private List<String> umls_cui;
+
+	@Field("snomedct")
+	private List<String> snomedct;
+
+	@Field("nci")
+	private List<String> nci;
 
 	@Field("other")
 	private List<String> other;
@@ -97,6 +103,22 @@ public class DisMap {
 
 	public void setKegg(List<String> kegg) {
 		this.kegg = kegg;
+	}
+
+	public List<String> getSnomedct() {
+		return snomedct;
+	}
+
+	public void setSnomedct(List<String> snomedct) {
+		this.snomedct = snomedct;
+	}
+
+	public List<String> getNci() {
+		return nci;
+	}
+
+	public void setNci(List<String> nci) {
+		this.nci = nci;
 	}
 
 	public List<String> getMesh() {
