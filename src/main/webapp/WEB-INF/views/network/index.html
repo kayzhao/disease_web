@@ -50,6 +50,8 @@
 					aria-expanded="true">Disease to Disease</a></li>
 				<li><a data-toggle="tab" href="#dis_2_tar">Disease to
 						Target</a></li>
+				<li><a data-toggle="tab" href="#dis_id_map"
+					aria-expanded="true">Disease ID Mapping</a></li>
 			</ul>
 			<!-- nav content -->
 			<div class="tab-content G-MarginTop20 text-left">
@@ -68,7 +70,7 @@
 									UMLS_CUI:C0000052<br>
 								</div>
 							</div>
-							<form method="post" action="${basepath}/net/show"
+							<form method="post" action="${basepath}/net/show/d2d"
 								enctype="multipart/form-data">
 								<div style="width: 600px; margin: 0 auto;">
 									<label>Input Data</label><br>
@@ -99,7 +101,7 @@
 									UMLS_CUI:C0000052<br>
 								</div>
 							</div>
-							<form method="post" action="${basepath}/net/show"
+							<form method="post" action="${basepath}/net/show/d2t"
 								enctype="multipart/form-data">
 								<div style="width: 600px; margin: 0 auto;">
 									<label>Input Data</label><br>
@@ -114,6 +116,44 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="tab-pane fade in" id="dis_id_map">
+					<div class="center-block panel panel-info">
+						<div class="panel-heading">
+							<h3 class="panel-title">Disease ID Mapping Network</h3>
+						</div>
+						<div class="panel-body">
+							<div class="alert alert-info">
+								NOTICE: Enter or upload a list of identifiers which is a
+								tab-delimited or space-delimited string for each row, for
+								example:<br>
+								<div style="margin-left: 60px;">
+									DOID:4<br>DOID:630<br>DOID:0001816<br>DOID:0002116<br>
+								</div>
+							</div>
+							<form method="post" action="${basepath}/net/show/dim"
+								enctype="multipart/form-data">
+								<div style="width: 600px; margin: 0 auto;">
+									<label>Input Data</label><br>
+									<textarea id="textData" name="inputData"
+										class="form-control form-area" rows="8"></textarea>
+									<div class="pull-right">
+										<input class="btn btn-success btn-submit" type="submit"
+											id="sub-net" value="Visual">
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<!-- error info -->
+				#if($!errorInfo)
+				<div class="alert alert-danger G-MarginTop20 col-xs-12 text-center">
+					<span class="text-danger">$!errorInfo</span>
+				</div>
+				#end
+
 			</div>
 			#include("/WEB-INF/views/container/footer.html")
 		</div>

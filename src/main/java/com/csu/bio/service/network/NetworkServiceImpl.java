@@ -19,17 +19,14 @@ public class NetworkServiceImpl implements NetworkService {
 	@Autowired
 	private CommonNoSqlDao commonNoSqlDao;
 
-	@Autowired
-	private FullTextRepository fullTextRepository;
-
 	@Override
-	public Map<String, Object> getRelationshipData(List<String> ids) {
+	public <T> Map<String, Object> getRelationshipData(List<String> ids, Class<T> clz) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		if (ids == null || ids.size() == 0)
 			return null;
 		for (String id : ids) {
-			UMLSREL rel = null;
-			rel = commonNoSqlDao.findOne(UMLSREL.class, SimpleCriteriaEntry.createEqEntry("_id", id));
+			T rel = null;
+			rel = commonNoSqlDao.findOne(clz, SimpleCriteriaEntry.createEqEntry("_id", id));
 			if (rel == null) {
 				if (result.get("errorids") == null) {
 					result.put("errorids", id);
@@ -38,7 +35,7 @@ public class NetworkServiceImpl implements NetworkService {
 				}
 				continue;
 			}
-			rel = commonNoSqlDao.findOne(UMLSREL.class, SimpleCriteriaEntry.createEqEntry("_id", id));
+			rel = commonNoSqlDao.findOne(clz, SimpleCriteriaEntry.createEqEntry("_id", id));
 			result.put(id, rel);
 		}
 		return result;

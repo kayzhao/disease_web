@@ -20,6 +20,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -55,6 +56,7 @@ public class NetController {
 		return new ModelAndView("network/index");
 	}
 
+	@ResponseBody
 	@RequestMapping(value = "/net/decodepng", method = RequestMethod.POST)
 	public String decodePng(HttpSession session, HttpServletResponse response, @RequestParam("png") String png) {
 		System.out.println("----DecodePNG----");
@@ -88,9 +90,9 @@ public class NetController {
 		}
 	}
 
-	@RequestMapping(value = "/net/show", method = RequestMethod.POST)
-	public String showNetwork(HttpServletRequest request, String type, String inputData, RedirectAttributes attributes,
-			ModelMap model) throws Exception {
+	@RequestMapping(value = "/net/show/d2d", method = RequestMethod.POST)
+	public String showNetworkD2D(HttpServletRequest request, String type, String inputData,
+			RedirectAttributes attributes, ModelMap model) throws Exception {
 		List<String> datasets;
 		if (inputData == null || inputData.length() == 0) {
 			attributes.addFlashAttribute("errorInfo", "Error Search Text or Type");
@@ -110,7 +112,7 @@ public class NetController {
 
 		// get data
 		// get the mapping ids
-		Map map = ns.getRelationshipData(ids);
+		Map map = ns.getRelationshipData(ids, UMLSREL.class);
 		// get the error disease ids
 		ArrayList<Object> errorids = new ArrayList<>();
 		if (map.get("errorids") != null) {
@@ -120,7 +122,83 @@ public class NetController {
 			map.remove("errorids");
 		}
 
-		model.addAttribute("net", CytoVisual.RELNet2Json(map));
+		model.addAttribute("net", CytoVisual.Net2Json(map));
+		return "network/show";
+	}
+
+	@RequestMapping(value = "/net/show/d2t", method = RequestMethod.POST)
+	public String showNetworkD2T(HttpServletRequest request, String type, String inputData,
+			RedirectAttributes attributes, ModelMap model) throws Exception {
+		List<String> datasets;
+		if (inputData == null || inputData.length() == 0) {
+			attributes.addFlashAttribute("errorInfo", "Error Search Text or Type");
+			return "redirect:/net";
+		}
+		datasets = Arrays.asList(inputData.split("\r\n"));
+		if (datasets == null || datasets.size() == 0) {
+			attributes.addFlashAttribute("errorInfo", "Error Search Text or Type");
+			return "redirect:/net";
+		}
+		// remove length=0 elements
+		ArrayList<String> ids = new ArrayList<String>();
+		for (int i = 0; i < datasets.size(); i++) {
+			if (datasets.get(i) != null && datasets.get(i).length() > 0)
+				ids.add(datasets.get(i));
+		}
+
+		// get data
+		// get the mapping ids
+		Map map = ns.getRelationshipData(ids, UMLSREL.class);
+		// get the error disease ids
+		ArrayList<Object> errorids = new ArrayList<>();
+		if (map.get("errorids") != null) {
+			for (String id : ((String) map.get("errorids")).split(",")) {
+				errorids.add(id);
+			}
+			map.remove("errorids");
+		}
+
+		model.addAttribute("net", CytoVisual.Net2Json(map));
+		return "network/show";
+	}
+
+	@RequestMapping(value = "/net/show/dim", method = RequestMethod.POST)
+	public String showNetworkDIM(HttpServletRequest request, String type, String inputData,
+			RedirectAttributes attributes, ModelMap model) throws Exception {
+		List<String> datasets;
+		if (inputData == null || inputData.length() == 0) {
+			attributes.addFlashAttribute("errorInfo", "Error Search Text or Type");
+			return "redirect:/net";
+		}
+		datasets = Arrays.asList(inputData.split("\r\n"));
+		if (datasets == null || datasets.size() == 0) {
+			attributes.addFlashAttribute("errorInfo", "Error Search Text or Type");
+			return "redirect:/net";
+		}
+		// remove length=0 elements
+		ArrayList<String> ids = new ArrayList<String>();
+		for (int i = 0; i < datasets.size(); i++) {
+			if (datasets.get(i) != null && datasets.get(i).length() > 0)
+				ids.add(datasets.get(i));
+		}
+
+		// get data
+		// get the mapping ids
+		Map map = ns.getRelationshipData(ids, DisMap.class);
+		// get the error disease ids
+		ArrayList<Object> errorids = new ArrayList<>();
+		if (map.get("errorids") != null) {
+			for (String id : ((String) map.get("errorids")).split(",")) {
+				errorids.add(id);
+			}
+			map.remove("errorids");
+		}
+		model.addAttribute("errorids", errorids);
+		if (map.isEmpty() || map.size() == 0) {
+			attributes.addFlashAttribute("errorInfo", "No data to visualize");
+			return "redirect:/net";
+		}
+		model.addAttribute("net", CytoVisual.Net2Json(map));
 		return "network/show";
 	}
 }

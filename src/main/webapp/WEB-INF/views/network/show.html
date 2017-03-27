@@ -22,9 +22,6 @@
 <link
 	href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet">
-<link
-	href="${basepath}/css/plugins/bootstrap/bootstrapValidator.min.css"
-	rel="stylesheet">
 <!--bootstrap-select start-->
 <link rel="stylesheet"
 	href="${basepath}/css/plugins/bootstrap/bootstrap-select.min.css">
@@ -67,12 +64,13 @@
 									<li><button type="button"
 											class="btn btn-default btn-block btn-layout"
 											style="border: 0" value="cose">CoSE</button></li>
-									<li><button type="button"
-											class="btn btn-default btn-block btn-layout"
-											style="border: 0" value="preset">Preset</button></li>
+
 									<li><button type="button"
 											class="btn btn-default btn-block btn-layout"
 											style="border: 0" value="random">Random</button></li>
+									<li><button type="button"
+											class="btn btn-default btn-block btn-layout"
+											style="border: 0" value="preset">Preset</button></li>
 								</ul></li>
 							<li class="dropdown"><a id="btn-export"
 								class="btn btn-block" style="border: 0" role="button"
@@ -97,57 +95,120 @@
 		jQuery.noConflict();
 		(function($) {
 			//创建一个Cytoscape样式
-			var cy = null;
-			var cystyle = [ {
+			var visualstyle = [ {
 				selector : 'node',
 				style : {
-					'content' : 'data(id)',
-					'text-valign' : 'top',
-					'text-halign' : 'center',
-					'shape' : 'circle',
-					'height' : 20,
-					'width' : 20,
-					'background-color' : '#63B8FF',
-					'color' : '#777'
+					'shape' : 'data(faveShape)',
+					'width' : 'mapData(weight, 40, 80, 20, 60)',
+					'content' : 'data(name)',
+					'text-valign' : 'center',
+					'text-outline-width' : 2,
+					'color' : '#fff',
+				}
+			}, {
+				selector : 'node[faveColor]',
+				style : {
+					'shape' : 'data(faveShape)',
+					'width' : 'mapData(weight, 40, 80, 20, 60)',
+					'content' : 'data(name)',
+					'text-valign' : 'center',
+					'text-outline-width' : 2,
+					'color' : '#fff',
+					'text-outline-color' : 'data(faveColor)',
+					'background-color' : 'data(faveColor)',
 				}
 			}, {
 				selector : 'edge',
 				style : {
+					'curve-style' : 'bezier',
+					'opacity' : 0.666,
+					'width' : 'mapData(strength, 70, 100, 2, 6)',
+					'target-arrow-shape' : 'triangle',
+					'source-arrow-shape' : 'circle',
 					'label' : 'data(label)',
-					//'color' : 'red',
-					'edge-text-rotation' : 'autorotate',
-					'curve-style' : 'haystack',
-					'haystack-radius' : 0,
-					'width' : 1,
-					'opacity' : 1,
-					'line-color' : '#000'
+
+				}
+			}, {
+				selector : 'edge[faveColor]',
+				style : {
+					'curve-style' : 'bezier',
+					'opacity' : 0.666,
+					'width' : 'mapData(strength, 70, 100, 2, 6)',
+					'target-arrow-shape' : 'triangle',
+					'source-arrow-shape' : 'circle',
+					'label' : 'data(label)',
+					'line-color' : 'data(faveColor)',
+					'source-arrow-color' : 'data(faveColor)',
+					'target-arrow-color' : 'data(faveColor)'
+
 				}
 			}, {
 				selector : ':selected',
 				style : {
-					'background-color' : '#FFFF00',
-					'line-color' : '#FF0000'
+					'border-width' : 3,
+					'border-color' : '#333'
+				}
+			}, {
+				selector : 'edge.questionable',
+				style : {
+					'line-style' : 'dotted',
+					'target-arrow-shape' : 'diamond'
+				}
+			}, {
+				selector : '.faded',
+				style : {
+					'opacity' : 0.25,
+					'text-opacity' : 0
 				}
 			} ];
-			cy = cytoscape({
+			var cy = cytoscape({
 				container : document.getElementById('cy'),
-				userZoomingEnabled : true,
-				userPanningEnabled : true,
-				boxSelectionEnabled : true,
-				autounselectify : false,
-				hideLabelsOnViewport : true,
-				wheelSensitivity : 0.4,
 				layout : {
-					name : 'circle'
+					name : "random"
 				},
-				style : cystyle,
-				elements : JSON.parse('${net}')
+				style : visualstyle,
+				elements : JSON.parse('${net}'),
+				// initial viewport state:
+				zoom : 1,
+				pan : {
+					x : 0,
+					y : 0
+				},
+				// interaction options:
+				minZoom : 1e-50,
+				maxZoom : 1e50,
+				zoomingEnabled : true,
+				userZoomingEnabled : true,
+				panningEnabled : true,
+				userPanningEnabled : true,
+				boxSelectionEnabled : false,
+				selectionType : 'single',
+				touchTapThreshold : 8,
+				desktopTapThreshold : 4,
+				autolock : false,
+				autoungrabify : false,
+				autounselectify : false,
+				padding : 10,
+				randomize : true,
+				// rendering options:
+				headless : false,
+				styleEnabled : true,
+				hideEdgesOnViewport : false,
+				hideLabelsOnViewport : false,
+				textureOnViewport : false,
+				motionBlur : false,
+				motionBlurOpacity : 0.2,
+				wheelSensitivity : 1,
+				pixelRatio : 'auto'
 			});
+
 			$(".btn-layout").click(function() {
 				cy.layout({
 					name : $(this).val()
 				});
 			});
+
+			//图片导出
 			$("#btn-export").click(function() {
 				//先发出请求保存图片数据，再进行发出下载请求
 				var png64 = cy.png();
